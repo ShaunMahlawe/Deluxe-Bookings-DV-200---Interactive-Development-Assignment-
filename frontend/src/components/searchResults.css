@@ -186,7 +186,9 @@
 
 .card-stars {
   margin-top: 8px;
-  font-size: clamp(24px, 2vw, 30px);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .card-tag {
