@@ -76,7 +76,7 @@ npm run dev
 
 ### 5. Optional Atlas setup
 
-Set `MONGODB_URI` in `backend/.env` to your MongoDB Atlas connection string. If this is omitted, the app starts in demo mode with in-memory data so the UI and API can still be reviewed.
+Set `MONGODB_URI` in `backend/.env` to your MongoDB Atlas connection string if you want a persistent database. If this is omitted, the backend starts an in-memory MongoDB instance so the UI and API can still be reviewed.
 
 ## Demo Credentials
 
