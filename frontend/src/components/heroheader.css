@@ -1,0 +1,97 @@
+.hero-header {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('https://res.cloudinary.com/dshheajli/image/upload/0e6f16fa2206e6c5c9db697fe78d39dcde10608f_mbzmr7') center/cover no-repeat;
+  z-index: 0;
+  filter: brightness(0.76);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  margin-left: clamp(12px, 4vw, 64px);
+  margin-right: 12px;
+  max-width: 760px;
+}
+
+.hero-title {
+  font-family: 'Fredoka', 'Poppins', sans-serif;
+  line-height: 1.32em;
+  font-size: clamp(32px, 6vw, 64px);
+  color: #fff;
+  font-weight: 900;
+  margin-bottom: 24px;
+  text-shadow: 0 4px 24px rgba(0,0,0,0.18);
+}
+
+.hero-sub {
+  width: min(470px, 100%);
+  margin-top: 40px;
+  margin-bottom: 26px;
+  background: rgba(121, 116, 113, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  border-radius: 18px;
+  padding: 20px 22px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(2px);
+}
+
+.hero-sub-text {
+  margin: 0 0 18px;
+  color: #ffffff;
+  font-size: 17px;
+  line-height: 1.5;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: #fff;
+  color: #7b5132;
+  border: 1px solid #d8d2cb;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 7px 8px 7px 15px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.hero-cta:hover {
+  background: #f2efed;
+  transform: translateY(-1px);
+}
+
+.hero-cta-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
+  background: #8b5f3e;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-dropdown {
+  position: absolute;
+  top: 32px;
+  right: 12px;
+  z-index: 20;
+}
