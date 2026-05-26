@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import './carousel.css';
 
-const thingsToDoCards = [
+const defaultThingsToDoCards = [
   {
     id: 1,
     title: 'Hotels',
@@ -35,9 +35,13 @@ const thingsToDoCards = [
   },
 ];
 
-const Carousel = () => (
-  <section className="carousel" aria-label="Things to do in Cape Town">
-    <h2>Things to do in Cape Town</h2>
+const Carousel = ({ data }) => {
+  const sectionTitle = data?.title || 'Things to do in Cape Town';
+  const thingsToDoCards = data?.cards?.length ? data.cards : defaultThingsToDoCards;
+
+  return (
+    <section className="carousel" aria-label={sectionTitle}>
+      <h2>{sectionTitle}</h2>
     <div className="things-track">
       {thingsToDoCards.map((item) => (
         <article className="things-card" key={item.id}>
@@ -62,7 +66,8 @@ const Carousel = () => (
         <ChevronRight size={16} />
       </button>
     </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Carousel;
