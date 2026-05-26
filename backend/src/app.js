@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser')
 const { isDatabaseConnected } = require('./config/db')
 const authRoutes = require('./routes/authRoutes')
 const bookingRoutes = require('./routes/bookingRoutes')
+const catalogRoutes = require('./routes/catalogRoutes')
 
 const app = express()
 
@@ -23,6 +24,7 @@ app.get('/api/health', (_req, res) => {
 
 app.use('/api/auth', authRoutes)
 app.use('/api/bookings', bookingRoutes)
+app.use('/api/catalog', catalogRoutes)
 
 app.use((err, _req, res, _next) => {
   console.error(err)
