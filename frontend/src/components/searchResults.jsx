@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpDown, CircleCheck, CircleX, Info, MapPinned, Heart } from 'lucide-react';
+import { ArrowUpDown, ChevronRight, CircleCheck, CircleX, Info, MapPinned, Heart, Star } from 'lucide-react';
 import FilterPanel from './filter';
 import './searchResults.css';
 import Footer from './footer';
@@ -157,20 +157,18 @@ const cards = [
 const SearchResults = () => {
   const featuredCards = cards.slice(0, 3);
   const remainingCards = cards.slice(3);
+  const breadcrumbItems = ['Home', 'South Africa', 'Western Cape', 'Cape Town', 'Search results'];
 
   return (
     <div className="results-page">
       <div className="results-content">
         <nav className="breadcrumbs" aria-label="Breadcrumb">
-          <span>Home</span>
-          <span>&gt;</span>
-          <span>South Africa</span>
-          <span>&gt;</span>
-          <span>Western Cape</span>
-          <span>&gt;</span>
-          <span>Cape Town</span>
-          <span>&gt;</span>
-          <span>Search results</span>
+          {breadcrumbItems.map((item, index) => (
+            <React.Fragment key={item}>
+              <span>{item}</span>
+              {index < breadcrumbItems.length - 1 ? <ChevronRight size={14} aria-hidden="true" /> : null}
+            </React.Fragment>
+          ))}
         </nav>
 
         <div className="results-layout">
@@ -223,7 +221,11 @@ const SearchResults = () => {
 
                   <div className="property-body">
                     <h2>{card.title}</h2>
-                    <div className="card-stars">★★★★★</div>
+                    <div className="card-stars" aria-label="5 star rating">
+                      {Array.from({ length: 5 }).map((_, index) => (
+                        <Star key={`${card.id}-featured-star-${index}`} size={18} fill="currentColor" strokeWidth={1.8} />
+                      ))}
+                    </div>
                     <span className="card-tag">New to Deluxe Bookings</span>
 
                     <div className="score-row">
@@ -279,7 +281,11 @@ const SearchResults = () => {
 
                   <div className="property-body">
                     <h2>{card.title}</h2>
-                    <div className="card-stars">★★★★★</div>
+                    <div className="card-stars" aria-label="5 star rating">
+                      {Array.from({ length: 5 }).map((_, index) => (
+                        <Star key={`${card.id}-lower-star-${index}`} size={18} fill="currentColor" strokeWidth={1.8} />
+                      ))}
+                    </div>
                     <span className="card-tag">New to Deluxe Bookings</span>
 
                     <div className="score-row">
