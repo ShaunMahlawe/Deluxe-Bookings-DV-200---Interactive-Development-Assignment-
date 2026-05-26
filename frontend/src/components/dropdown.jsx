@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Menu } from 'lucide-react';
 import './dropdown.css';
 
 const menuItems = [
@@ -15,7 +16,7 @@ const DropdownMenu = () => {
   return (
     <div className="dropdown">
       <button className="dropdown-toggle" onClick={() => setOpen((o) => !o)}>
-        <span role="img" aria-label="menu">☰</span>
+        <Menu size={20} aria-label="menu" />
       </button>
       {open && (
         <ul className="dropdown-menu">
