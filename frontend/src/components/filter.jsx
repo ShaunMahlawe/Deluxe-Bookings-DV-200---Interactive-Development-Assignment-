@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronDown, CircleHelp, House } from 'lucide-react';
+import { ChevronDown, CircleHelp, House, Minus, Plus } from 'lucide-react';
 import './filter.css';
 
 const OptionRow = ({ id, label, count }) => (
@@ -180,17 +180,25 @@ const FilterPanel = () => {
           <div className="stepper-row">
             <span>Bedrooms</span>
             <div className="stepper-control">
-              <button type="button" aria-label="Decrease bedrooms">-</button>
+              <button type="button" aria-label="Decrease bedrooms">
+                <Minus size={14} />
+              </button>
               <span>0</span>
-              <button type="button" aria-label="Increase bedrooms">+</button>
+              <button type="button" aria-label="Increase bedrooms">
+                <Plus size={14} />
+              </button>
             </div>
           </div>
           <div className="stepper-row">
             <span>Bathrooms</span>
             <div className="stepper-control">
-              <button type="button" aria-label="Decrease bathrooms">-</button>
+              <button type="button" aria-label="Decrease bathrooms">
+                <Minus size={14} />
+              </button>
               <span>0</span>
-              <button type="button" aria-label="Increase bathrooms">+</button>
+              <button type="button" aria-label="Increase bathrooms">
+                <Plus size={14} />
+              </button>
             </div>
           </div>
         </div>
