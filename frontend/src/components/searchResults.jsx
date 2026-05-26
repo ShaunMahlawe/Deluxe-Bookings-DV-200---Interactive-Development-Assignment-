@@ -237,7 +237,7 @@ const SearchResults = () => {
                     <p className="value-text">Value for money 8.4</p>
                     <div className="location-row">
                       <span>{card.area}</span>
-                      <span>Show on map</span>
+                      <span className="show-on-map-text">Show on map</span>
                     </div>
 
                     <div className="distance-row">
@@ -297,7 +297,7 @@ const SearchResults = () => {
                     <p className="value-text">Value for money 8.4</p>
                     <div className="location-row">
                       <span>{card.area}</span>
-                      <span>Show on map</span>
+                      <span className="show-on-map-text">Show on map</span>
                     </div>
 
                     <div className="distance-row">
