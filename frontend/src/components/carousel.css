@@ -1,0 +1,104 @@
+.carousel {
+  margin: 40px 0 0 0;
+  text-align: left;
+  font-family: 'Poppins', sans-serif;
+  color: #3f2d20;
+}
+
+.carousel h2 {
+  margin: 0 0 18px;
+  font-size: 30px;
+  line-height: 1.1;
+  color: #281a11;
+}
+
+.things-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(250px, 1fr);
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: none;
+}
+
+.things-track::-webkit-scrollbar {
+  display: none;
+}
+
+.things-card {
+  background: #7e5b3f;
+  border-radius: 24px;
+  overflow: hidden;
+  min-width: 250px;
+}
+
+.things-card-image {
+  height: 210px;
+  position: relative;
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 42%, rgba(0, 0, 0, 0.36) 100%),
+    url('https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=1200&q=80');
+  background-size: cover;
+  background-position: center;
+}
+
+.things-card-action {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid #8f6a4e;
+  background: #ffffff;
+  color: #3f2d20;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.things-card-body {
+  padding: 12px 14px 14px;
+  color: #fff;
+}
+
+.things-card-body h3 {
+  margin: 0;
+  font-size: 36px;
+  line-height: 1;
+}
+
+.things-card-body p {
+  margin: 12px 0 6px;
+  font-size: 13px;
+}
+
+.things-card-body span {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.things-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.things-control-button {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid #bba690;
+  background: #f3ece5;
+  color: #8a6443;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.things-control-button-active {
+  background: #8a6443;
+  color: #fff;
+  border-color: #8a6443;
+}
