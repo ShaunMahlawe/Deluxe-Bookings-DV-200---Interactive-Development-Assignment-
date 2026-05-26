@@ -1,4 +1,5 @@
 .navbar {
+  --navbar-account-width: 172px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -130,6 +131,82 @@
   outline: none;
 }
 
+.navbar-search::placeholder {
+  color: rgba(126, 91, 63, 0.72);
+  font-weight: 500;
+}
+
+.navbar-search-suggestions {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  right: 0;
+  z-index: 45;
+  border-radius: 14px;
+  background: rgba(247, 241, 235, 0.98);
+  border: 1px solid rgba(126, 90, 61, 0.18);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+  padding: 8px;
+  display: grid;
+  gap: 6px;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.navbar-search-suggestions:hover {
+  border-color: rgba(139, 99, 67, 0.36);
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.16);
+}
+
+.navbar-search-suggestion {
+  width: 100%;
+  border: none;
+  border-radius: 11px;
+  background: #f1f1f1;
+  color: #7e5a3d;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.navbar-search-suggestion:hover {
+  background: #f3e8df;
+  box-shadow: inset 0 0 0 1px rgba(139, 99, 67, 0.24);
+  transform: translateY(-1px);
+}
+
+.navbar-search-suggestion-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  background: rgba(139, 99, 67, 0.14);
+  color: #8b6343;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.navbar-search-suggestion-copy {
+  min-width: 0;
+  display: grid;
+}
+
+.navbar-search-suggestion-title {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.navbar-search-suggestion-region {
+  font-size: 12px;
+  line-height: 1.2;
+  color: rgba(126, 90, 61, 0.7);
+}
+
 .navbar-search-btn,
 .navbar-create-icon {
   width: 30px;
@@ -153,7 +230,9 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  min-width: 172px;
+  box-sizing: border-box;
+  width: min(var(--navbar-account-width), 100%);
+  min-width: var(--navbar-account-width);
   height: 46px;
   border: 1px solid rgba(248, 244, 239, 0.98);
   border-radius: 12px;
@@ -169,6 +248,11 @@
   flex-shrink: 0;
 }
 
+.navbar-create-shell {
+  position: relative;
+  width: min(var(--navbar-account-width), 100%);
+}
+
 .navbar-sidepanels {
   margin-left: auto;
   display: flex;
@@ -177,12 +261,19 @@
   margin-top: 2px;
 }
 
+.navbar-sidepanels-placeholder {
+  width: 100%;
+  min-height: 258px;
+  pointer-events: none;
+}
+
 .navbar-booking-panel {
   width: min(368px, 100%);
   border-radius: 14px;
   background: rgba(221, 218, 216, 0.92);
   border: 1px solid rgba(255, 255, 255, 0.45);
   padding: 10px;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 
 .navbar-booking-panel-dropdown {
@@ -192,6 +283,12 @@
   width: min(368px, 100vw - 24px);
   z-index: 35;
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+.navbar-booking-panel:hover {
+  border-color: rgba(139, 99, 67, 0.28);
+  background: rgba(231, 226, 222, 0.95);
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.2);
 }
 
 .navbar-panel-row {
@@ -204,6 +301,7 @@
   color: #7e5a3d;
   font-size: 16px;
   font-weight: 500;
+  transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
 }
 
 .navbar-panel-row-button {
@@ -211,6 +309,12 @@
   border: none;
   cursor: pointer;
   text-align: left;
+}
+
+.navbar-panel-row-button:hover {
+  background: #f3e8df;
+  box-shadow: inset 0 0 0 1px rgba(139, 99, 67, 0.24);
+  transform: translateY(-1px);
 }
 
 .navbar-panel-row + .navbar-panel-row {
@@ -221,6 +325,101 @@
   display: grid;
   gap: 10px;
   margin-top: 9px;
+  transition: transform 0.18s ease;
+}
+
+.navbar-date-picker-dropdown:hover {
+  transform: translateY(-1px);
+}
+
+.navbar-guest-picker-dropdown {
+  display: grid;
+  gap: 8px;
+  margin-top: 9px;
+  border: 1px solid rgba(126, 90, 61, 0.3);
+  border-radius: 12px;
+  background: #f7f1eb;
+  padding: 8px;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.navbar-guest-picker-dropdown:hover {
+  border-color: rgba(139, 99, 67, 0.36);
+  background: #f9f3ee;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-guest-control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: #f1f1f1;
+  border-radius: 11px;
+  padding: 9px 10px;
+  transition: background 0.18s ease, box-shadow 0.18s ease;
+}
+
+.navbar-guest-control:hover {
+  background: #f3e8df;
+  box-shadow: inset 0 0 0 1px rgba(139, 99, 67, 0.18);
+}
+
+.navbar-guest-labels {
+  min-width: 0;
+  display: grid;
+}
+
+.navbar-guest-title {
+  color: #7e5a3d;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.navbar-guest-subtitle {
+  color: rgba(126, 90, 61, 0.7);
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.navbar-guest-stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar-guest-step-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: 1px solid rgba(126, 90, 61, 0.35);
+  background: #f7f1eb;
+  color: #8b6343;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.navbar-guest-step-btn:hover:not(:disabled) {
+  background: #8b6343;
+  border-color: #8b6343;
+  color: #fff;
+}
+
+.navbar-guest-step-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.navbar-guest-count {
+  min-width: 22px;
+  text-align: center;
+  color: #7e5a3d;
+  font-size: 15px;
+  font-weight: 700;
 }
 
 .navbar-date-field {
@@ -231,30 +430,41 @@
   font-weight: 600;
 }
 
-.navbar-date-input-wrap {
+.navbar-date-trigger {
   position: relative;
-  display: block;
-  color: #7e5a3d;
-}
-
-.navbar-date-field input {
   width: 100%;
   min-height: 42px;
-  border: 1px solid rgba(126, 90, 61, 0.24);
+  border: 1px solid rgba(126, 90, 61, 0.38);
   border-radius: 11px;
-  background: #f1f1f1;
+  background: #f7f1eb;
   color: #7e5a3d;
   padding: 0 42px 0 12px;
   font: inherit;
+  font-weight: 600;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  cursor: pointer;
 }
 
-.navbar-date-field input::-webkit-calendar-picker-indicator {
-  opacity: 0;
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
+.navbar-date-trigger:hover {
+  border-color: #8b6343;
+  background: #f3e8df;
+}
+
+.navbar-date-trigger:focus {
+  outline: none;
+  border-color: #8b6343;
+  box-shadow: 0 0 0 3px rgba(139, 99, 67, 0.2);
+  background: #f3e8df;
+}
+
+.navbar-date-trigger-active {
+  border-color: #8b6343;
+  box-shadow: 0 0 0 3px rgba(139, 99, 67, 0.2);
+  background: #f3e8df;
 }
 
 .navbar-date-input-icon {
@@ -269,12 +479,170 @@
   pointer-events: none;
 }
 
+.navbar-date-trigger:focus .navbar-date-input-icon,
+.navbar-date-trigger:hover .navbar-date-input-icon,
+.navbar-date-trigger-active .navbar-date-input-icon {
+  color: #8b6343;
+}
+
+.navbar-calendar-popover {
+  margin-top: 2px;
+  border: 1px solid rgba(126, 90, 61, 0.3);
+  border-radius: 12px;
+  background: #f7f1eb;
+  padding: 8px;
+}
+
+.navbar-day-picker .rdp-root {
+  --rdp-accent-color: #8b6343;
+  --rdp-accent-background-color: rgba(139, 99, 67, 0.18);
+  --rdp-day-height: 36px;
+  --rdp-day-width: 36px;
+  --rdp-nav_button-height: 30px;
+  --rdp-nav_button-width: 30px;
+  margin: 0;
+}
+
+.navbar-day-picker .rdp-month_caption,
+.navbar-day-picker .rdp-weekday,
+.navbar-day-picker .rdp-day {
+  color: #7e5a3d;
+}
+
+.navbar-day-picker .rdp-selected .rdp-day_button {
+  border-color: #8b6343;
+  background: #8b6343;
+  color: #fff;
+}
+
+.navbar-day-picker-range .rdp-day_button,
+.navbar-day-picker-check-in .rdp-day_button,
+.navbar-day-picker-check-out .rdp-day_button {
+  background: rgba(139, 99, 67, 0.2);
+  color: #6f4d33;
+}
+
+.navbar-day-picker-range .rdp-day_button {
+  border-radius: 0;
+}
+
+.navbar-day-picker-range-start .rdp-day_button,
+.navbar-day-picker-range-end .rdp-day_button {
+  background: #8b6343;
+  color: #fff;
+}
+
+.navbar-day-picker-range-start .rdp-day_button {
+  border-top-left-radius: 999px;
+  border-bottom-left-radius: 999px;
+}
+
+.navbar-day-picker-range-end .rdp-day_button {
+  border-top-right-radius: 999px;
+  border-bottom-right-radius: 999px;
+}
+
+.navbar-day-picker-range-start.navbar-day-picker-range-end .rdp-day_button {
+  border-radius: 999px;
+}
+
+.navbar-day-picker-range-start .rdp-day_button,
+.navbar-day-picker-range-end .rdp-day_button,
+.navbar-day-picker-check-in .rdp-day_button,
+.navbar-day-picker-check-out .rdp-day_button {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+}
+
+.navbar-day-picker-range-start .rdp-day_button:hover,
+.navbar-day-picker-range-end .rdp-day_button:hover,
+.navbar-day-picker-check-in .rdp-day_button:hover,
+.navbar-day-picker-check-out .rdp-day_button:hover {
+  color: #fff;
+}
+
+.navbar-day-picker-range .rdp-day_button:hover,
+.navbar-day-picker-range-start .rdp-day_button:hover,
+.navbar-day-picker-range-end .rdp-day_button:hover,
+.navbar-day-picker-check-in .rdp-day_button:hover,
+.navbar-day-picker-check-out .rdp-day_button:hover {
+  background: #8b6343;
+}
+
+.navbar-day-picker .rdp-day_button:disabled,
+.navbar-day-picker .rdp-nav_button:disabled,
+.navbar-day-picker .rdp-nav_button[disabled],
+.navbar-day-picker .rdp-day[aria-disabled='true'] .rdp-day_button {
+  opacity: 0.38;
+  color: rgba(126, 90, 61, 0.55);
+  cursor: not-allowed;
+  background: rgba(241, 241, 241, 0.8);
+}
+
+.navbar-day-picker .rdp-day[aria-disabled='true'] .rdp-day_button:hover,
+.navbar-day-picker .rdp-nav_button:disabled:hover {
+  background: rgba(241, 241, 241, 0.8);
+  color: rgba(126, 90, 61, 0.55);
+}
+
+.navbar-day-picker .rdp-day_button:hover {
+  background: rgba(139, 99, 67, 0.16);
+  color: #6f4d33;
+}
+
+.navbar-day-picker .rdp-chevron {
+  fill: #7e5a3d;
+}
+
+.navbar-day-picker .rdp-nav_button:disabled .rdp-chevron,
+.navbar-day-picker .rdp-nav_button[disabled] .rdp-chevron {
+  fill: rgba(126, 90, 61, 0.45);
+}
+
+.navbar-calendar-actions {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-calendar-action {
+  border: none;
+  background: transparent;
+  color: #8b6343;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 4px 6px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.navbar-calendar-action:hover {
+  background: rgba(139, 99, 67, 0.12);
+}
+
 .navbar-account-panel {
-  width: min(174px, 100%);
+  box-sizing: border-box;
+  width: min(var(--navbar-account-width), 100%);
+  min-width: var(--navbar-account-width);
   border-radius: 14px;
   background: rgba(221, 218, 216, 0.92);
   border: 1px solid rgba(255, 255, 255, 0.45);
   padding: 8px;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.navbar-account-panel:hover {
+  border-color: rgba(139, 99, 67, 0.28);
+  background: rgba(231, 226, 222, 0.95);
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-account-panel-dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  z-index: 40;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
 }
 
 .navbar-account-item {
@@ -290,6 +658,13 @@
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
+  transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.navbar-account-item:hover {
+  background: #f3e8df;
+  box-shadow: inset 0 0 0 1px rgba(139, 99, 67, 0.24);
+  transform: translateY(-1px);
 }
 
 .navbar-account-item + .navbar-account-item {
@@ -336,6 +711,10 @@
     justify-content: flex-end;
   }
 
+  .navbar-sidepanels-placeholder {
+    min-height: 214px;
+  }
+
   .navbar-booking-panel {
     width: min(100%, 420px);
   }
@@ -343,6 +722,7 @@
 
 @media (min-width: 1281px) and (max-width: 1500px) {
   .navbar {
+    --navbar-account-width: 168px;
     padding: 24px 72px 0;
   }
 
@@ -374,9 +754,6 @@
     width: 360px;
   }
 
-  .navbar-account-panel {
-    width: 168px;
-  }
 }
 
 @media (max-width: 860px) {
@@ -417,10 +794,14 @@
   }
 
   .navbar-search-wrap,
-  .navbar-create-btn {
+  .navbar-create-btn,
+  .navbar-create-shell {
     min-width: 0;
     width: 100%;
     height: 48px;
+  }
+
+  .navbar-create-btn {
     padding-left: 14px;
   }
 
@@ -440,14 +821,18 @@
     margin-top: 10px;
   }
 
-  .navbar-sidepanels {
-    flex-direction: column;
-    gap: 12px;
+  .navbar-booking-panel {
+    width: 100%;
   }
 
-  .navbar-booking-panel,
-  .navbar-account-panel {
+  .navbar-sidepanels-placeholder {
+    min-height: 0;
+  }
+
+  .navbar-account-panel-dropdown {
+    position: static;
     width: 100%;
+    margin-top: 10px;
   }
 
   .navbar-panel-row,
