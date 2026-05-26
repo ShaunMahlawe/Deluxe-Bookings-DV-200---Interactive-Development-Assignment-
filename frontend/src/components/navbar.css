@@ -96,16 +96,23 @@
   margin-left: auto;
 }
 
+.navbar-search-shell {
+  position: relative;
+  width: min(100%, 360px);
+}
+
 .navbar-search-wrap {
-  display: flex;
-  align-items: stretch;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 172px;
   height: 46px;
   border-radius: 12px;
   border: 1px solid rgba(245, 243, 240, 0.95);
   background: rgba(244, 244, 244, 0.96);
-  overflow: hidden;
-  min-width: 0;
-  width: min(100%, 360px);
+  padding: 0 7px 0 14px;
+  width: 100%;
 }
 
 .navbar-search {
@@ -113,8 +120,9 @@
   background: transparent;
   color: #7e5b3f;
   font-size: 14px;
-  padding: 0 14px;
+  padding: 0;
   width: 100%;
+  min-width: 0;
   font-weight: 500;
 }
 
@@ -122,16 +130,22 @@
   outline: none;
 }
 
-.navbar-search-btn {
-  width: 46px;
-  border-radius: 0 11px 11px 0;
-  border: none;
+.navbar-search-btn,
+.navbar-create-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
   background: #8b6343;
   color: #fff;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+.navbar-search-btn {
+  border: none;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .navbar-create-btn {
@@ -152,14 +166,7 @@
 }
 
 .navbar-create-icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
-  background: #8b6343;
-  color: #fff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  flex-shrink: 0;
 }
 
 .navbar-sidepanels {
@@ -178,6 +185,15 @@
   padding: 10px;
 }
 
+.navbar-booking-panel-dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  width: min(368px, 100vw - 24px);
+  z-index: 35;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
 .navbar-panel-row {
   display: flex;
   align-items: center;
@@ -190,8 +206,67 @@
   font-weight: 500;
 }
 
+.navbar-panel-row-button {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
 .navbar-panel-row + .navbar-panel-row {
   margin-top: 9px;
+}
+
+.navbar-date-picker-dropdown {
+  display: grid;
+  gap: 10px;
+  margin-top: 9px;
+}
+
+.navbar-date-field {
+  display: grid;
+  gap: 6px;
+  color: #7e5a3d;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.navbar-date-input-wrap {
+  position: relative;
+  display: block;
+  color: #7e5a3d;
+}
+
+.navbar-date-field input {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid rgba(126, 90, 61, 0.24);
+  border-radius: 11px;
+  background: #f1f1f1;
+  color: #7e5a3d;
+  padding: 0 42px 0 12px;
+  font: inherit;
+}
+
+.navbar-date-field input::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.navbar-date-input-icon {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  color: #7e5a3d;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
 }
 
 .navbar-account-panel {
@@ -247,6 +322,11 @@
 
   .navbar-search-wrap {
     min-width: 0;
+    flex: 1;
+  }
+
+  .navbar-search-shell {
+    width: 100%;
     flex: 1;
   }
 
@@ -333,20 +413,31 @@
 
   .navbar-search {
     font-size: 18px;
-    padding: 0 14px;
+    padding: 0;
   }
 
+  .navbar-search-wrap,
   .navbar-create-btn {
     min-width: 0;
     width: 100%;
     height: 48px;
-    font-size: 16px;
     padding-left: 14px;
   }
 
+  .navbar-create-btn {
+    font-size: 16px;
+  }
+
+  .navbar-search-btn,
   .navbar-create-icon {
     width: 36px;
     height: 36px;
+  }
+
+  .navbar-booking-panel-dropdown {
+    position: static;
+    width: 100%;
+    margin-top: 10px;
   }
 
   .navbar-sidepanels {
