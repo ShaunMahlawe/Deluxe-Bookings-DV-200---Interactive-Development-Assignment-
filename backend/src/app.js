@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 
+const { isDatabaseConnected } = require('./config/db')
 const authRoutes = require('./routes/authRoutes')
 const bookingRoutes = require('./routes/bookingRoutes')
 
@@ -17,7 +18,7 @@ app.use(express.json())
 app.use(cookieParser())
 
 app.get('/api/health', (_req, res) => {
-  res.json({ status: 'ok', mode: process.env.MONGODB_URI ? 'mongo' : 'demo' })
+  res.json({ status: 'ok', mode: isDatabaseConnected() ? 'mongo' : 'demo' })
 })
 
 app.use('/api/auth', authRoutes)
