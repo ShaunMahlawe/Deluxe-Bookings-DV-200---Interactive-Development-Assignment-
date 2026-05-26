@@ -40,7 +40,7 @@ const isSameOrAfter = (date, comparedDate) => normalizeDate(date).getTime() >= n
 
 const isSameOrBefore = (date, comparedDate) => normalizeDate(date).getTime() <= normalizeDate(comparedDate).getTime();
 
-const destinationSuggestions = [
+const fallbackDestinationSuggestions = [
   { name: 'Cape Town', region: 'Western Cape, South Africa' },
   { name: 'Stellenbosch', region: 'Winelands, South Africa' },
   { name: 'Johannesburg', region: 'Gauteng, South Africa' },
@@ -49,7 +49,8 @@ const destinationSuggestions = [
   { name: 'Kruger National Park', region: 'Mpumalanga, South Africa' },
 ];
 
-const Navbar = () => {
+const Navbar = ({ destinationSuggestions }) => {
+  const suggestions = destinationSuggestions?.length ? destinationSuggestions : fallbackDestinationSuggestions;
   const today = new Date();
   const minSelectableDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
   const [searchValue, setSearchValue] = useState('Cape Town');
@@ -243,7 +244,7 @@ const Navbar = () => {
   const guestSummary = `${guestCounts.adults} adult${guestCounts.adults === 1 ? '' : 's'} • ${guestCounts.children} children • ${guestCounts.rooms} room${guestCounts.rooms === 1 ? '' : 's'}`;
 
   const destinationQuery = searchValue.trim().toLowerCase();
-  const matchingDestinations = destinationSuggestions.filter((destination) =>
+  const matchingDestinations = suggestions.filter((destination) =>
     destination.name.toLowerCase().includes(destinationQuery) ||
     destination.region.toLowerCase().includes(destinationQuery),
   );
