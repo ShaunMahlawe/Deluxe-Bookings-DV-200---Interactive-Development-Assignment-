@@ -1,0 +1,367 @@
+.navbar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 24px 76px 0;
+  z-index: 25;
+  width: 100%;
+  max-width: 100%;
+}
+
+.navbar-top-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 74px;
+}
+
+.navbar-left {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.navbar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 12px;
+  padding: 10px 20px;
+  line-height: 1;
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.78);
+  font-size: clamp(15px, 1.6vw, 22px);
+  font-weight: 600;
+  background: rgba(150, 143, 138, 0.24);
+  backdrop-filter: blur(1px);
+  cursor: pointer;
+}
+
+.navbar-btn span {
+  font-size: clamp(15px, 1.6vw, 22px);
+  line-height: 1;
+}
+
+.navbar-btn-active {
+  background: rgba(145, 109, 79, 0.38);
+}
+
+.navbar-btn-ghost {
+  border-color: transparent;
+  background: transparent;
+  opacity: 0.96;
+}
+
+.navbar-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  margin-top: -2px;
+}
+
+.navbar-logo-image {
+  width: 216px;
+  height: auto;
+  display: block;
+}
+
+.navbar-logo {
+  font-family: 'Great Vibes', 'Allura', 'Dancing Script', cursive;
+  font-size: 82px;
+  line-height: 0.9;
+  letter-spacing: 0.4px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-logo-sub {
+  font-size: 17px;
+  margin-top: 2px;
+  letter-spacing: 3.6px;
+  font-family: 'Poppins', 'Trebuchet MS', sans-serif;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 500;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: min(520px, 100%);
+  justify-content: flex-end;
+  margin-left: auto;
+}
+
+.navbar-search-wrap {
+  display: flex;
+  align-items: stretch;
+  height: 46px;
+  border-radius: 12px;
+  border: 1px solid rgba(245, 243, 240, 0.95);
+  background: rgba(244, 244, 244, 0.96);
+  overflow: hidden;
+  min-width: 0;
+  width: min(100%, 360px);
+}
+
+.navbar-search {
+  border: none;
+  background: transparent;
+  color: #7e5b3f;
+  font-size: 14px;
+  padding: 0 14px;
+  width: 100%;
+  font-weight: 500;
+}
+
+.navbar-search:focus {
+  outline: none;
+}
+
+.navbar-search-btn {
+  width: 46px;
+  border-radius: 0 11px 11px 0;
+  border: none;
+  background: #8b6343;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.navbar-create-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 172px;
+  height: 46px;
+  border: 1px solid rgba(248, 244, 239, 0.98);
+  border-radius: 12px;
+  background: rgba(244, 244, 244, 0.96);
+  padding: 0 7px 0 14px;
+  color: #7f5a3c;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.navbar-create-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: #8b6343;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-sidepanels {
+  margin-left: auto;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-top: 2px;
+}
+
+.navbar-booking-panel {
+  width: min(368px, 100%);
+  border-radius: 14px;
+  background: rgba(221, 218, 216, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  padding: 10px;
+}
+
+.navbar-panel-row {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  background: #f1f1f1;
+  border-radius: 11px;
+  padding: 11px 13px;
+  color: #7e5a3d;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.navbar-panel-row + .navbar-panel-row {
+  margin-top: 9px;
+}
+
+.navbar-account-panel {
+  width: min(174px, 100%);
+  border-radius: 14px;
+  background: rgba(221, 218, 216, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  padding: 8px;
+}
+
+.navbar-account-item {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  background: #f1f1f1;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 10px;
+  color: #7e5a3d;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.navbar-account-item + .navbar-account-item {
+  margin-top: 7px;
+}
+
+@media (max-width: 1280px) {
+  .navbar {
+    padding: 18px 18px 0;
+  }
+
+  .navbar-top-row {
+    position: static;
+    flex-wrap: wrap;
+    row-gap: 16px;
+  }
+
+  .navbar-center {
+    position: static;
+    transform: none;
+    order: -1;
+    width: 100%;
+  }
+
+  .navbar-actions {
+    min-width: 0;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .navbar-search-wrap {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .navbar-sidepanels {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .navbar-booking-panel {
+    width: min(100%, 420px);
+  }
+}
+
+@media (min-width: 1281px) and (max-width: 1500px) {
+  .navbar {
+    padding: 24px 72px 0;
+  }
+
+  .navbar-left {
+    gap: 16px;
+  }
+
+  .navbar-btn {
+    padding: 9px 18px;
+  }
+
+  .navbar-btn span {
+    font-size: 30px;
+  }
+
+  .navbar-logo-image {
+    width: 206px;
+  }
+
+  .navbar-actions {
+    min-width: 500px;
+  }
+
+  .navbar-search-wrap {
+    min-width: 300px;
+  }
+
+  .navbar-booking-panel {
+    width: 360px;
+  }
+
+  .navbar-account-panel {
+    width: 168px;
+  }
+}
+
+@media (max-width: 860px) {
+  .navbar {
+    padding: 14px 12px 0;
+  }
+
+  .navbar-left {
+    width: 100%;
+    justify-content: stretch;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .navbar-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 10px 12px;
+    font-size: 16px;
+  }
+
+  .navbar-btn span {
+    font-size: 16px;
+  }
+
+  .navbar-logo-image {
+    width: 180px;
+  }
+
+  .navbar-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .navbar-search {
+    font-size: 18px;
+    padding: 0 14px;
+  }
+
+  .navbar-create-btn {
+    min-width: 0;
+    width: 100%;
+    height: 48px;
+    font-size: 16px;
+    padding-left: 14px;
+  }
+
+  .navbar-create-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .navbar-sidepanels {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .navbar-booking-panel,
+  .navbar-account-panel {
+    width: 100%;
+  }
+
+  .navbar-panel-row,
+  .navbar-account-item {
+    font-size: 16px;
+    padding: 10px 11px;
+  }
+}
