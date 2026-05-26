@@ -1,0 +1,2 @@
+docs/Home[[:space:]]page.svg filter=lfs diff=lfs merge=lfs -text
+docs/Product[[:space:]]page.svg filter=lfs diff=lfs merge=lfs -text
