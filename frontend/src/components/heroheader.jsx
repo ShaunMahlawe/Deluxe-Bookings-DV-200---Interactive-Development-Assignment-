@@ -10,14 +10,14 @@ const defaultHeroData = {
   ctaLabel: 'Apply to Join',
 };
 
-const HeroHeader = ({ heroData, navbarData }) => {
+const HeroHeader = ({ heroData, navbarData, onSearchSubmit }) => {
   const content = heroData || defaultHeroData;
   const titleLines = String(content.title || defaultHeroData.title).split('\n');
 
   return (
     <header className="hero-header">
       <div className="hero-bg" />
-      <Navbar destinationSuggestions={navbarData?.destinationSuggestions} />
+      <Navbar destinationSuggestions={navbarData?.destinationSuggestions} onSearchSubmit={onSearchSubmit} />
       <div className="hero-content">
         <h1 className="hero-title">
           {titleLines.map((line, index) => (
@@ -36,6 +36,19 @@ const HeroHeader = ({ heroData, navbarData }) => {
             </span>
           </button>
         </div>
+      </div>
+
+      <div className="hero-text-ring" aria-hidden="true">
+        <svg viewBox="0 0 220 220" role="presentation">
+          <defs>
+            <path id="heroRingPath" d="M 110,110 m -78,0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0" />
+          </defs>
+          <text className="hero-text-ring-copy">
+            <textPath href="#heroRingPath" startOffset="0%">
+              Modern • Exclusivity • Aspiration • Partnership •
+            </textPath>
+          </text>
+        </svg>
       </div>
     </header>
   );
