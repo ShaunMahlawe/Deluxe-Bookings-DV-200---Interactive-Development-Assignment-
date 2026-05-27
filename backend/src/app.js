@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser')
 
 const authRoutes = require('./routes/authRoutes')
 const bookingRoutes = require('./routes/bookingRoutes')
+const listingRoutes = require('./routes/listingRoutes')
 
 const app = express()
 
@@ -20,8 +21,13 @@ app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', mode: process.env.MONGODB_URI ? 'mongo' : 'demo' })
 })
 
+app.get("/", (req, res) => {
+  res.send("Deluxe Bookings API is running");
+}); 
+
 app.use('/api/auth', authRoutes)
 app.use('/api/bookings', bookingRoutes)
+app.use('/api/listings', listingRoutes)
 
 app.use((err, _req, res, _next) => {
   console.error(err)

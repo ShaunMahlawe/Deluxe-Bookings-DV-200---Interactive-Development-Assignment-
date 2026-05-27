@@ -116,6 +116,32 @@ const ListingSchema = new mongoose.Schema(
       type: String,
     },
 
+    area:{
+      type:Number
+    },
+
+    checkInTime:{
+      type:String
+    },
+
+    checkOutTime:{
+      type:String
+    },
+
+    additionalRules:{
+      type:String
+    },
+
+    services:{
+      type:[String],
+      default:[]
+    },
+
+    facilities:{
+      type:[String],
+      default:[]
+    },
+
     beachDistance: {
       type: String,
     },

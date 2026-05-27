@@ -6,7 +6,7 @@ const { connectDatabase } = require('./config/db')
 const port = process.env.PORT || 5001
 
 async function startServer() {
-  await connectDatabase()
+  await connectDatabase() 
 
   app.listen(port, () => {
     console.log(`Backend listening on http://localhost:${port}`)
