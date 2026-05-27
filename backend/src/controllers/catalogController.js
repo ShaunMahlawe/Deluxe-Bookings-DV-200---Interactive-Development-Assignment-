@@ -21,9 +21,29 @@ async function getCatalog(req, res) {
     })
   }
 
+  const baseCatalog = catalog?.data || southAfricaCatalogSeed
+  const enrichedCatalog = {
+    ...baseCatalog,
+    navbar: {
+      ...(baseCatalog.navbar || {}),
+      destinationSuggestions: southAfricaCatalogSeed.navbar.destinationSuggestions,
+    },
+    search: {
+      ...(baseCatalog.search || {}),
+      properties: southAfricaCatalogSeed.search.properties,
+    },
+    thingsToDo: {
+      ...(baseCatalog.thingsToDo || {}),
+      cards: southAfricaCatalogSeed.thingsToDo.cards,
+    },
+    filters: {
+      ...southAfricaCatalogSeed.filters,
+    },
+  }
+
   return res.json({
     source: 'mongo',
-    catalog: catalog.data || southAfricaCatalogSeed,
+    catalog: enrichedCatalog,
   })
 }
 
