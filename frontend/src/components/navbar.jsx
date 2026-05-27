@@ -18,7 +18,7 @@ import {
 } from 'lucide-react';
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
-import navbarLogo from '../assets/img/NavBar logo.svg';
+import appLogo from '../assets/img/logo.svg';
 import './navbar.css';
 
 const formatDateLabel = (value) => {
@@ -49,7 +49,7 @@ const fallbackDestinationSuggestions = [
   { name: 'Kruger National Park', region: 'Mpumalanga, South Africa' },
 ];
 
-const Navbar = ({ destinationSuggestions }) => {
+const Navbar = ({ destinationSuggestions, onSearchSubmit }) => {
   const suggestions = destinationSuggestions?.length ? destinationSuggestions : fallbackDestinationSuggestions;
   const today = new Date();
   const minSelectableDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
@@ -59,6 +59,7 @@ const Navbar = ({ destinationSuggestions }) => {
   const [showAccountPanel, setShowAccountPanel] = useState(false);
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [showGuestPicker, setShowGuestPicker] = useState(false);
+  const [activeNavService, setActiveNavService] = useState('stays');
   const [checkInDate, setCheckInDate] = useState(new Date('2026-12-14T00:00:00'));
   const [checkOutDate, setCheckOutDate] = useState(new Date('2026-12-17T00:00:00'));
   const [guestCounts, setGuestCounts] = useState({
@@ -102,6 +103,10 @@ const Navbar = ({ destinationSuggestions }) => {
 
   const toggleAccountPanel = () => {
     setShowAccountPanel((current) => !current);
+  };
+
+  const handleServiceButtonClick = (service) => {
+    setActiveNavService(service);
   };
 
   const handleDateSelect = (selectedDate) => {
@@ -209,6 +214,17 @@ const Navbar = ({ destinationSuggestions }) => {
     : null;
 
   const handleSearchSubmit = () => {
+    onSearchSubmit?.({
+      destination: searchValue.trim(),
+      checkInDate: checkInDate ? normalizeDate(checkInDate).toISOString().slice(0, 10) : null,
+      checkOutDate: checkOutDate ? normalizeDate(checkOutDate).toISOString().slice(0, 10) : null,
+      guestCounts: {
+        adults: guestCounts.adults,
+        children: guestCounts.children,
+        rooms: guestCounts.rooms,
+      },
+    });
+
     const isSearchComplete = searchValue.trim() && checkInDate && checkOutDate;
 
     if (isSearchComplete) {
@@ -250,21 +266,37 @@ const Navbar = ({ destinationSuggestions }) => {
   );
   const showDestinationDropdown = showBookingPanel && showDestinationSuggestions && matchingDestinations.length > 0;
 
+  const handleLogoClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <nav className="navbar">
     <div className="navbar-top-row">
       <div className="navbar-left">
-        <button className="navbar-btn navbar-btn-active">
+        <button
+          type="button"
+          className={`navbar-btn ${activeNavService === 'stays' ? 'navbar-btn-active' : 'navbar-btn-ghost'}`}
+          aria-pressed={activeNavService === 'stays'}
+          onClick={() => handleServiceButtonClick('stays')}
+        >
           <BedDouble size={20} strokeWidth={2.3} />
           <span>Stays</span>
         </button>
-        <button className="navbar-btn navbar-btn-ghost">
+        <button
+          type="button"
+          className={`navbar-btn ${activeNavService === 'listProperty' ? 'navbar-btn-active' : 'navbar-btn-ghost'}`}
+          aria-pressed={activeNavService === 'listProperty'}
+          onClick={() => handleServiceButtonClick('listProperty')}
+        >
           <HousePlus size={20} strokeWidth={2.3} />
           <span>List your property</span>
         </button>
       </div>
       <div className="navbar-center">
-        <img className="navbar-logo-image" src={navbarLogo} alt="Deluxe Bookings" />
+        <button type="button" className="navbar-logo-button" onClick={handleLogoClick} aria-label="Go to top">
+          <img className="navbar-logo-image" src={appLogo} alt="Deluxe Bookings" />
+        </button>
       </div>
       <div className="navbar-actions">
         <div
