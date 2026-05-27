@@ -1,14 +1,20 @@
 /* Footer Component Styles */
 
 .footer {
-  margin: 0;
+  margin: 40px 0 0;
   width: 100%;
   max-width: 100%;
-  border-radius: 150px 150px 0 0;
   background: #8a6443;
   color: #fff8f0;
-  padding: clamp(28px, 4vw, 70px) clamp(14px, 4vw, 100px) clamp(30px, 5vw, 100px);
+  padding: clamp(28px, 4vw, 70px) 0 clamp(30px, 5vw, 100px);
   font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 16px;
   box-sizing: border-box;
 }
 
@@ -110,10 +116,32 @@
   display: block;
 }
 
+.footer-logo-button {
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 14px;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.footer-logo-button:hover {
+  transform: translateY(-1px) scale(1.01);
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.22));
+}
+
+.footer-logo-button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.98);
+  outline-offset: 4px;
+}
+
 @media (max-width: 1100px) {
   .footer {
-    padding: 40px 28px 30px;
-    border-radius: 34px;
+    padding: 40px 0 30px;
+  }
+
+  .footer-inner {
+    padding: 0 16px;
   }
 
   .footer-top,
