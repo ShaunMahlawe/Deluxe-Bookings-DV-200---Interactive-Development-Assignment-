@@ -36,9 +36,95 @@ const defaultSearchData = {
   })),
 };
 
+const propertyImageById = {
+  1: 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1400&q=80',
+  2: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1400&q=80',
+  3: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1400&q=80',
+  4: 'https://images.unsplash.com/photo-1468824357306-a439d58ccb1c?auto=format&fit=crop&w=1400&q=80',
+  5: 'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=1400&q=80',
+  6: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1400&q=80',
+  7: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=1400&q=80',
+  8: 'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?auto=format&fit=crop&w=1400&q=80',
+  9: 'https://images.unsplash.com/photo-1505692952047-1a78307da8f2?auto=format&fit=crop&w=1400&q=80',
+  10: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1400&q=80',
+  11: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=1400&q=80',
+  12: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1400&q=80',
+};
+
+const propertyImageByKeyword = [
+  {
+    keywords: ['wex1', 'woodstock'],
+    imageUrl: 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    keywords: ['bantry', 'atlantic'],
+    imageUrl: 'https://images.unsplash.com/photo-1468824357306-a439d58ccb1c?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    keywords: ['umhlanga', 'dunes'],
+    imageUrl: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    keywords: ['sandton', 'skyline', 'johannesburg'],
+    imageUrl: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    keywords: ['kruger', 'lodge', 'skukuza'],
+    imageUrl: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    keywords: ['franschhoek', 'vineyard', 'manor'],
+    imageUrl: 'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    keywords: ['boardwalk', 'gqeberha', 'summerstrand'],
+    imageUrl: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    keywords: ['knysna', 'lagoon', 'heads'],
+    imageUrl: 'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    keywords: ['pretoria', 'jacaranda', 'brooklyn'],
+    imageUrl: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    keywords: ['stellenbosch', 'art house', 'winelands'],
+    imageUrl: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    keywords: ['durban point', 'harbour'],
+    imageUrl: 'https://images.unsplash.com/photo-1505692952047-1a78307da8f2?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    keywords: ['drakensberg', 'mountain', 'retreat'],
+    imageUrl: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=1400&q=80',
+  },
+];
+
+const fallbackPropertyImage =
+  'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=80';
+
+function resolvePropertyImage(card) {
+  if (card.imageUrl) {
+    return card.imageUrl;
+  }
+
+  const lookupText = `${card.title || ''} ${card.area || ''}`.toLowerCase();
+  const keywordMatch = propertyImageByKeyword.find(({ keywords }) =>
+    keywords.some((keyword) => lookupText.includes(keyword))
+  );
+
+  if (keywordMatch) {
+    return keywordMatch.imageUrl;
+  }
+
+  return propertyImageById[card.id] || fallbackPropertyImage;
+}
+
 const PropertyCard = ({ card, keyPrefix }) => (
   <article className="property-card" key={card.id}>
-    <div className="property-image">
+    <div className="property-image" style={{ backgroundImage: `url(${resolvePropertyImage(card)})` }}>
       <button type="button" className="favourite-button" aria-label="Add to favourites">
         <Heart size={22} />
       </button>
