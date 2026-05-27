@@ -2,6 +2,12 @@ const mongoose = require("mongoose");
 
 const ListingSchema = new mongoose.Schema(
   {
+    seller: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    
     // Public name shown on listings
     propertyName: {
       type: String,
@@ -77,25 +83,6 @@ const ListingSchema = new mongoose.Schema(
     nights: {
       type: Number,
       min: 0,
-    },
-
-    ratingText: {
-      type: String,
-    },
-
-    ratingScore: {
-      type: Number,
-      min: 0,
-      max: 10,
-    },
-
-    reviewCount: {
-      type: Number,
-      min: 0,
-    },
-
-    valueScore: {
-      type: Number,
     },
 
     bedrooms: {
