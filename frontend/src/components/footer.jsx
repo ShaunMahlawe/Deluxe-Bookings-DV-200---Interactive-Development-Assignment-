@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.css';
-import footerLogo from '../assets/img/Footer logo.svg';
+import appLogo from '../assets/img/logo.svg';
 
 const defaultFooterData = {
   heading: 'Engage with Us in Conversation.',
@@ -26,19 +26,25 @@ const defaultFooterData = {
 const Footer = ({ data }) => {
   const content = data || defaultFooterData;
 
+  const handleLogoClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="footer">
-      <div className="footer-top">
-        <div className="footer-text">
-          <h2>{content.heading || defaultFooterData.heading}</h2>
-          <p>{content.description || defaultFooterData.description}</p>
+      <div className="footer-inner">
+        <div className="footer-top">
+          <div className="footer-text">
+            <h2>{content.heading || defaultFooterData.heading}</h2>
+            <p>{content.description || defaultFooterData.description}</p>
+          </div>
+          <div
+            className="footer-image"
+            role="img"
+            aria-label={content.imageAlt || defaultFooterData.imageAlt}
+          />
         </div>
-        <div
-          className="footer-image"
-          role="img"
-          aria-label={content.imageAlt || defaultFooterData.imageAlt}
-        />
-      </div>
+
         <div className="footer-bottom">
           <div className="footer-links">
             {(content.columns || defaultFooterData.columns).map((column) => (
@@ -51,10 +57,19 @@ const Footer = ({ data }) => {
                 </ul>
               </div>
             ))}
-        </div>
-          <div className="footer-logo">
-            <img src={footerLogo} alt="Deluxe Bookings" />
           </div>
+
+          <div className="footer-logo">
+            <button
+              type="button"
+              className="footer-logo-button"
+              onClick={handleLogoClick}
+              aria-label="Go to top"
+            >
+              <img src={appLogo} alt="Deluxe Bookings" />
+            </button>
+          </div>
+        </div>
       </div>
     </footer>
   );
