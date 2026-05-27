@@ -65,6 +65,10 @@
   gap: 8px;
 }
 
+.filter-option:hover {
+  box-shadow: 0 8px 16px rgba(58, 38, 22, 0.08);
+}
+
 .filter-option-main {
   display: inline-flex;
   align-items: center;
@@ -116,54 +120,159 @@
 }
 
 .budget-histogram {
-  height: 100px;
+  height: 108px;
   display: grid;
   grid-template-columns: repeat(20, minmax(0, 1fr));
   align-items: end;
-  gap: 1px;
-  padding: 0 4px;
-  margin-bottom: 6px;
-}
-
-.budget-histogram span {
-  background: #a8a7a7;
-  border-radius: 10px 10px 0 0;
-}
-
-.budget-slider {
-  height: 8px;
-  border-radius: 8px;
-  background: #cfc8c2;
+  gap: 3px;
+  padding: 10px 8px 8px;
+  margin-bottom: 8px;
+  border-radius: 14px;
+  background: transparent;
   position: relative;
 }
 
-.budget-slider::before {
+.budget-histogram::after {
   content: '';
   position: absolute;
-  left: 4px;
-  right: 4px;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 8px;
-  background: #8f7761;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  height: 1px;
+  background: rgba(145, 116, 90, 0.2);
 }
 
-.budget-handle {
+.budget-histogram span {
+  background: linear-gradient(180deg, #d7c8ba 0%, #b1957c 100%);
+  border-radius: 999px 999px 8px 8px;
+  border: 1px solid rgba(122, 90, 64, 0.12);
+  transition: height 0.2s ease, filter 0.2s ease, transform 0.2s ease, background 0.2s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.budget-histogram span.in-range {
+  background: linear-gradient(180deg, #a57b59 0%, #7c5639 100%);
+  filter: drop-shadow(0 4px 8px rgba(53, 33, 20, 0.18));
+  transform: translateY(-1px);
+  border-color: rgba(92, 61, 39, 0.22);
+}
+
+.budget-slider {
+  display: none;
+}
+
+.budget-slider-modern {
+  position: relative;
+  height: 42px;
+}
+
+.budget-slider-rail,
+.budget-slider-fill {
   position: absolute;
-  top: 50%;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: #8c5a32;
-  transform: translateY(-50%);
-}
-
-.budget-handle:first-child {
   left: 0;
+  right: 0;
+  top: 18px;
+  height: 8px;
+  border-radius: 999px;
 }
 
-.budget-handle:last-child {
-  right: 0;
+.budget-slider-rail {
+  background: #cfc8c2;
+}
+
+.budget-slider-fill {
+  background: linear-gradient(90deg, #9b7558, #7e5b3f);
+}
+
+.budget-range {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 42px;
+  margin: 0;
+  background: transparent;
+  appearance: none;
+  pointer-events: none;
+}
+
+.budget-range::-webkit-slider-runnable-track {
+  height: 8px;
+  background: transparent;
+}
+
+.budget-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: #8c5a32;
+  box-shadow: 0 4px 10px rgba(57, 36, 20, 0.24);
+  margin-top: -5px;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.budget-range::-moz-range-track {
+  height: 8px;
+  background: transparent;
+}
+
+.budget-range::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: #8c5a32;
+  box-shadow: 0 4px 10px rgba(57, 36, 20, 0.24);
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.budget-range-min {
+  z-index: 3;
+}
+
+.budget-range-max {
+  z-index: 4;
+}
+
+.budget-bubble {
+  position: absolute;
+  top: -2px;
+  transform: translate(-50%, -110%);
+  background: #5d3f29;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  border-radius: 999px;
+  padding: 6px 8px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.18s ease;
+  z-index: 5;
+}
+
+.budget-bubble::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -5px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #5d3f29;
+}
+
+.budget-bubble.visible {
+  opacity: 1;
+  visibility: visible;
 }
 
 .smart-filters {
@@ -227,6 +336,11 @@
   cursor: pointer;
   height: 35px;
   width: 157px;
+  background: #fff;
+}
+
+.filter-search-button:hover {
+  background: #f7f1ea;
 }
 
 .search-button-icon {
@@ -262,67 +376,109 @@
 .stepper-control {
   display: inline-flex;
   align-items: center;
-  gap: 13px;
-  padding: 3px 7px;
-  border: 1px solid #c0b3a5;
-  border-radius: 10px;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 8px;
+  border: 1px solid #c8bdb1;
+  border-radius: 8px;
   background: #ffffff;
-  height: 30px;
-  width: 80px;
+  height: 34px;
+  width: 92px;
 }
 
 .stepper-control button {
   width: 22px;
   height: 22px;
-  border: 1px solid #bca996;
-  border-radius: 2px;
-  background: #e9e6e5;
-  color: #6d4a2f;
+  border: 1px solid #8d603a;
+  border-radius: 5px;
+  background: #8d603a;
+  color: #fff;
   line-height: 1;
-  font-size: 20px;
+  font-size: 16px;
   cursor: pointer;
   padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.stepper-control button:hover {
+  background: #7f5230;
+  border-color: #7f5230;
+}
+
+.stepper-control button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(141, 96, 58, 0.24);
 }
 
 .stepper-control span {
-  min-width: 8px;
+  min-width: 14px;
   text-align: center;
   font-size: 15px;
+  font-weight: 600;
+  color: #5f4a3b;
 }
 
 .show-all-button {
+  margin-top: 16px;
   margin-left: 50%;
   transform: translateX(-50%);
-  border: 1px solid #9f8b78;
+  border: 1px solid #8d603a;
   border-radius: 5px;
   color: #6d4a2f;
   font-size: 15px;
-  font-weight: 700;
-  padding: 4px 8px;
+  font-weight: 600;
+  padding: 5px 7px;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  gap: 6px;
   cursor: pointer;
   height: 35px;
-  width: 100%;
-  max-width: 200px;
+  width: fit-content;
+  min-width: 157px;
+  max-width: 100%;
+  background: #fff;
+  transition: background-color 0.18s ease;
+  white-space: nowrap;
+}
+
+.show-all-button > span:first-child {
+  white-space: nowrap;
+}
+
+.show-all-button:hover {
+  background: #f7f1ea;
+}
+
+.show-all-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(141, 96, 58, 0.25);
 }
 
 .show-all-icon {
   width: 22px;
   height: 22px;
-  border-radius: 2px;
-  background: #8d5e39;
+  border-radius: 5px;
+  border: 1px solid #8d603a;
+  background-color: #8d603a;
   color: #fff;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.18s ease;
 }
 
 .show-all-icon svg {
   width: 15px;
   height: 15px;
-  color: #fff;
+  color: currentColor;
+}
+
+.show-all-button.is-expanded .show-all-icon {
+  transform: rotate(180deg);
 }
 
 .filter-footer-spacing {
