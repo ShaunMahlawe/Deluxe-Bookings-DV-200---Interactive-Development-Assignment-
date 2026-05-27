@@ -433,3 +433,52 @@ function App() {
 }
 
 export default App
+
+
+/* what was in the App.js file */
+/* import React from "react";
+import HotelCarousel from "./components/HotelCarousel";
+import AboutSection from "./components/AboutSection";
+import DestinationCards from "./components/DestinationCards";
+import LuxurySection from "./components/LuxurySection";
+import LuxuryCarousel from "./components/LuxuryCarousel";
+import OffersSection from "./components/OffersSection";
+
+import "./App.css";
+
+
+function App() {
+  return (
+    <div>
+      
+      <section className="hero-section">
+        <h1>Welcome to Hotel Booking</h1>
+        <p>Discover and book your perfect stay with us!</p>
+      
+      <HotelCarousel />
+      </section>
+
+      <section>
+        <AboutSection />
+      </section>
+
+      <section className="luxury-section">
+        <LuxurySection />
+      </section>
+      
+      <section className="destinations-section">
+        <DestinationCards />
+      </section>
+
+      <section className="luxury-carousel-section">
+        <LuxuryCarousel />
+      </section>
+
+      <section className="offers-section">
+        <OffersSection />
+      </section>
+    </div>
+  );
+}
+
+export default App; */
