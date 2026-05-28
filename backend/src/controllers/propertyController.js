@@ -1,5 +1,10 @@
 const { SOUTH_AFRICA_PROPERTIES, areaBlueprints, filterProperties } = require('../utils/southAfricaProperties');
 const {
+  getDeluxePropertyAreas,
+  getDeluxePropertyResults,
+  isDeluxePlacesConfigured,
+} = require('../services/deluxePlacesService');
+const {
   getGooglePlacePhotoUri,
   getGooglePropertyAreas,
   getGooglePropertyResults,
@@ -32,7 +37,26 @@ async function getProperties(req, res) {
   let properties = [];
   let source = 'seed-generated';
 
-  if (isGooglePlacesConfigured()) {
+  if (isDeluxePlacesConfigured()) {
+    try {
+      const deluxeResults = getDeluxePropertyResults({
+        area,
+        category,
+        setting,
+        sort,
+        minReviewScore,
+        limit: offset + limit,
+        offset: 0,
+      });
+
+      properties = Array.isArray(deluxeResults?.properties) ? deluxeResults.properties : [];
+      source = 'deluxe-api';
+    } catch (error) {
+      console.error('Deluxe API property lookup failed:', error.message);
+    }
+  }
+
+  if (properties.length === 0 && isGooglePlacesConfigured()) {
     try {
       properties = await getGooglePropertyResults({
         area,
@@ -82,6 +106,18 @@ async function getProperties(req, res) {
 async function getPropertyAreas(req, res) {
   const baseUrl = `${req.protocol}://${req.get('host')}`;
   const minReviewScore = toReviewScore(req.query.minReviewScore, ELITE_MIN_REVIEW_SCORE);
+
+  if (isDeluxePlacesConfigured()) {
+    try {
+      const deluxeAreas = getDeluxePropertyAreas({ minReviewScore });
+
+      if (Array.isArray(deluxeAreas?.areas) && deluxeAreas.areas.length > 0) {
+        return res.json(deluxeAreas);
+      }
+    } catch (error) {
+      console.error('Deluxe API area lookup failed:', error.message);
+    }
+  }
 
   if (isGooglePlacesConfigured()) {
     try {
