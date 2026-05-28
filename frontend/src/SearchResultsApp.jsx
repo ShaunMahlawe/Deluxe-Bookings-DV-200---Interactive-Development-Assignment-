@@ -174,12 +174,13 @@ function buildThingsToDoData(baseThingsToDoData, areaThingsToDoResult) {
   return baseThingsToDoData || null;
 }
 
-function App() {
+function App({ apiMode = 'stays' }) {
   const [catalog, setCatalog] = useState(null);
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
   const [searchCriteria, setSearchCriteria] = useState(defaultSearchCriteria);
   const [propertySearchResult, setPropertySearchResult] = useState({
+    source: '',
     count: 0,
     properties: [],
   });
@@ -194,6 +195,24 @@ function App() {
     count: 0,
     properties: [],
   });
+  const [refreshTick, setRefreshTick] = useState(0);
+  const [refreshingLiveData, setRefreshingLiveData] = useState(false);
+  const [refreshStatusMessage, setRefreshStatusMessage] = useState('');
+
+  const isAdminRefreshEnabled = useMemo(() => {
+    if (apiMode !== 'stays') {
+      return false;
+    }
+
+    const envEnabled = String(import.meta.env.VITE_ENABLE_ADMIN_REFRESH || '').trim().toLowerCase();
+
+    if (['1', 'true', 'yes', 'on'].includes(envEnabled)) {
+      return true;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    return params.get('admin') === '1';
+  }, [apiMode]);
 
   useEffect(() => {
     let mounted = true;
@@ -232,6 +251,7 @@ function App() {
 
   useEffect(() => {
     let mounted = true;
+    const staysApiBase = apiMode === 'stays' ? '/api/stays' : '/api/properties';
 
     async function loadPropertiesForArea() {
       const destination = String(searchCriteria?.destination || defaultSearchCriteria.destination).trim();
@@ -246,7 +266,12 @@ function App() {
           offset: '0',
           minReviewScore: String(ELITE_MIN_REVIEW_SCORE),
         });
-        const response = await fetch(`${API_BASE_URL}/api/properties?${query.toString()}`);
+
+        if (apiMode === 'stays' && refreshTick > 0) {
+          query.set('refresh', 'true');
+        }
+
+        const response = await fetch(`${API_BASE_URL}${staysApiBase}?${query.toString()}`);
 
         if (!response.ok) {
           throw new Error('Failed to load properties for the selected area.');
@@ -256,6 +281,7 @@ function App() {
 
         if (mounted) {
           setPropertySearchResult({
+            source: String(payload?.source || ''),
             count: Number.isFinite(payload?.count) ? payload.count : 0,
             properties: Array.isArray(payload?.properties) ? payload.properties : [],
           });
@@ -263,6 +289,7 @@ function App() {
       } catch (_error) {
         if (mounted) {
           setPropertySearchResult({
+            source: '',
             count: 0,
             properties: [],
           });
@@ -279,10 +306,11 @@ function App() {
     return () => {
       mounted = false;
     };
-  }, [searchCriteria.destination]);
+  }, [apiMode, refreshTick, searchCriteria.destination]);
 
   useEffect(() => {
     let mounted = true;
+    const staysApiBase = apiMode === 'stays' ? '/api/stays' : '/api/properties';
 
     async function loadFullPropertyPool() {
       try {
@@ -291,7 +319,12 @@ function App() {
           offset: '0',
           minReviewScore: String(ELITE_MIN_REVIEW_SCORE),
         });
-        const response = await fetch(`${API_BASE_URL}/api/properties?${query.toString()}`);
+
+        if (apiMode === 'stays' && refreshTick > 0) {
+          query.set('refresh', 'true');
+        }
+
+        const response = await fetch(`${API_BASE_URL}${staysApiBase}?${query.toString()}`);
 
         if (!response.ok) {
           throw new Error('Failed to load full property pool.');
@@ -320,15 +353,24 @@ function App() {
     return () => {
       mounted = false;
     };
-  }, []);
+  }, [apiMode, refreshTick]);
 
   useEffect(() => {
     let mounted = true;
+    const areasApi = apiMode === 'stays' ? '/api/stays/areas' : '/api/properties/areas';
 
     async function loadPropertySettingTotals() {
       try {
+        const query = new URLSearchParams({
+          minReviewScore: String(ELITE_MIN_REVIEW_SCORE),
+        });
+
+        if (apiMode === 'stays' && refreshTick > 0) {
+          query.set('refresh', 'true');
+        }
+
         const response = await fetch(
-          `${API_BASE_URL}/api/properties/areas?minReviewScore=${encodeURIComponent(String(ELITE_MIN_REVIEW_SCORE))}`
+          `${API_BASE_URL}${areasApi}?${query.toString()}`
         );
 
         if (!response.ok) {
@@ -376,10 +418,11 @@ function App() {
     return () => {
       mounted = false;
     };
-  }, []);
+  }, [apiMode, refreshTick]);
 
   useEffect(() => {
     let mounted = true;
+    const thingsApi = apiMode === 'stays' ? '/api/stays/things-to-do' : '/api/things-to-do';
 
     async function loadThingsToDoForArea() {
       const destination = String(searchCriteria?.destination || defaultSearchCriteria.destination).trim();
@@ -387,7 +430,12 @@ function App() {
 
       try {
         const query = new URLSearchParams({ area });
-        const response = await fetch(`${API_BASE_URL}/api/things-to-do?${query.toString()}`);
+
+        if (apiMode === 'stays' && refreshTick > 0) {
+          query.set('refresh', 'true');
+        }
+
+        const response = await fetch(`${API_BASE_URL}${thingsApi}?${query.toString()}`);
 
         if (!response.ok) {
           throw new Error('Failed to load things to do for the selected area.');
@@ -410,7 +458,7 @@ function App() {
     return () => {
       mounted = false;
     };
-  }, [searchCriteria.destination]);
+  }, [apiMode, refreshTick, searchCriteria.destination]);
 
   const resolvedSearchData = useMemo(
     () => buildSearchData(catalog?.search, searchCriteria, propertySearchResult, propertyTotals, fullPropertyPool),
@@ -433,12 +481,48 @@ function App() {
     }));
   };
 
+  const handleRefreshLiveData = async () => {
+    if (!isAdminRefreshEnabled || refreshingLiveData) {
+      return;
+    }
+
+    setRefreshingLiveData(true);
+    setRefreshStatusMessage('Refreshing live Google data...');
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/stays/refresh`, {
+        method: 'POST',
+      });
+
+      const payload = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(payload?.message || 'Refresh request failed.');
+      }
+
+      setRefreshTick((current) => current + 1);
+      setRefreshStatusMessage(payload?.message || 'Live data refreshed.');
+    } catch (error) {
+      setRefreshStatusMessage(error.message || 'Unable to refresh live data.');
+    } finally {
+      setRefreshingLiveData(false);
+    }
+  };
+
   return (
     <>
-      <HeroHeader heroData={catalog?.hero} navbarData={catalog?.navbar} onSearchSubmit={handleSearchSubmit} />
+      <HeroHeader
+        heroData={catalog?.hero}
+        navbarData={catalog?.navbar}
+        onSearchSubmit={handleSearchSubmit}
+        canRefreshLiveData={isAdminRefreshEnabled}
+        onRefreshLiveData={handleRefreshLiveData}
+        refreshingLiveData={refreshingLiveData}
+      />
       <main className="App">
         {loading ? <p className="app-status-message">Loading hospitality listings...</p> : null}
         {propertiesLoading ? <p className="app-status-message">Refreshing area properties...</p> : null}
+        {refreshStatusMessage ? <p className="app-status-message">{refreshStatusMessage}</p> : null}
         {errorMessage ? <p className="app-status-message">{errorMessage}</p> : null}
         <SearchResultsPage
           searchData={resolvedSearchData}
