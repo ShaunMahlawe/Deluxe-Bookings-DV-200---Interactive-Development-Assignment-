@@ -1,16 +1,30 @@
-require('dotenv').config()
+require("dotenv").config();
 
-const app = require('./app')
-const { connectDatabase } = require('./config/db')
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
 
-const port = process.env.PORT || 5001
 
-async function startServer() {
-  await connectDatabase()
+const app = express();
 
-  app.listen(port, () => {
-    console.log(`Backend listening on http://localhost:${port}`)
-  })
-}
+const bcrypt = require("bcrypt");
+const User = require("./models/User");
 
-startServer()
+app.use(cors());
+app.use(express.json());
+
+const authRoutes = require("./routes/auth");
+app.use("/auth", authRoutes);
+
+app.get("/", (req, res) => {
+    res.send("API is running");
+});
+
+// Connect MongoDB
+mongoose.connect(process.env.MONGO_URI)
+.then(() => console.log("MongoDB Connected"))
+.catch(err => console.log(err));
+
+app.listen(5000, () => {
+    console.log("Server running on port 5000");
+});
