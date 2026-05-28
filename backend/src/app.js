@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
+const swaggerUi = require('swagger-ui-express')
 
 const { isDatabaseConnected } = require('./config/db')
 const authRoutes = require('./routes/authRoutes')
@@ -8,6 +9,8 @@ const bookingRoutes = require('./routes/bookingRoutes')
 const catalogRoutes = require('./routes/catalogRoutes')
 const propertyRoutes = require('./routes/propertyRoutes')
 const thingsToDoRoutes = require('./routes/thingsToDoRoutes')
+const staysRoutes = require('./routes/staysRoutes')
+const { buildStaysOpenApi } = require('./docs/staysOpenApi')
 
 const app = express()
 
@@ -50,6 +53,24 @@ app.use('/api/bookings', bookingRoutes)
 app.use('/api/catalog', catalogRoutes)
 app.use('/api/properties', propertyRoutes)
 app.use('/api/things-to-do', thingsToDoRoutes)
+
+app.get('/api/stays/openapi.json', (req, res) => {
+  const baseUrl = `${req.protocol}://${req.get('host')}`
+  res.json(buildStaysOpenApi(baseUrl))
+})
+
+app.use('/api/stays/docs', swaggerUi.serve, (req, res, next) => {
+  const baseUrl = `${req.protocol}://${req.get('host')}`
+  const openApiDocument = buildStaysOpenApi(baseUrl)
+  const swaggerHandler = swaggerUi.setup(openApiDocument, {
+    explorer: true,
+    customSiteTitle: 'Deluxe Stays API Docs',
+  })
+
+  return swaggerHandler(req, res, next)
+})
+
+app.use('/api/stays', staysRoutes)
 
 app.use((err, _req, res, _next) => {
   console.error(err)
