@@ -710,6 +710,23 @@
   margin-top: 7px;
 }
 
+.navbar-account-item-refresh {
+  background: linear-gradient(135deg, #0f6b57, #0a8f67);
+  color: #ffffff;
+  box-shadow: 0 8px 16px rgba(10, 111, 83, 0.24);
+}
+
+.navbar-account-item-refresh:hover {
+  background: linear-gradient(135deg, #0d604f, #08835f);
+  box-shadow: 0 10px 18px rgba(8, 98, 74, 0.3);
+}
+
+.navbar-account-item-refresh:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
 @media (max-width: 1280px) {
   .navbar {
     padding: 18px 18px 0;
