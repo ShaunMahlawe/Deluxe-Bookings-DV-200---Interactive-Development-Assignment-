@@ -1,8 +1,21 @@
 const { getThingsToDoByArea } = require('../utils/southAfricaThingsToDo');
 const { getGoogleThingsToDoByArea, isGooglePlacesConfigured } = require('../services/googlePlacesService');
+const { getDeluxeThingsToDoByArea, isDeluxePlacesConfigured } = require('../services/deluxePlacesService');
 
 async function getThingsToDo(req, res) {
   const { area } = req.query;
+
+  if (isDeluxePlacesConfigured()) {
+    try {
+      const deluxeResult = getDeluxeThingsToDoByArea({ area, limit: 9 });
+
+      if (Array.isArray(deluxeResult?.thingsToDo?.cards) && deluxeResult.thingsToDo.cards.length > 0) {
+        return res.json(deluxeResult);
+      }
+    } catch (error) {
+      console.error('Deluxe API things-to-do lookup failed:', error.message);
+    }
+  }
 
   if (isGooglePlacesConfigured()) {
     try {
