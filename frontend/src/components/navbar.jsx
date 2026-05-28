@@ -15,6 +15,7 @@ import {
   UserRound,
   UserRoundPlus,
   Wallet,
+  RotateCw,
 } from 'lucide-react';
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
@@ -49,7 +50,13 @@ const fallbackDestinationSuggestions = [
   { name: 'Kruger National Park', region: 'Mpumalanga, South Africa' },
 ];
 
-const Navbar = ({ destinationSuggestions, onSearchSubmit }) => {
+const Navbar = ({
+  destinationSuggestions,
+  onSearchSubmit,
+  canRefreshLiveData = false,
+  onRefreshLiveData,
+  refreshingLiveData = false,
+}) => {
   const suggestions = destinationSuggestions?.length ? destinationSuggestions : fallbackDestinationSuggestions;
   const today = new Date();
   const minSelectableDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
@@ -107,6 +114,15 @@ const Navbar = ({ destinationSuggestions, onSearchSubmit }) => {
 
   const handleServiceButtonClick = (service) => {
     setActiveNavService(service);
+
+    if (service === 'stays' && window.location.pathname !== '/stays') {
+      window.location.assign('/stays');
+      return;
+    }
+
+    if (service === 'listProperty' && window.location.pathname !== '/api-guide') {
+      window.location.assign('/api-guide');
+    }
   };
 
   const handleDateSelect = (selectedDate) => {
@@ -562,6 +578,17 @@ const Navbar = ({ destinationSuggestions, onSearchSubmit }) => {
                 <Bookmark size={20} strokeWidth={2.3} />
                 <span>Saved</span>
               </button>
+              {canRefreshLiveData ? (
+                <button
+                  type="button"
+                  className="navbar-account-item navbar-account-item-refresh"
+                  onClick={() => onRefreshLiveData?.()}
+                  disabled={refreshingLiveData}
+                >
+                  <RotateCw size={20} strokeWidth={2.3} />
+                  <span>{refreshingLiveData ? 'Refreshing...' : 'Refresh'}</span>
+                </button>
+              ) : null}
               <button className="navbar-account-item">
                 <ArrowRightFromLine size={20} strokeWidth={2.3} />
                 <span>Sign out</span>
