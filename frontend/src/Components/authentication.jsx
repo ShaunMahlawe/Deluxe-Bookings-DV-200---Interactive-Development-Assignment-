@@ -137,7 +137,7 @@ const login = async () => {
   };
 
   return (
-          <Tabs
+    <Tabs
       defaultActiveKey="profile"
       id="justify-tab-example"
       className="mb-3"
@@ -145,268 +145,201 @@ const login = async () => {
     >
       {/* Sign up tab left */}
       <Tab eventKey="home" title="Sign up">
-        <Tab.Container id="left-tabs-example" 
-      
-      defaultActiveKey="first">
-      <Row>
-          <Tab.Content>
-            <Tab.Pane eventKey="first">
-              
-              <h1 className="m-plus-rounded-1c-bold">Welcome to Deluxe Bookings</h1>
-            <h3 className="LogInSubHeading inter-regular">Make an account to gain access to our exclusive Platform</h3>
+        <div>
+          <h1 className="m-plus-rounded-1c-bold LogInText">Welcome to Deluxe Bookings</h1>
+          <h3 className="LogInSubHeading inter-regular LogInText">Make an account to gain access to our exclusive platform</h3>
 
-      <input
-        placeholder="Username"
-        onChange={(e) => setName(e.target.value)}
-      />
+          <input
+            placeholder="Username"
+            onChange={(e) => setName(e.target.value)}
+          />
 
-      <br /><br />
+          <br /><br />
 
-      <input
-        placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
-      />
+          <input
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-      <br /><br />
+          <br /><br />
 
-      <ToggleButtonGroup type="radio" name="options" defaultValue={1}>
-        <ToggleButton id="tbg-radio-1" value={1} onClick={useSelectB}>
-          I am a customer
-        </ToggleButton>
-        <ToggleButton id="tbg-radio-2" value={2} onClick={useSelectS}>
-          I am a seller
-        </ToggleButton>
-      </ToggleButtonGroup>
+          <ToggleButtonGroup type="radio" name="options" defaultValue={1} className="custom-toggle-group">
+            <ToggleButton id="tbg-radio-1" value={1} onClick={useSelectB}>
+              I am a customer
+            </ToggleButton>
+            <ToggleButton id="tbg-radio-2" value={2} onClick={useSelectS}>
+              I am a seller
+            </ToggleButton>
+          </ToggleButtonGroup>
 
-            </Tab.Pane>
+          <br /><br />
 
-            <Tab.Pane eventKey="second">
-              
-              <div>
-    <h6 className="inter-bold passwordText">Create a custom password:</h6>           
-      <h4 className="inter-regular">Choose your favourite colour</h4>
+          <div>
+            <h2 className="inter-bold passwordText LogInText">Create a custom password:</h2>          
+            <h4 className="inter-regular LogInText">Choose your favourite colour</h4>
 
-      <div type="row">
-        <button variant="outline-dark" className="logInButton" onClick={() => { setPassword11(1); passSelect11(); }}>
-          <img src={ruby} alt="ruby red" className="logInButtonImg"/>
-          <p>Ruby Red</p>
-          </button>
-        <button variant="outline-dark" className="logInButton" onClick={() => { setPassword11(2); passSelect11(); }}>
-          <img src={copper} alt="copper brown" className="logInButtonImg"/>
-          <p>Copper Brown</p>
-          </button>
-        <button variant="outline-dark" className="logInButton" onClick={() => { setPassword11(3); passSelect11(); }}>
-          <img src={emerald} alt="emerald green" className="logInButtonImg"/>
-          <p>Emerald Green</p>
-          </button>
-      </div>
+            <div type="row">
+              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword11(1); passSelect11(); }}>
+                <img src={ruby} alt="ruby red" className="logInButtonImg"/>
+                <p>Ruby Red</p>
+              </button>
+              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword11(2); passSelect11(); }}>
+                <img src={copper} alt="copper brown" className="logInButtonImg"/>
+                <p>Copper Brown</p>
+              </button>
+              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword11(3); passSelect11(); }}>
+                <img src={emerald} alt="emerald green" className="logInButtonImg"/>
+                <p>Emerald Green</p>
+              </button>
+            </div>
+            <h5 className="inter-bold LogInText">{messagePass11}</h5>
+          </div>
 
-      <h5 className="inter-bold">{messagePass11}</h5>
+          <br />
 
-      </div>
-            </Tab.Pane>
+          <div>
+            <h4 className="inter-regular LogInText">Choose the best place to relax</h4>
 
-            <Tab.Pane eventKey="third">
+            <div type="row">
+              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword12(1); passSelect12(); }}>
+                <img src={golf} alt="golf course" className="logInButtonImg"/>
+                <p>The golf course</p>
+              </button>
+              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword12(2); passSelect12(); }}>
+                <img src={bar} alt="a bar" className="logInButtonImg"/>
+                <p>The bar</p>
+              </button>
+              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword12(3); passSelect12(); }}>
+                <img src={marina} alt="a marina" className="logInButtonImg"/>
+                <p>The marina</p>
+              </button>
+            </div>
+            <h5 className="inter-bold LogInText">{messagePass12}</h5>
+          </div>
 
-            <div>
-    <h6 className="inter-bold passwordText">Create a custom password:</h6>
-      <h4 className="inter-regular">Choose the best place to relax</h4>
+          <br />
+          
+          <div>
+            <h4 className="inter-regular LogInText">Choose your favourite drink</h4>
 
-      <div type="row">
-        <button variant="outline-dark" className="logInButton" onClick={() => { setPassword12(1); passSelect12(); }}>
-          <img src={golf} alt="golf course" className="logInButtonImg"/>
-          <p>The golf course</p>
-          </button>
-        <button variant="outline-dark" className="logInButton" onClick={() => { setPassword12(2); passSelect12(); }}>
-          <img src={bar} alt="a bar" className="logInButtonImg"/>
-          <p>The bar</p>
-          </button>
-        <button variant="outline-dark" className="logInButton" onClick={() => { setPassword12(3); passSelect12(); }}>
-          <img src={marina} alt="a marina" className="logInButtonImg"/>
-          <p>The marina</p>
-          </button>
-      </div>
-     <h5 className="inter-bold">{messagePass12}</h5>
-      </div>
-            </Tab.Pane>
-            
-            <Tab.Pane eventKey="fourth">
-              <div>
-    <h6 className="inter-bold passwordText">Create a custom password:</h6>
-      <h4 className="inter-regular">Choose your favourite drink</h4>
+            <div type="row">
+              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword13(1); passSelect13(); }}>
+                <img src={wine} alt="wine glasses" className="logInButtonImg"/>
+                <p>Wine</p>
+              </button>
+              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword13(2); passSelect13(); }}>
+                <img src={whiskey} alt="whiskey in a glass" className="logInButtonImg"/>
+                <p>Whiskey</p>
+              </button>
+              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword13(3); passSelect13(); }}>
+                <img src={drinks} alt="cocktails" className="logInButtonImg"/>
+                <p>Cocktails</p>
+              </button>
+            </div>
 
-      <div type="row">
-        <button variant="outline-dark" className="logInButton" onClick={() => { setPassword13(1); passSelect13(); }}>
-          <img src={wine} alt="wine glasses" className="logInButtonImg"/>
-          <p>Wine</p>
-          </button>
-        <button variant="outline-dark" className="logInButton" onClick={() => { setPassword13(2); passSelect13(); }}>
-          <img src={whiskey} alt="whiskey in a glass" className="logInButtonImg"/>
-          <p>Whiskey</p>
-          </button>
-        <button variant="outline-dark" className="logInButton" onClick={() => { setPassword13(3); passSelect13(); }}>
-          <img src={drinks} alt="cocktails" className="logInButtonImg"/>
-          <p>Cocktails</p>
-          </button>
-      </div>
+            <h5 className="inter-bold LogInText">{messagePass13}</h5>
 
-      <h5 className="inter-bold">{messagePass13}</h5>
+            <button onClick={register} className="logInSubmit inter-regular">Register</button>
 
-      <button onClick={register} className="logInButton inter-regular">Register</button>
+            <br /><br />
 
-      <br /><br />
-
-      <h4 className="m-plus-rounded-1c-black">{messageR}</h4>
-        
-      </div>
-            </Tab.Pane>
-
-          </Tab.Content>
-          <Nav variant="pills" className="loginPagination">
-            <Nav.Item>
-              <Nav.Link eventKey="first">1</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link eventKey="second">2</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link eventKey="third">3</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link eventKey="fourth">4</Nav.Link>
-            </Nav.Item>
-          </Nav>
-      </Row>
-    </Tab.Container>
+            <h4 className="m-plus-rounded-1c-black LogInText">{messageR}</h4>
+          </div>
+        </div>
       </Tab>
 
       {/* Log In tab right */}
       <Tab eventKey="profile" title="Log in">
+        <div>
+          <h1 className="m-plus-rounded-1c-bold LogInText">Welcome back</h1>
+          <h2 className="LogInSubHeading inter-regular LogInText">Fill in your details to access your account</h2>
 
-      <Tab.Container id="left-tabs-example" 
-      
-      defaultActiveKey="first">
-      <Row>
-          <Tab.Content>
-            <Tab.Pane eventKey="first">
-              
-              <h1 className="m-plus-rounded-1c-bold">Welcome back</h1>
-            <h2 className="LogInSubHeading inter-regular">Fill in your details to access your account</h2>
+          <input
+            placeholder="Username"
+            onChange={(e) => setName(e.target.value)}
+          />
 
-      <input
-        placeholder="Username"
-        onChange={(e) => setName(e.target.value)}
-      />
+          <br /><br />
 
-      <br /><br />
+          <input
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-      <input
-        placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
-      />
+          <br /><br />
 
-      <br /><br />
+          <div>
+            <h2 className="inter-bold passwordText LogInText">Create a custom password:</h2>            
+            <h3 className="inter-regular LogInText">Choose your favourite colour</h3>
 
-            </Tab.Pane>
+            <div type="row">
+              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword1(1); passSelect(); }}>
+                <img src={ruby} alt="ruby red" className="logInButtonImg"/>
+                <p>Ruby Red</p>
+              </button>
+              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword1(2); passSelect(); }}>
+                <img src={copper} alt="copper brown" className="logInButtonImg"/>
+                <p>Copper Brown</p>
+              </button>
+              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword1(3); passSelect(); }}>
+                <img src={emerald} alt="emerald green" className="logInButtonImg"/>
+                <p>Emerald Green</p>
+              </button>
+            </div>
+            <h5 className="inter-bold LogInText">{messagePass1}</h5>
+          </div>
 
-            <Tab.Pane eventKey="second">
-              
-              <div>
-    <h6 className="inter-bold passwordText">Create a custom password:</h6>            
-      <h3 className="inter-regular">Choose your favourite colour</h3>
+          <br />
 
-      <div type="row">
-        <button variant="outline-dark" className="logInButton" onClick={() => { setPassword1(1); passSelect(); }}>
-          <img src={ruby} alt="ruby red" className="logInButtonImg"/>
-          <p>Ruby Red</p>
-          </button>
-        <button variant="outline-dark" className="logInButton" onClick={() => { setPassword1(2); passSelect(); }}>
-          <img src={copper} alt="copper brown" className="logInButtonImg"/>
-          <p>Copper Brown</p>
-          </button>
-        <button variant="outline-dark" className="logInButton" onClick={() => { setPassword1(3); passSelect(); }}>
-          <img src={emerald} alt="emerald green" className="logInButtonImg"/>
-          <p>Emerald Green</p>
-          </button>
-      </div>
+          <div>
+            <h4 className="inter-regular LogInText">Choose the best place to relax</h4>
 
-      <h5 className="inter-bold">{messagePass1}</h5>
+            <div type="row">
+              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword2(1); passSelect2(); }}>
+                <img src={golf} alt="golf course" className="logInButtonImg"/>
+                <p>The golf course</p>
+              </button>
+              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword2(2); passSelect2(); }}>
+                <img src={bar} alt="a bar" className="logInButtonImg"/>
+                <p>The bar</p>
+              </button>
+              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword2(3); passSelect2(); }}>
+                <img src={marina} alt="a marina" className="logInButtonImg"/>
+                <p>The marina</p>
+              </button>
+            </div>
+            <h5 className="inter-bold LogInText">{messagePass2}</h5>
+          </div>
 
-      </div>
-            </Tab.Pane>
+          <br />
+          
+          <div>
+            <h4 className="inter-regular LogInText">Choose your favourite drink</h4>
 
-            <Tab.Pane eventKey="third">
+            <div type="row">
+              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword3(1); passSelect3(); }}>
+                <img src={wine} alt="wine glasses" className="logInButtonImg"/>
+                <p>Wine</p>
+              </button>
+              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword3(2); passSelect3(); }}>
+                <img src={whiskey} alt="whiskey in a glass" className="logInButtonImg"/>
+                <p>Whiskey</p>
+              </button>
+              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword3(3); passSelect3(); }}>
+                <img src={drinks} alt="cocktails" className="logInButtonImg"/>
+                <p>Cocktails</p>
+              </button>
+            </div>
 
-            <div>
-   <h6 className="inter-bold passwordText">Create a custom password:</h6>
-      <h4 className="inter-regular">Choose the best place to relax</h4>
+            <h5 className="inter-bold LogInText">{messagePass3}</h5>
 
-      <div type="row">
-        <button variant="outline-dark" className="logInButton" onClick={() => { setPassword2(1); passSelect2(); }}>
-          <img src={golf} alt="golf course" className="logInButtonImg"/>
-          <p>The golf course</p>
-          </button>
-        <button variant="outline-dark" className="logInButton" onClick={() => { setPassword2(2); passSelect2(); }}>
-          <img src={bar} alt="a bar" className="logInButtonImg"/>
-          <p>The bar</p>
-          </button>
-        <button variant="outline-dark" className="logInButton" onClick={() => { setPassword2(3); passSelect2(); }}>
-          <img src={marina} alt="a marina" className="logInButtonImg"/>
-          <p>The marina</p>
-          </button>
-      </div>
-      <h5 className="inter-bold">{messagePass2}</h5>
-      </div>
-            </Tab.Pane>
-            
-            <Tab.Pane eventKey="fourth">
-              <div>
-    <h6 className="inter-bold passwordText">Create a custom password:</h6>
-      <h4 className="inter-regular">Choose your favourite drink</h4>
+            <button onClick={login} className="logInSubmit inter-regular">Login</button>
 
-      <div type="row">
-        <button variant="outline-dark" className="logInButton" onClick={() => { setPassword3(1); passSelect3(); }}>
-          <img src={wine} alt="wine glasses" className="logInButtonImg"/>
-          <p>Wine</p>
-          </button>
-        <button variant="outline-dark" className="logInButton" onClick={() => { setPassword3(2); passSelect3(); }}>
-          <img src={whiskey} alt="whiskey in a glass" className="logInButtonImg"/>
-          <p>Whiskey</p>
-          </button>
-        <button variant="outline-dark" className="logInButton" onClick={() => { setPassword3(3); passSelect3(); }}>
-          <img src={drinks} alt="cocktails" className="logInButtonImg"/>
-          <p>Cocktails</p>
-          </button>
-      </div>
+            <br /><br />
 
-      <h5 className="inter-bold">{messagePass3}</h5>
-
-      <button onClick={login} className="logInButton inter-regular">Login</button>
-
-      <br /><br />
-
-      <h4 className="m-plus-rounded-1c-black">{message}</h4>
-        
-      </div>
-            </Tab.Pane>
-
-          </Tab.Content>
-          <Nav variant="pills" className="loginPagination">
-            <Nav.Item>
-              <Nav.Link eventKey="first">1</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link eventKey="second">2</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link eventKey="third">3</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link eventKey="fourth">4</Nav.Link>
-            </Nav.Item>
-          </Nav>
-      </Row>
-    </Tab.Container>
+            <h4 className="m-plus-rounded-1c-black">{message}</h4>
+          </div>
+        </div>
       </Tab>
     </Tabs>
   );
