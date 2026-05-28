@@ -1,0 +1,38 @@
+.page-nav-shell {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 14px 20px;
+  backdrop-filter: blur(8px);
+}
+
+.page-nav {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.page-nav-link {
+  text-decoration: none;
+  color: #143a32;
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(20, 58, 50, 0.16);
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.page-nav-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(20, 58, 50, 0.18);
+}
+
+.page-nav-link-active {
+  color: #ffffff;
+  background: linear-gradient(135deg, #0d6b57, #0f8a67);
+  border-color: transparent;
+}
