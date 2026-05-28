@@ -10,14 +10,27 @@ const defaultHeroData = {
   ctaLabel: 'Apply to Join',
 };
 
-const HeroHeader = ({ heroData, navbarData, onSearchSubmit }) => {
+const HeroHeader = ({
+  heroData,
+  navbarData,
+  onSearchSubmit,
+  canRefreshLiveData = false,
+  onRefreshLiveData,
+  refreshingLiveData = false,
+}) => {
   const content = heroData || defaultHeroData;
   const titleLines = String(content.title || defaultHeroData.title).split('\n');
 
   return (
     <header className="hero-header">
       <div className="hero-bg" />
-      <Navbar destinationSuggestions={navbarData?.destinationSuggestions} onSearchSubmit={onSearchSubmit} />
+      <Navbar
+        destinationSuggestions={navbarData?.destinationSuggestions}
+        onSearchSubmit={onSearchSubmit}
+        canRefreshLiveData={canRefreshLiveData}
+        onRefreshLiveData={onRefreshLiveData}
+        refreshingLiveData={refreshingLiveData}
+      />
       <div className="hero-content">
         <h1 className="hero-title">
           {titleLines.map((line, index) => (
