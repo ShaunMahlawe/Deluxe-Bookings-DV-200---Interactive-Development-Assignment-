@@ -1,5 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom"; // 1. Imported useNavigate
+import { useAuth } from "../context/authContext"; // 2. Imported useAuth global context
+
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import Button from 'react-bootstrap/Button';
@@ -23,6 +26,9 @@ import whiskey from "../Assets/images/login/whiskey3.png"
 import drinks from "../Assets/images/login/drink3.png"
 
 function Authentication() {
+  const navigate = useNavigate();
+  const { login: loginContext } = useAuth();
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -87,7 +93,6 @@ function Authentication() {
   const [selected, setSelected] = useState("");
 
 const register = async () => {
-    // Combine passwords gained from pictures
     const finalPassword = `${password11}${password12}${password13}`;
     
     try {
@@ -96,14 +101,14 @@ const register = async () => {
         email,
         password: finalPassword,
         userRole
-
       });
       setMessageR(res.data);
       setPassword(finalPassword); 
     } catch (error) {
+      console.error("Backend Error Response:", error.response?.data);
       setMessageR("Registration failed.");
     }
-  };
+};
 
 const login = async () => {
     // Adds the passwords from each picture
@@ -116,19 +121,21 @@ const login = async () => {
         name
       });
 
-      // Gets the token and user data
       const { token, user, message: successMessage } = res.data;
 
-      // Save them to local storage
-      localStorage.setItem("token", token);
-      localStorage.setItem("user", JSON.stringify(user));
+      loginContext(user, token);
 
       setMessage("Login successful!");
       setPassword(finalPassword);
 
-      // Redirects the user to home page after delay
       setTimeout(() => {
-        window.location.href = "/"; 
+        if (user?.userRole === 'A') {
+          navigate("/"); 
+        } else if (user?.userRole === 'S') {
+          navigate("/sellerLoggedIn"); 
+        } else {
+          navigate("/"); 
+        }
       }, 1000);
 
     }  catch (error) {

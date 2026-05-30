@@ -70,12 +70,12 @@ function Checkout() {
 
         {/* Personal details form */}
         {checkoutPage === 1 && (
-          <div className="CheckoutBack col">
+          <div className="CheckoutBack col-6">
             <div className="CheckoutBox">
               
-              <ProgressBar variant="dark" now={33} className='progressBar'/>
+              <ProgressBar now={33} className='progressBar'/>
 
-              <h3 className='m-plus-rounded-1c-bold checkoutHeading'>Enter your personal details:</h3>
+              <h3 className='m-plus-rounded-1c-bold checkoutHeading LogInText'>Enter your personal details:</h3>
 
               <form onSubmit={handleDetailsSubmit}>
                 <div className="row">
@@ -179,7 +179,7 @@ function Checkout() {
 
         {/* Payment form */}
         {checkoutPage === 2 && (
-          <div className="CheckoutBack col">
+          <div className="CheckoutBack col-6">
             <div className="CheckoutBox">
               
               <ProgressBar variant="dark" now={66} className='progressBar'/>

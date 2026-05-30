@@ -18,10 +18,6 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    signatureWordHash: {
-      type: String,
-      required: true,
-    },
     userRole: {
       type: String,
       required: true,
