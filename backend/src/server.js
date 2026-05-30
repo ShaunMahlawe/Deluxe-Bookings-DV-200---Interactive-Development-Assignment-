@@ -1,16 +1,30 @@
-require('dotenv').config()
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
 
-const app = require('./app')
-const { connectDatabase } = require('./config/db')
+require("dotenv").config();
 
-const port = process.env.PORT || 5001
+const app = express();
 
-async function startServer() {
-  await connectDatabase()
+app.use(cors());
+app.use(express.json());
 
-  app.listen(port, () => {
-    console.log(`Backend listening on http://localhost:${port}`)
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("MongoDB Connected");
   })
-}
+  .catch((err) => {
+    console.log(err);
+  });
 
-startServer()
+app.use(
+  "/api/reviews",
+  require("./routes/reviewRoutes")
+);
+
+app.listen(process.env.PORT, () => {
+  console.log(
+    `Server Running on Port ${process.env.PORT}`
+  );
+});
