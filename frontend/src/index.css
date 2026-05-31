@@ -5,7 +5,7 @@
   --color-text-strong: #7b593f;
   --color-text-weak: #8c8578;
   --color-stroke-strong: #a48a56;
-  --color-stroke-weak: #e6dcc9;
+  --color-stroke-weak: #e3dfde;
   --color-fill: #ffffff;
   --color-background: #efebea;
   --shadow-raised: 0 4px 8px rgba(51, 42, 35, 0.1);
@@ -123,13 +123,24 @@ li,
 input,
 textarea,
 button {
-  font-size: 1rem;
+  font-size: var(--fs-base);
 }
 
 button,
 input,
 textarea {
   font: inherit;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-text-strong);
+  opacity: 0.25;
+}
+
+.form-control::placeholder {
+  color: var(--color-text-strong);
+  opacity: 0.25;
 }
 
 .btn:not(.pill):not(.badge):not(.step-badge):not(.seller-soft-badge),
@@ -144,6 +155,23 @@ textarea {
   font-family: var(--font-body);
   font-size: var(--button-font-size);
   font-weight: var(--button-font-weight);
+}
+
+.btn-primary {
+  --bs-btn-color: var(--color-fill);
+  --bs-btn-bg: var(--color-brand);
+  --bs-btn-border-color: var(--color-brand);
+  --bs-btn-hover-color: var(--color-fill);
+  --bs-btn-hover-bg: var(--color-brand);
+  --bs-btn-hover-border-color: var(--color-brand);
+  --bs-btn-focus-shadow-rgb: 51, 42, 35;
+  --bs-btn-active-color: var(--color-fill);
+  --bs-btn-active-bg: var(--color-brand);
+  --bs-btn-active-border-color: var(--color-brand);
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(51, 42, 35, 0.12);
+  --bs-btn-disabled-color: var(--color-fill);
+  --bs-btn-disabled-bg: var(--color-stroke-weak);
+  --bs-btn-disabled-border-color: var(--color-stroke-weak);
 }
 
 .btn:not(:disabled):hover,
@@ -163,4 +191,11 @@ textarea {
 
 .card {
   border-radius: var(--radius-card);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --fs-sm: 16px;
+    --fs-base: 20px;
+  }
 }
