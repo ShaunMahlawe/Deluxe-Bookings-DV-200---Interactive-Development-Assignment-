@@ -1,5 +1,15 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import SellerOnboarding from './pages/sellerOnboarding'
+import CreateListing from './pages/seller/CreateListing'
+import EditListing from './pages/seller/EditListing'
+import SellerDashboard from './pages/seller/SellerDashboard'
+import IndividualListing from './pages/buyer/individualListing'
+import {
+  SellerListingCardPreview,
+  SellerListingFormPreview,
+} from './pages/seller/SellerComponentPreviews'
+// import TestNav from "./components/TestNav";
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001/api'
 
@@ -20,6 +30,8 @@ const initialBooking = {
 }
 
 function App() {
+  const [route, setRoute] = useState(window.location.pathname)
+  const normalizedRoute = route.replace(/\/+$/, '') || '/'
   const [mode, setMode] = useState('login')
   const [authForm, setAuthForm] = useState(initialAuth)
   const [bookingForm, setBookingForm] = useState(initialBooking)
@@ -28,6 +40,17 @@ function App() {
   const [bookings, setBookings] = useState([])
   const [notice, setNotice] = useState('')
   const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    const handlePopState = () => setRoute(window.location.pathname)
+    window.addEventListener('popstate', handlePopState)
+    return () => window.removeEventListener('popstate', handlePopState)
+  }, [])
+
+  const navigate = (path) => {
+    window.history.pushState({}, '', path)
+    setRoute(path)
+  }
 
   useEffect(() => {
     if (!token) {
@@ -161,7 +184,72 @@ function App() {
     setNotice('Signed out.')
   }
 
+  if (normalizedRoute === '/seller/onboarding') {
+    return <SellerOnboarding onNavigate={navigate} />
+  }
+
+  if (normalizedRoute === '/seller/create-listing' || normalizedRoute === '/create-listing') {
+    return <CreateListing onNavigate={navigate} />
+  }
+
+  if (normalizedRoute === '/seller/dashboard' || normalizedRoute === '/seller-dashboard') {
+    return <SellerDashboard onNavigate={navigate} />
+  }
+
+  if (normalizedRoute.startsWith('/seller/edit-listing/') || normalizedRoute.startsWith('/edit-listing/')) {
+    const listingId = normalizedRoute.split('/').filter(Boolean).at(-1)
+    return <EditListing listingId={listingId} onNavigate={navigate} />
+  }
+
+  if (normalizedRoute.startsWith('/buyer/listing/') || normalizedRoute.startsWith('/listing/')) {
+    const listingId = normalizedRoute.split('/').filter(Boolean).at(-1)
+    return <IndividualListing listingId={listingId} onNavigate={navigate} />
+  }
+
+  if (
+    normalizedRoute === '/buyer/listing' ||
+    normalizedRoute === '/buyer/individual-listing' ||
+    normalizedRoute === '/individual-listing' ||
+    normalizedRoute === '/listing'
+  ) {
+    return <IndividualListing onNavigate={navigate} />
+  }
+
+  if (normalizedRoute === '/dev/seller/listing-card') {
+    return <SellerListingCardPreview onNavigate={navigate} />
+  }
+
+  if (normalizedRoute === '/dev/seller/listing-form') {
+    return <SellerListingFormPreview />
+  }
+
   return (
+  //   <>
+
+  //   <TestNav onNavigate={navigate} />
+
+  //   {route === "/" && <SellerDashboard onNavigate={navigate} />}
+
+  //   {route === "/seller/onboarding" && (
+
+  //     <SellerOnboarding onNavigate={navigate} />
+
+  //   )}
+
+  //   {route === "/seller/create-listing" && (
+
+  //     <CreateListing onNavigate={navigate} />
+
+  //   )}
+
+  //   {route === "/seller/dashboard" && (
+
+  //     <SellerDashboard onNavigate={navigate} />
+
+  //   )}
+
+  // </>
+  // );
     <div className="page-shell">
       <section className="hero-panel">
         <div className="hero-copy">
