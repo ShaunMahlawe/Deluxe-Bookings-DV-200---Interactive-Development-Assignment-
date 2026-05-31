@@ -1,0 +1,195 @@
+.buyer-listing-card {
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--color-stroke-weak);
+  border-radius: var(--radius-card);
+  background: var(--color-fill);
+  box-shadow: var(--shadow-raised);
+}
+
+.buyer-listing-media {
+  position: relative;
+  height: 100%;
+  min-height: 264px;
+  background: var(--color-stroke-weak);
+}
+
+.buyer-listing-media img,
+.buyer-listing-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 264px;
+}
+
+.buyer-listing-media img {
+  display: block;
+  object-fit: cover;
+}
+
+.buyer-listing-placeholder {
+  display: grid;
+  place-items: center;
+  background: var(--color-background);
+  color: var(--color-brand);
+  font-family: var(--font-body);
+  font-size: var(--fs-h4);
+}
+
+.buyer-listing-status {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--button-min-height);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-control);
+  background: var(--color-brand) !important;
+  color: var(--color-fill) !important;
+  font-size: var(--fs-sm);
+  font-weight: var(--button-font-weight);
+}
+
+.buyer-listing-body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3);
+}
+
+.buyer-soft-badge,
+.buyer-listing-facts span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: var(--button-min-height);
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--color-stroke-weak);
+  border-radius: var(--radius-control);
+  background: var(--color-fill) !important;
+  color: var(--color-text-strong) !important;
+  font-size: var(--fs-sm);
+  font-weight: var(--button-font-weight);
+}
+
+.buyer-listing-title {
+  margin: 0 0 var(--space-1);
+  color: var(--color-text-strong);
+  font-family: var(--font-body);
+  font-size: var(--fs-h5);
+  font-weight: 500;
+}
+
+.buyer-listing-location {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin: 0 0 var(--space-2);
+  color: var(--color-text-strong);
+  font-size: var(--fs-base);
+  font-weight: 500;
+}
+
+.buyer-listing-description {
+  margin: 0;
+  color: var(--color-text-weak);
+  font-size: var(--fs-base);
+  line-height: 1.6;
+}
+
+.buyer-listing-footer {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.buyer-listing-facts,
+.buyer-action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.buyer-listing-actions {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.buyer-price span,
+.buyer-price strong {
+  display: block;
+}
+
+.buyer-price span {
+  color: var(--color-text-weak);
+  font-size: var(--fs-sm);
+}
+
+.buyer-price strong {
+  color: var(--color-brand);
+  font-family: var(--font-body);
+  font-size: var(--fs-h6);
+  font-weight: 500;
+}
+
+.buyer-action-buttons {
+  justify-content: flex-end;
+}
+
+.buyer-action-buttons .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  min-height: var(--button-min-height);
+  min-width: 80px;
+  border-radius: var(--radius-control);
+  font-size: var(--fs-sm);
+  font-weight: var(--button-font-weight);
+}
+
+.buyer-card-icon {
+  flex: 0 0 auto;
+  color: var(--color-stroke-strong);
+  stroke: currentColor;
+  stroke-width: var(--icon-stroke-width);
+}
+
+.buyer-listing-status .buyer-card-icon,
+.buyer-action-buttons .btn:hover .buyer-card-icon {
+  color: currentColor;
+}
+
+.buyer-action-buttons .btn-outline-dark,
+.buyer-delete-action {
+  border-color: var(--color-stroke-strong) !important;
+  color: var(--color-brand) !important;
+}
+
+.buyer-action-buttons .btn-outline-dark:hover,
+.buyer-delete-action:hover {
+  border-color: var(--color-brand) !important;
+  background: var(--color-brand) !important;
+  color: var(--color-fill) !important;
+}
+
+@media (max-width: 767.98px) {
+  .buyer-listing-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .buyer-listing-media,
+  .buyer-listing-media img,
+  .buyer-listing-placeholder {
+    min-height: 224px;
+  }
+
+  .buyer-action-buttons,
+  .buyer-action-buttons .btn {
+    width: 100%;
+  }
+}
