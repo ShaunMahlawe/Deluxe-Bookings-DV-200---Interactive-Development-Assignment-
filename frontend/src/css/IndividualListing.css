@@ -1,0 +1,734 @@
+/* .individual-listing-page {
+  min-height: 100vh;
+  padding: var(--space-5) var(--space-3) var(--space-8);
+  background: var(--color-background);
+  color: var(--color-text-strong);
+  font-family: var(--font-body);
+} */
+
+.seller-listing-detail-pane {
+  position: sticky;
+  top: var(--space-3);
+  max-height: calc(100vh - var(--space-6));
+  overflow-y: auto;
+  padding: var(--space-3);
+  border: 1px solid var(--color-stroke-weak);
+  border-radius: var(--radius-card);
+  background: var(--color-fill);
+  box-shadow: var(--shadow-raised);
+}
+
+.seller-listing-detail-page {
+  min-height: 100vh;
+  padding: var(--space-3) var(--space-2) var(--space-5);
+  background: var(--color-background);
+  color: var(--color-text-strong);
+  font-family: var(--font-body);
+}
+
+.seller-listing-detail-page .individual-listing-shell {
+  max-width: 980px;
+  padding: var(--space-3);
+  border: 1px solid var(--color-stroke-weak);
+  border-radius: var(--radius-card);
+  background: var(--color-fill);
+  box-shadow: var(--shadow-raised);
+}
+
+.seller-listing-detail-loading {
+  min-height: 280px;
+  display: grid;
+  place-items: center;
+  gap: var(--space-2);
+  color: var(--color-text-weak);
+  text-align: center;
+}
+
+.seller-listing-detail-alert {
+  border: 1px solid var(--color-stroke-strong);
+  border-radius: var(--radius-control);
+  background: var(--color-fill);
+  color: var(--color-text-strong);
+}
+
+.detail-pane-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-1);
+  margin-bottom: var(--space-2);
+}
+
+.detail-pane-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  min-height: 36px;
+  padding: 0 var(--space-2);
+  border: 1px solid var(--color-stroke-strong);
+  border-radius: var(--radius-control);
+  background: var(--color-fill);
+  color: var(--color-brand);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: var(--button-font-weight);
+  line-height: 1;
+  cursor: pointer;
+}
+
+.detail-pane-action-primary {
+  border-color: var(--color-brand);
+  background: var(--color-brand);
+  color: var(--color-fill);
+}
+
+.detail-pane-action-danger {
+  min-height: 38px;
+  padding-right: var(--space-2);
+  padding-left: var(--space-2);
+  border-color: #b24747;
+  background: var(--color-fill);
+  color: #b24747;
+}
+
+.detail-pane-action:hover {
+  opacity: var(--button-hover-opacity);
+}
+
+.detail-pane-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  margin-left: var(--space-1);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-brand);
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.individual-listing-shell {
+  max-width: 1168px;
+}
+
+.seller-listing-detail-pane .individual-listing-shell {
+  max-width: none;
+  padding: 0;
+}
+
+.seller-listing-detail-pane .listing-hero-block {
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.seller-listing-detail-pane .listing-hero-block h1 {
+  margin: 0;
+  color: var(--color-brand);
+  font-family: var(--font-heading);
+  font-size: var(--fs-h4);
+  font-weight: 700;
+}
+
+.seller-listing-detail-pane .listing-meta-row {
+  gap: var(--space-3);
+  font-size: var(--fs-sm);
+}
+
+.listing-hero-block {
+  display: grid;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.deal-pill {
+  width: max-content;
+  padding: var(--space-1) var(--space-2);
+  border-radius: 999px;
+  background: #f3e3bc;
+  color: var(--color-text-strong);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+}
+
+.listing-hero-block h1 {
+  color: var(--color-text-strong);
+  font-family: var(--font-body);
+  font-size: var(--fs-h3);
+  font-weight: 500;
+}
+
+.listing-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  color: var(--color-text-weak);
+  font-size: var(--fs-base);
+}
+
+.listing-meta-row span,
+.listing-facts span,
+.rule-list li,
+.amenity-grid span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.listing-meta-row svg,
+.listing-facts svg,
+.rule-list svg,
+.amenity-grid svg {
+  width: 20px;
+  height: 20px;
+  color: var(--color-stroke-strong);
+  stroke-width: 1.8;
+}
+
+.listing-gallery {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.listing-gallery img {
+  width: 100%;
+  display: block;
+  border-radius: var(--radius-card);
+  object-fit: cover;
+  box-shadow: var(--shadow-raised);
+}
+
+.listing-gallery-main {
+  height: 520px;
+}
+
+.listing-gallery-stack {
+  display: grid;
+  gap: var(--space-2);
+  align-items: stretch;
+}
+
+.listing-gallery-stack img {
+  height: 119px;
+}
+
+.seller-listing-detail-pane .listing-gallery {
+  grid-template-columns: minmax(0, 1fr) 96px;
+  gap: var(--space-1);
+  align-items: stretch;
+  margin-bottom: var(--space-2);
+}
+
+.listing-gallery-main-wrap {
+  min-width: 0;
+}
+
+.seller-listing-detail-pane .listing-gallery-main-wrap {
+  aspect-ratio: 4 / 3;
+}
+
+.seller-listing-detail-pane .listing-gallery-main {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.seller-listing-detail-pane .listing-gallery-stack {
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+  gap: var(--space-1);
+  align-items: stretch;
+  min-height: 0;
+}
+
+.seller-listing-detail-pane .listing-gallery-stack img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.seller-listing-detail-pane .listing-gallery img {
+  border-radius: var(--radius-control);
+  box-shadow: 0 8px 20px rgba(51, 42, 35, 0.14);
+}
+
+.listing-content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+  gap: var(--space-3);
+  align-items: start;
+}
+
+.seller-listing-detail-pane .listing-content-grid {
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+}
+
+.listing-main-content {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.seller-listing-detail-pane .listing-main-content {
+  gap: var(--space-2);
+}
+
+.listing-info-card,
+.booking-card {
+  padding: var(--space-4);
+  border-radius: var(--radius-card);
+  background: var(--color-fill);
+  box-shadow: var(--shadow-raised);
+}
+
+.seller-listing-detail-pane .listing-info-card,
+.seller-listing-detail-pane .booking-card {
+  padding: var(--space-2);
+  border: 1px solid var(--color-stroke-weak);
+  border-radius: var(--radius-control);
+  box-shadow: none;
+}
+
+.listing-info-card h2,
+.booking-card h2 {
+  margin: 0 0 var(--space-2);
+  color: var(--color-brand);
+  font-family: var(--font-heading);
+  font-size: var(--fs-h5);
+  font-weight: 700;
+}
+
+.listing-info-card h3 {
+  margin: 0 0 var(--space-2);
+  color: var(--color-brand);
+  font-family: var(--font-heading);
+  font-size: var(--fs-h5);
+  font-weight: 700;
+}
+
+.listing-info-card p,
+.listing-facts,
+.booking-total,
+.booking-discount {
+  color: var(--color-text-weak);
+  font-size: var(--fs-base);
+  line-height: 1.7;
+}
+
+.seller-listing-detail-pane .listing-info-card p,
+.seller-listing-detail-pane .listing-facts,
+.seller-listing-detail-pane .listing-meta-row,
+.seller-listing-detail-pane .rule-list,
+.seller-listing-detail-pane .amenity-grid span {
+  font-size: var(--fs-sm);
+  line-height: 1.4;
+}
+
+.seller-listing-detail-pane .rule-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--space-1);
+  row-gap: var(--space-1);
+  align-items: start;
+}
+
+.seller-listing-detail-pane .rule-list li {
+  display: grid;
+  grid-template-columns: 16px minmax(0, 1fr);
+  align-items: start;
+  gap: 4px;
+  font-size: var(--fs-sm);
+  line-height: 1.3;
+  color: var(--color-brand);
+  word-break: normal;
+}
+
+.seller-listing-detail-pane .rule-list svg {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+}
+
+.seller-listing-detail-pane .amenity-grid svg {
+  width: 16px;
+  height: 16px;
+}
+
+.listing-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.listing-facts svg {
+  flex: 0 0 auto;
+}
+
+.listing-info-card hr {
+  margin: var(--space-3) 0;
+  border-color: var(--color-stroke-weak);
+  opacity: 1;
+}
+
+.rule-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* .booking-card {
+  position: sticky;
+  top: var(--space-3);
+}
+
+.booking-price {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-1);
+  margin-bottom: var(--space-1);
+}
+
+.booking-price strong {
+  color: var(--color-brand);
+  font-size: var(--fs-h4);
+  font-weight: 500;
+}
+
+.booking-discount {
+  display: flex;
+  gap: var(--space-1);
+  margin-bottom: var(--space-3);
+}
+
+.booking-discount span {
+  text-decoration: line-through;
+}
+
+.booking-discount strong {
+  padding: 2px var(--space-1);
+  border-radius: 999px;
+  background: #f3e3bc;
+  color: var(--color-text-strong);
+  font-size: var(--fs-sm);
+}
+
+.booking-form {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.booking-form .form-label {
+  color: var(--color-text-strong);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+}
+
+.booking-form .form-control {
+  min-height: var(--button-min-height);
+  border: 1px solid var(--color-stroke-weak);
+  border-radius: var(--radius-control);
+  background: var(--color-background);
+}
+
+.reserve-button {
+  min-height: var(--button-min-height);
+  border: 1px solid var(--color-brand) !important;
+  border-radius: var(--radius-control) !important;
+  background: var(--color-brand) !important;
+  color: var(--color-fill) !important;
+  font-weight: var(--button-font-weight);
+}
+
+.booking-total {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-1);
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-stroke-weak);
+}
+
+.booking-total strong {
+  color: var(--color-text-strong);
+} */
+
+.amenities-card-wide {
+  margin-top: var(--space-3);
+}
+
+.seller-listing-detail-pane .amenities-card-wide {
+  margin-top: var(--space-2);
+}
+
+.amenity-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+
+.seller-listing-detail-pane .amenity-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-1);
+}
+
+.amenity-grid span {
+  min-height: var(--button-min-height);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-control);
+  background: var(--color-background);
+  color: var(--color-text-strong);
+  font-size: var(--fs-base);
+  font-weight: 500;
+}
+
+.seller-listing-detail-pane .amenity-grid span {
+  min-height: 36px;
+  padding: 6px var(--space-1);
+  border-radius: 0 var(--radius-control) 0 var(--radius-control);
+  font-weight: 500;
+}
+
+@media (min-width: 835px) and (max-width: 1163px) {
+  .seller-listing-detail-pane .listing-gallery {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+  }
+
+  .seller-listing-detail-pane .listing-gallery-main-wrap {
+    aspect-ratio: 16 / 9;
+  }
+
+  .seller-listing-detail-pane .listing-gallery-stack {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: none;
+    gap: var(--space-1);
+    align-items: stretch;
+  }
+
+  .seller-listing-detail-pane .listing-gallery-stack img {
+    aspect-ratio: 1 / 1;
+    height: 100%;
+    min-height: 0;
+  }
+}
+
+@media (max-width: 834px) {
+  .seller-listing-detail-pane {
+    position: static;
+    max-height: none;
+    padding: var(--space-2);
+  }
+
+  .seller-listing-detail-page {
+    padding: var(--space-2);
+  }
+
+  .seller-listing-detail-page .individual-listing-shell {
+    padding: var(--space-2);
+  }
+
+  .seller-listing-detail-pane .listing-hero-block h1 {
+    font-size: var(--fs-h4);
+  }
+
+  .listing-gallery,
+  .listing-content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .listing-gallery-main {
+    height: 420px;
+  }
+
+  .listing-gallery-stack {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .seller-listing-detail-pane .listing-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .seller-listing-detail-pane .listing-gallery-main-wrap {
+    aspect-ratio: 16 / 9;
+  }
+
+  .seller-listing-detail-pane .listing-gallery-stack {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: none;
+  }
+
+  .seller-listing-detail-pane .listing-gallery-stack img {
+    aspect-ratio: 1 / 1;
+  }
+
+  .amenity-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .seller-listing-detail-pane .rule-list {
+    grid-template-columns: 1fr;
+  }
+
+  /* .booking-card {
+    position: static;
+  } */
+}
+
+@media (max-width: 834px) {
+  .individual-listing-page {
+    padding: var(--space-3) 0 var(--space-5);
+  }
+
+  .seller-listing-detail-pane {
+    border-radius: calc(var(--radius-card) - 8px);
+  }
+
+  .seller-listing-detail-page {
+    padding: var(--space-1);
+  }
+
+  .seller-listing-detail-page .individual-listing-shell {
+    padding: var(--space-2);
+    border-radius: calc(var(--radius-card) - 8px);
+  }
+
+  .detail-pane-actions {
+    flex-wrap: wrap;
+  }
+
+  .detail-pane-close {
+    margin-left: auto;
+  }
+
+  .seller-listing-detail-pane .listing-hero-block h1 {
+    font-size: var(--fs-h5);
+  }
+
+  .listing-hero-block,
+  .listing-gallery,
+  .listing-content-grid,
+  .amenities-card-wide {
+    padding-right: var(--space-2);
+    padding-left: var(--space-2);
+  }
+
+  .listing-gallery-main,
+  .listing-gallery-stack img {
+    height: 280px;
+  }
+
+  .seller-listing-detail-pane .listing-gallery-main-wrap {
+    aspect-ratio: 4 / 3;
+  }
+
+  .seller-listing-detail-pane .listing-gallery-main {
+    height: 100%;
+  }
+
+  .listing-gallery-stack,
+  .rule-list,
+  .amenity-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .listing-info-card,
+  .booking-card {
+    border-radius: 0;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .seller-listing-detail-pane {
+    padding: var(--space-1);
+  }
+
+  .seller-listing-detail-pane .listing-info-card,
+  .seller-listing-detail-pane .booking-card {
+    padding: var(--space-2);
+  }
+
+  .detail-pane-action {
+    min-height: 34px;
+  }
+
+  .seller-listing-detail-pane .listing-gallery-stack {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .seller-listing-detail-pane .amenity-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  .seller-listing-detail-pane {
+    padding: 6px;
+  }
+
+  .detail-pane-actions {
+    gap: 6px;
+  }
+
+  .detail-pane-action {
+    min-height: 34px;
+    padding-right: var(--space-1);
+    padding-left: var(--space-1);
+    font-size: 13px;
+  }
+
+  .detail-pane-close {
+    width: 36px;
+    min-width: 36px;
+    height: 36px;
+    font-size: 30px;
+  }
+
+  .seller-listing-detail-pane .listing-hero-block {
+    gap: var(--space-1);
+    margin-bottom: var(--space-2);
+  }
+
+  .seller-listing-detail-pane .listing-hero-block h1 {
+    font-size: var(--fs-h5);
+    line-height: 1.1;
+  }
+
+  .seller-listing-detail-pane .listing-meta-row {
+    gap: var(--space-1);
+  }
+
+  .seller-listing-detail-pane .listing-gallery-main-wrap {
+    aspect-ratio: 1 / 1;
+  }
+
+  .seller-listing-detail-pane .listing-gallery-stack {
+    grid-template-columns: 1fr;
+  }
+
+  .seller-listing-detail-pane .listing-gallery-stack img {
+    aspect-ratio: 16 / 9;
+  }
+
+  .listing-info-card h2,
+  .listing-info-card h3,
+  .booking-card h2 {
+    font-size: var(--fs-h5);
+    line-height: 1.15;
+  }
+
+  .seller-listing-detail-pane .listing-info-card p,
+  .seller-listing-detail-pane .listing-facts,
+  .seller-listing-detail-pane .listing-meta-row,
+  .seller-listing-detail-pane .rule-list,
+  .seller-listing-detail-pane .amenity-grid span {
+    font-size: 13px;
+  }
+}
