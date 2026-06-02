@@ -933,3 +933,219 @@
   font-size: 14px;
 }
 
+
+
+
+
+
+/* OFFERS SECTION */
+
+
+.offers-section {
+  width: 100%;
+  min-height: 100vh;
+
+  /* BACKGROUND IMAGE */
+  background-image: url("../src/assets/Rectangle\ 82.png");
+  opacity: 0.9;
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 50px;
+  font-family: Arial, sans-serif;
+}
+
+/* DARK OVERLAY */
+.offers-section::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.45);
+}
+
+/* CONTENT WRAPPER */
+.offers-container {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* TOP TEXT */
+.offers-header {
+  color: white;
+  margin-bottom: 25px;
+}
+
+/* MAIN TITLE */
+.offers-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+/* SUBTITLE */
+.offers-header p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* OFFER CARD */
+.offer-card {
+  width: 100%;
+
+  background: rgba(255, 255, 255, 0.15);
+
+  border: 2px solid rgba(255, 255, 255, 0.2);
+
+  backdrop-filter: blur(8px);
+
+  border-radius: 20px;
+
+  padding: 18px;
+
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+  transition: 0.4s ease;
+}
+
+/* CARD HOVER */
+.offer-card:hover {
+  transform: translateY(-6px);
+
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* IMAGE CONTAINER */
+.offer-image {
+  width: 220px;
+  height: 150px;
+
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* IMAGE */
+.offer-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: 0.5s ease;
+}
+
+/* IMAGE HOVER */
+.offer-card:hover .offer-image img {
+  transform: scale(1.08);
+}
+
+/* RIGHT CONTENT */
+.offer-content {
+  flex: 1;
+
+  color: white;
+}
+
+/* SMALL TEXT */
+.offer-content span {
+  font-size: 0.8rem;
+
+  opacity: 0.8;
+}
+
+/* BIG TITLE */
+.offer-content h2 {
+  font-size: 3rem;
+
+  margin: 10px 0;
+}
+
+/* DESCRIPTION */
+.offer-content p {
+  max-width: 600px;
+
+  line-height: 1.6;
+
+  margin-bottom: 20px;
+}
+
+/* BUTTON */
+.deal-btn {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  padding: 12px 18px;
+
+  border: 2px solid rgba(255, 255, 255, 0.4);
+
+  background: transparent;
+
+  color: white;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+/* BUTTON HOVER */
+.deal-btn:hover {
+  background: white;
+  color: #2D1A03;
+}
+
+/* ARROW BOX */
+.arrow-box {
+  width: 35px;
+  height: 35px;
+
+  background: white;
+  color: #2D1A03;
+
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.2rem;
+
+  transition: 0.3s ease;
+}
+
+/* ARROW ANIMATION */
+.deal-btn:hover .arrow-box {
+  transform: rotate(45deg);
+
+  background: #2D1A03;
+  color: white;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+  .offer-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .offer-image {
+    width: 100%;
+    height: 220px;
+  }
+
+  .offer-content h2 {
+    font-size: 2rem;
+  }
+}

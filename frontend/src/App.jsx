@@ -4,6 +4,7 @@ import ReviewForm from "./components/ReviewForm";
 import HotelCarousel from "./components/HotelCarousel";
 import AboutSection from "./components/AboutSection";
 import LuxurySection from "./components/LuxurySection";
+import OffersSection from "./components/OfferSection";
 
 function App() {
   return (
@@ -22,6 +23,10 @@ function App() {
 
       <section className="luxury-section">
         <LuxurySection />
+      </section>
+
+      <section className="offers-section">
+        <OffersSection />
       </section>
     </div>
   );
