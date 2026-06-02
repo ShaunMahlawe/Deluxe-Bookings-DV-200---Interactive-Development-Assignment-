@@ -2,6 +2,7 @@ import './App.css';
 
 import ReviewForm from "./components/ReviewForm";
 import HotelCarousel from "./components/HotelCarousel";
+import AboutSection from "./components/AboutSection";
 
 function App() {
   return (
@@ -12,6 +13,10 @@ function App() {
 
       <section className="hotelcarousel-section">
         <HotelCarousel />
+      </section>
+
+      <section className="about-section">
+        <AboutSection />
       </section>
     </div>
   );
