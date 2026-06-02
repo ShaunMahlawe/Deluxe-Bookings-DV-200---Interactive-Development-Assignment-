@@ -72,7 +72,7 @@ function HotelCarousel() {
 </div>
       <Swiper
         modules={[Navigation]}
-        spaceBetween={30}
+        spaceBetween={null}
         slidesPerView={3}
         centeredSlides={true}
         loop={true}

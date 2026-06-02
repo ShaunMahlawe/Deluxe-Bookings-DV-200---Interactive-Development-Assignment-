@@ -105,13 +105,8 @@
 
 
 .carousel-container-hero {
-  min-height: 100vh;
-  background: linear-gradient(
-    135deg,
-    #ffffff,
-    #e8e3e1,
-    #ffffff
-  );
+  min-height: 80vh;
+  background: linear-gradient(135deg,#ffffff,#e8e3e1,#ffffff);
 
   padding: 80px 5%;
   position: relative;
@@ -161,19 +156,13 @@
 /* HOTEL CARD */
 
 .hotel-card-hero {
-  width: 100%;
-  max-width: 340px;
-
+  width: 80%;
+  max-width: 350px;
   background: rgba(255, 255, 255, 0.8);
-
   backdrop-filter: blur(20px);
-
   border-radius: 30px;
-
   overflow: hidden;
-
   border: 1px solid rgba(191, 178, 170, 0.4);
-
   box-shadow:
     0 20px 40px rgba(0, 0, 0, 0.08),
     0 5px 15px rgba(59, 31, 5, 0.06);
@@ -189,7 +178,7 @@
 
 .image-wrapper {
   position: relative;
-  height: 380px;
+  height: 350px;
 }
 
 .image-wrapper img {
@@ -967,15 +956,7 @@
   font-family: Arial, sans-serif;
 }
 
-/* DARK OVERLAY */
-/* .offers-section::before {
-  content: "";
 
-  position: absolute;
-  inset: 0;
-
-  background: rgba(0, 0, 0, 0.45);
-} */
 
 /* CONTENT WRAPPER */
 .offers-container {
