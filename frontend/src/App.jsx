@@ -5,6 +5,7 @@ import HotelCarousel from "./components/HotelCarousel";
 import AboutSection from "./components/AboutSection";
 import LuxurySection from "./components/LuxurySection";
 import OffersSection from "./components/OfferSection";
+import LuxuryCarousel from "./components/LuxuryCarousel";
 
 function App() {
   return (
@@ -23,6 +24,10 @@ function App() {
 
       <section className="luxury-section">
         <LuxurySection />
+      </section>
+
+      <section className="luxury-carousel-section">
+        <LuxuryCarousel />
       </section>
 
       <section className="offers-section">
