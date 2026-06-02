@@ -323,6 +323,7 @@
 .next-btn-hero {
   width: 65px;
   height: 65px;
+  margin-top: 10px;
 
   border-radius: 50%;
   border: none;
@@ -344,6 +345,7 @@
 .next-btn-hero:hover {
   background: #73554d;
   transform: translateY(-5px);
+  margin-top: 9px;
 }
 
 /* ACTIVE CARD EFFECT */

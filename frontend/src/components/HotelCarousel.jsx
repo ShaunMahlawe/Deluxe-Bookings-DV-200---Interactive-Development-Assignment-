@@ -50,6 +50,46 @@ const hotels = [
     image:
       "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85",
   },
+  {
+    id: 5,
+    title: "Sandton Skye Premium Suites & Penthouses",
+    location: "Johannesburg, South Africa",
+    price: "ZAR 2,574",
+    rating: "8.2",
+    reviews: "611 reviews",
+    image:
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+  },
+  {
+    id: 6,
+    title: "Luxury Ocean Apartments",
+    location: "Cape Town, South Africa",
+    price: "ZAR 3,200",
+    rating: "8.5",
+    reviews: "420 reviews",
+    image:
+      "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2",
+  },
+  {
+    id: 7,
+    title: "Modern Penthouse Suites",
+    location: "Durban, South Africa",
+    price: "ZAR 1,980",
+    rating: "8.0",
+    reviews: "280 reviews",
+    image:
+      "https://images.unsplash.com/photo-1494526585095-c41746248156",
+  },
+  {
+    id: 8,
+    title: "Coastal Paradise Resort",
+    location: "Cape Town, South Africa",
+    price: "ZAR 4,100",
+    rating: "8.3",
+    reviews: "520 reviews",
+    image:
+      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85",
+  },
 ];
 
 function HotelCarousel() {
@@ -72,7 +112,7 @@ function HotelCarousel() {
 </div>
       <Swiper
         modules={[Navigation]}
-        spaceBetween={null}
+        spaceBetween={0}
         slidesPerView={3}
         centeredSlides={true}
         loop={true}
