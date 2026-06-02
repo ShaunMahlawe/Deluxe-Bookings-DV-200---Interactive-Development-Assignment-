@@ -1255,6 +1255,55 @@ input{
   font-weight: 600;
 
   margin-bottom: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 100%;
+  padding: 8px;
+  background: #ffffff;
+  overflow-x: clip;
+}
+
+.app-status-message {
+  margin: 0;
+  width: 100%;
+  color: #7e5a3d;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.app-admin-actions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.app-refresh-button {
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #0f6b57, #0a8f67);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(11, 110, 84, 0.28);
+}
+
+.app-refresh-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .App {
+    padding: 6px;
+  }
 }
 
 .floating-content h1 {

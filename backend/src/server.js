@@ -5,6 +5,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const app = express();
+const app = require('./app')
+const { connectDatabase, stopDatabase } = require('./config/db')
 
 const bcrypt = require("bcrypt");
 const User = require("./models/User");
@@ -36,3 +38,15 @@ mongoose.connect(process.env.MONGO_URI)
 app.listen(5000, () => {
     console.log("Server running on port 5000");
 });
+startServer()
+
+async function shutdown(signal) {
+  try {
+    await stopDatabase()
+  } finally {
+    process.exit(0)
+  }
+}
+
+process.on('SIGINT', shutdown)
+process.on('SIGTERM', shutdown)

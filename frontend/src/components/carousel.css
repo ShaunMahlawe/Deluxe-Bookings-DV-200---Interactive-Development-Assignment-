@@ -1,0 +1,182 @@
+.area-carousel {
+  margin: 40px 0 0 0;
+  text-align: left;
+  font-family: 'Poppins', sans-serif;
+  color: #3f2d20;
+}
+
+.area-carousel h2 {
+  margin: 0 0 18px;
+  font-size: 30px;
+  line-height: 1.1;
+  color: #281a11;
+}
+
+.area-carousel .things-carousel-viewport {
+  overflow: visible;
+  padding-top: 8px;
+  margin-top: -8px;
+}
+
+.area-carousel .things-track {
+  display: flex;
+  transition: transform 0.35s ease;
+}
+
+.area-carousel .things-page {
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  align-items: stretch;
+}
+
+.area-carousel .things-card {
+  background: #7e5b3f;
+  border-radius: 24px;
+  overflow: hidden;
+  min-width: 250px;
+  height: 370px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 18px rgba(40, 22, 10, 0.2), 0 3px 8px rgba(22, 12, 6, 0.14);
+  transition: transform 0.26s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.26s ease;
+  will-change: transform;
+}
+
+.area-carousel .things-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 18px 30px rgba(34, 19, 9, 0.26), 0 8px 16px rgba(27, 16, 8, 0.2);
+}
+
+.area-carousel .things-card:hover .things-card-action {
+  transform: translateY(-1px);
+}
+
+.area-carousel .things-card-image {
+  height: 210px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  flex: 0 0 210px;
+}
+
+.area-carousel .things-card-action {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid #8f6a4e;
+  background: #ffffff;
+  color: #3f2d20;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.22s ease, background-color 0.22s ease, color 0.22s ease;
+}
+
+.area-carousel .things-card-action:hover {
+  background: #f8f3ee;
+  color: #2f2015;
+}
+
+.area-carousel .things-card-body {
+  padding: 12px 14px 14px;
+  color: #fff;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.area-carousel .things-card-body h3 {
+  margin: 0;
+  font-size: 23px;
+  line-height: 1.2;
+  min-height: 56px;
+  max-height: 56px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.area-carousel .things-card-rating {
+  margin-top: 6px;
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 4px 9px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.area-carousel .things-card-body p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.area-carousel .things-card-body span {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.area-carousel .things-card-meta {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.area-carousel .things-controls {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.area-carousel .things-control-button {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid #bba690;
+  background: #f3ece5;
+  color: #8a6443;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.area-carousel .things-control-button-active {
+  background: #8a6443;
+  color: #fff;
+  border-color: #8a6443;
+}
+
+.area-carousel .things-pagination {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.area-carousel .things-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 0;
+  background: #d8ccc2;
+  cursor: pointer;
+}
+
+.area-carousel .things-dot.is-active {
+  width: 18px;
+  background: #8a6443;
+}
+
+@media (max-width: 1100px) {
+  .area-carousel h2 {
+    font-size: 34px;
+  }
+}

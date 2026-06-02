@@ -45,8 +45,14 @@
   background: var(--color-background);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 * {
@@ -131,6 +137,15 @@ button,
 input,
 textarea {
   font: inherit;
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
 input::placeholder,

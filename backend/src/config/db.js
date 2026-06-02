@@ -1,13 +1,21 @@
 const mongoose = require('mongoose')
+const { MongoMemoryServer } = require('mongodb-memory-server')
 
 let databaseConnected = false
+let memoryServer = null
 
 async function connectDatabase() {
-  const mongoUri = process.env.MONGODB_URI
+  let mongoUri = process.env.MONGODB_URI
 
   if (!mongoUri) {
-    console.warn('MONGODB_URI not set. Starting backend in demo fallback mode.')
-    return false
+    memoryServer = await MongoMemoryServer.create({
+      instance: {
+        dbName: 'deluxe_bookings',
+      },
+    })
+
+    mongoUri = memoryServer.getUri()
+    console.warn('MONGODB_URI not set. Starting in-memory MongoDB mode.')
   }
 
   try {
@@ -26,7 +34,15 @@ function isDatabaseConnected() {
   return databaseConnected
 }
 
+async function stopDatabase() {
+  if (memoryServer) {
+    await memoryServer.stop()
+    memoryServer = null
+  }
+}
+
 module.exports = {
   connectDatabase,
   isDatabaseConnected,
+  stopDatabase,
 }

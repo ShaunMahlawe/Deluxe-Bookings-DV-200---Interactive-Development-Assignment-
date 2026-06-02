@@ -1,0 +1,57 @@
+.api-guide-page {
+  min-height: 100vh;
+  background: radial-gradient(circle at 15% 20%, #ddf8f0 0%, #f7fbfa 42%, #f0f7f8 100%);
+}
+
+.api-guide-content {
+  width: min(1040px, calc(100% - 40px));
+  margin: 28px auto 64px;
+  color: #143a32;
+}
+
+.api-guide-content h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+}
+
+.api-guide-content > p {
+  max-width: 760px;
+  line-height: 1.6;
+  margin-top: 12px;
+  margin-bottom: 24px;
+}
+
+.api-guide-table {
+  display: grid;
+  gap: 12px;
+}
+
+.api-guide-row {
+  background: #ffffff;
+  border: 1px solid rgba(20, 58, 50, 0.12);
+  border-radius: 16px;
+  padding: 14px 16px;
+  display: grid;
+  gap: 8px;
+}
+
+.api-guide-method {
+  width: fit-content;
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  background: #0f7d64;
+  border-radius: 999px;
+  padding: 4px 9px;
+}
+
+.api-guide-path {
+  font-family: 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.92rem;
+}
+
+.api-guide-row p {
+  margin: 0;
+  line-height: 1.5;
+}
