@@ -371,12 +371,7 @@
 
   padding: 120px 8%;
 
-  background: linear-gradient(
-    135deg,
-    #ffffff,
-    #e8e3e1,
-    #ffffff
-  );
+  background: linear-gradient(135deg,#ffffff,#e8e3e1,#ffffff);
 }
 
 /* LEFT SIDE */
@@ -487,6 +482,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 800px;
 
   gap: 30px;
 
