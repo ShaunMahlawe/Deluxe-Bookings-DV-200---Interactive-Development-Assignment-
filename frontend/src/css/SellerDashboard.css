@@ -11,7 +11,7 @@
 
 .seller-kicker {
   margin: 0 0 var(--space-1);
-  color: var(--color-text-weak);
+  color: rgba(255, 255, 255, 0.72);
   font-size: var(--fs-sm);
   font-weight: 500;
   letter-spacing: 0.12em;
@@ -20,10 +20,17 @@
 
 .seller-dashboard-title {
   margin: 0;
-  color: var(--color-text-strong);
+  color: var(--color-fill);
   font-family: var(--font-body);
   font-size: clamp(var(--fs-h4), 4vw, var(--fs-h2));
   font-weight: 500;
+}
+
+.seller-dashboard-title em {
+  color: var(--color-fill);
+  font-family: var(--font-h1);
+  font-style: italic;
+  font-weight: 600;
 }
 
 .seller-dashboard-meta {
@@ -32,8 +39,24 @@
   gap: var(--space-1);
   align-items: center;
   margin-top: var(--space-1);
-  color: var(--color-text-weak);
+  color: rgba(255, 255, 255, 0.72);
   font-size: var(--fs-base);
+}
+
+.seller-dashboard-page:has(.my-listings-layout.has-detail-pane) .seller-header {
+  padding-top: var(--space-2) !important;
+  padding-bottom: var(--space-2) !important;
+}
+
+.seller-dashboard-page:has(.my-listings-layout.has-detail-pane) .seller-kicker,
+.seller-dashboard-page:has(.my-listings-layout.has-detail-pane)
+  .seller-dashboard-meta {
+  display: none;
+}
+
+.seller-dashboard-page:has(.my-listings-layout.has-detail-pane)
+  .seller-dashboard-title {
+  font-size: var(--fs-h5);
 }
 
 .seller-primary-action,

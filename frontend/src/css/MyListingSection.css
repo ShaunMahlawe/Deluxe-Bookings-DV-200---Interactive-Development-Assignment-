@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
+  margin: var(--space-3) 0 var(--space-5);
   padding: 0% 10%;
 }
 
@@ -71,6 +72,10 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-1);
+}
+
+.my-listings-filter-dropdown {
+  display: none;
 }
 
 .my-listings-filter {
@@ -166,11 +171,61 @@
 .my-listings-list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  min-height: 0;
+}
+
+.my-listings-card-panel {
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--color-stroke-weak);
+  border-radius: var(--radius-card);
+  background: var(--color-fill);
+  box-shadow: 0 12px 30px rgba(51, 42, 35, 0.12);
+}
+
+.my-listings-card-scroll {
+  display: flex;
+  height: 100%;
+  min-height: 0;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-2);
+  overflow-y: visible;
+}
+
+.my-listings-card-scroll .seller-listing-card {
+  flex: 0 0 auto;
+}
+
+.my-listings-layout.has-detail-pane .my-listings-card-panel {
+  height: calc(
+    100vh - var(--space-6) - var(--button-min-height) - var(--space-2)
+  );
+}
+
+.my-listings-layout.has-detail-pane .my-listings-card-scroll {
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.my-listings-layout.has-detail-pane
+  .my-listings-card-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 
-@media (max-width: 991.98px) {
+@media (max-width: 834px) {
+  .my-listings-section,
+  .my-listings-section:has(.my-listings-layout.has-detail-pane) {
+    padding-right: var(--space-2);
+    padding-left: var(--space-2);
+  }
+
+  .my-listings-section {
+    padding: 0;
+  }
+
   .my-listings-layout {
     display: flex;
   }
@@ -183,11 +238,38 @@
   .my-listings-layout.has-detail-pane .seller-listing-card {
     grid-template-columns: 1fr;
   }
-}
 
-@media (max-width: 767.98px) {
-  .my-listings-section {
+  .my-listings-layout.has-detail-pane .my-listings-card-panel {
+    height: auto;
+    overflow: visible;
+  }
+
+  .my-listings-layout.has-detail-pane .my-listings-card-scroll {
+    overflow: visible;
+  }
+
+  .my-listings-toolbar {
+    row-gap: var(--space-2);
+  }
+
+  .my-listings-filters {
+    display: none;
+  }
+
+  .my-listings-filter-dropdown {
+    display: block;
+  }
+
+  .my-listings-card-scroll {
+    gap: var(--space-2);
     padding: 0;
+  }
+
+  .my-listings-card-panel {
+    border: 0;
+    border-radius: calc(var(--radius-card) - 8px);
+    background: transparent;
+    box-shadow: none;
   }
 
   .my-listings-filter-column {
@@ -200,5 +282,55 @@
 
   .my-listings-add-button {
     white-space: nowrap;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .my-listings-section,
+  .my-listings-section:has(.my-listings-layout.has-detail-pane) {
+    padding-right: var(--space-1);
+    padding-left: var(--space-1);
+  }
+
+  .my-listings-toolbar {
+    justify-content: space-between !important;
+  }
+
+  .my-listings-filter-column {
+    flex: 1 1 auto;
+  }
+
+  .my-listings-action-column {
+    flex: 0 0 auto;
+  }
+
+  .my-listings-add-button {
+    min-height: 42px;
+    padding-right: var(--space-2);
+    padding-left: var(--space-2);
+  }
+
+  .my-listings-add-button span {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .my-listings-section,
+  .my-listings-section:has(.my-listings-layout.has-detail-pane) {
+    margin-top: var(--space-2);
+    padding-right: 6px;
+    padding-left: 6px;
+  }
+
+  .my-listings-card-scroll {
+    padding: 6px;
+  }
+
+  .my-listings-filter-dropdown-toggle.btn {
+    min-height: 42px;
+    padding-right: var(--space-2);
+    padding-left: var(--space-2);
+    font-size: var(--fs-sm);
   }
 }
