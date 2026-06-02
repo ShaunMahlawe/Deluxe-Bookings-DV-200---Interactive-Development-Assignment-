@@ -374,7 +374,7 @@ function SellerOnboarding({ onNavigate }) {
           <Row className="justify-content-center">
             <Col lg={9}>
               <div className="section-heading text-center">
-                <h2>Frequently Asked Questions</h2>
+                <h2>Frequently Asked <em>Questions</em></h2>
               </div>
 
               <Accordion flush className="seller-faq">
@@ -413,7 +413,7 @@ function SellerOnboarding({ onNavigate }) {
 
       <section className="seller-final-cta text-center">
         <Container>
-          <h2>Ready to Elevate Your Property?</h2>
+          <h2>Ready to <em>Elevate Your Property?</em></h2>
           <p>Join South Africa's most discerning property owners and start welcoming exceptional guests today.</p>
 
           <div className="hero-actions">
