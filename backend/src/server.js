@@ -1,4 +1,5 @@
 require("dotenv").config();
+const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -16,6 +17,12 @@ app.use("/auth", authRoutes);
 
 const bookingRoutes = require('./routes/bookings');
 app.use("/api", bookingRoutes);
+
+app.use(
+  "/api/reviews",
+  require("./routes/reviewRoutes")
+);
+
 
 app.get("/", (req, res) => {
     res.send("API is running");

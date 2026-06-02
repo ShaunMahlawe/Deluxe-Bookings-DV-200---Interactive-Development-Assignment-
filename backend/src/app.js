@@ -1,13 +1,13 @@
-const express = require('express')
-const cors = require('cors')
-const cookieParser = require('cookie-parser')
+// const express = require('express')
+// const cors = require('cors')
+// const cookieParser = require('cookie-parser')
 
 const authRoutes = require('./routes/authRoutes')
 const bookingRoutes = require('./routes/bookingRoutes')
 const listingRoutes = require('./routes/listingRoutes')
 const sellerRoutes = require('./routes/sellerRoutes')
 
-const app = express()
+// const app = express()
 
 const allowedOrigins = [
   process.env.FRONTEND_URL,
@@ -31,9 +31,9 @@ app.use(
 app.use(express.json())
 app.use(cookieParser())
 
-app.get('/api/health', (_req, res) => {
-  res.json({ status: 'ok', mode: process.env.MONGODB_URI ? 'mongo' : 'demo' })
-})
+// app.get('/api/health', (_req, res) => {
+//   res.json({ status: 'ok', mode: process.env.MONGODB_URI ? 'mongo' : 'demo' })
+// })
 
 app.get("/", (req, res) => {
   res.send("Deluxe Bookings API is running");
@@ -44,9 +44,9 @@ app.use('/api/bookings', bookingRoutes)
 app.use('/api/listings', listingRoutes)
 app.use('/api/seller', sellerRoutes)
 
-app.use((err, _req, res, _next) => {
-  console.error(err)
-  res.status(500).json({ message: 'Unexpected server error.' })
-})
+// app.use((err, _req, res, _next) => {
+//   console.error(err)
+//   res.status(500).json({ message: 'Unexpected server error.' })
+// })
 
 module.exports = app
