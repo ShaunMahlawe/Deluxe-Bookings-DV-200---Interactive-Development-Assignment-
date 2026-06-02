@@ -149,7 +149,7 @@ textarea::placeholder {
   min-height: var(--button-min-height) !important;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   gap: var(--space-1);
   border-radius: var(--radius-control);
   font-family: var(--font-body);

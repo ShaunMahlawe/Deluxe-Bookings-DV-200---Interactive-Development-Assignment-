@@ -133,7 +133,7 @@ function SellerOnboarding({ onNavigate }) {
 
   return (
     <main className="seller-onboarding-page">
-      <nav className="seller-nav" aria-label="Seller onboarding navigation">
+      {/* <nav className="seller-nav" aria-label="Seller onboarding navigation">
         <Container className="seller-nav-inner">
           <button className="seller-logo" type="button" onClick={() => onNavigate("/")}>
             Deluxe
@@ -153,7 +153,7 @@ function SellerOnboarding({ onNavigate }) {
             </button>
           </div>
         </Container>
-      </nav>
+      </nav> */}
 
       <section className="seller-hero">
         <Container>
