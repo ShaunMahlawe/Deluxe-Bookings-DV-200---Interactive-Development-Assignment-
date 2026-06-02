@@ -1,0 +1,204 @@
+.my-listings-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: 0% 10%;
+}
+
+.my-listings-section:has(.my-listings-layout.has-detail-pane) {
+  padding-right: var(--space-1);
+  padding-left: var(--space-1);
+}
+.my-listings-section [role="button"] {
+  justify-content: left;
+}
+
+.my-listings-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.my-listings-layout.has-detail-pane {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  justify-content: stretch;
+  align-items: start;
+}
+
+.my-listings-layout.has-detail-pane .seller-listing-card {
+  grid-template-columns: 180px minmax(0, 1fr);
+}
+
+.my-listings-primary {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.my-listings-layout.has-detail-pane .my-listings-list,
+.my-listings-layout.has-detail-pane .my-listings-primary,
+.my-listings-layout.has-detail-pane .seller-listing-detail-pane {
+  min-width: 0;
+  width: 100%;
+}
+
+.my-listings-toolbar {
+  align-items: center;
+}
+
+.my-listings-filter-column,
+.my-listings-action-column {
+  display: flex;
+  align-items: center;
+}
+
+.my-listings-action-column {
+  justify-content: flex-end;
+}
+
+.my-listings-add-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  padding: 0 var(--space-3);
+}
+
+.my-listings-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.my-listings-filter {
+  padding: 8px 16px;
+
+  border: 1px solid var(--color-stroke-weak);
+
+  border-radius: 999px;
+
+  background: var(--color-fill);
+
+  color: var(--color-text-weak);
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.my-listings-filter-dropdown-toggle.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--button-min-height);
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--color-stroke-weak) !important;
+  border-radius: var(--radius-control);
+  background: var(--color-fill) !important;
+  color: var(--color-text-strong) !important;
+  box-shadow: var(--shadow-raised);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  font-weight: var(--button-font-weight);
+  text-align: left;
+}
+
+.my-listings-filter-dropdown-toggle.btn:hover,
+.my-listings-filter-dropdown-toggle.btn:focus,
+.my-listings-filter-dropdown-toggle.btn:active,
+.my-listings-filter-dropdown-toggle.btn.show {
+  border-color: var(--color-stroke-strong) !important;
+  background: var(--color-fill) !important;
+  color: var(--color-brand) !important;
+  box-shadow: var(--shadow-raised) !important;
+}
+
+.my-listings-filter-dropdown-toggle::after {
+  margin-left: var(--space-1);
+  vertical-align: 0.12em;
+  border-top-color: currentColor;
+}
+
+.my-listings-filter-dropdown .dropdown-menu {
+  padding: var(--space-1);
+  border: 1px solid var(--color-stroke-weak);
+  border-radius: var(--radius-control);
+  background: var(--color-fill);
+  box-shadow: var(--shadow-overlay);
+}
+
+.my-listings-filter-dropdown .dropdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 40px;
+  padding: var(--space-1) var(--space-2);
+  border-radius: calc(var(--radius-control) - 4px);
+  color: var(--color-text-strong);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  text-align: left;
+}
+
+.my-listings-filter-dropdown .dropdown-item:hover,
+.my-listings-filter-dropdown .dropdown-item:focus {
+  background: var(--color-background);
+  color: var(--color-brand);
+}
+
+.my-listings-filter-dropdown .dropdown-item.active,
+.my-listings-filter-dropdown .dropdown-item:active {
+  background: var(--color-fill);
+  color: var(--color-brand);
+}
+
+.my-listings-filter.active {
+  background: var(--color-fill);
+
+  border-color: var(--color-brand);
+
+  color: var(--color-brand);
+}
+
+.my-listings-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+
+@media (max-width: 991.98px) {
+  .my-listings-layout {
+    display: flex;
+  }
+
+  .my-listings-layout.has-detail-pane {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .my-listings-layout.has-detail-pane .seller-listing-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .my-listings-section {
+    padding: 0;
+  }
+
+  .my-listings-filter-column {
+    justify-content: flex-end;
+  }
+
+  .my-listings-filter-dropdown .dropdown-menu {
+    min-width: 220px;
+  }
+
+  .my-listings-add-button {
+    white-space: nowrap;
+  }
+}

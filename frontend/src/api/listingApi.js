@@ -1,11 +1,11 @@
-const API_URL = "http://localhost:5001/api/listings";
+import API_BASE_URL from "./config";
 
 export const getListings = async () => {
-  const response = await fetch(API_URL);
+  const response = await fetch(`${API_BASE_URL}/listings`);
   return await response.json();
 };
 
 export const getListingById = async (id) => {
-  const response = await fetch(`${API_URL}/${id}`);
+  const response = await fetch(`${API_BASE_URL}/listings/${id}`);
   return await response.json();
 };

@@ -5,12 +5,26 @@ const cookieParser = require('cookie-parser')
 const authRoutes = require('./routes/authRoutes')
 const bookingRoutes = require('./routes/bookingRoutes')
 const listingRoutes = require('./routes/listingRoutes')
+const sellerRoutes = require('./routes/sellerRoutes')
 
 const app = express()
 
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+].filter(Boolean)
+
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true)
+        return
+      }
+
+      callback(new Error(`Origin ${origin} is not allowed by CORS`))
+    },
     credentials: true,
   }),
 )
@@ -28,6 +42,7 @@ app.get("/", (req, res) => {
 app.use('/api/auth', authRoutes)
 app.use('/api/bookings', bookingRoutes)
 app.use('/api/listings', listingRoutes)
+app.use('/api/seller', sellerRoutes)
 
 app.use((err, _req, res, _next) => {
   console.error(err)

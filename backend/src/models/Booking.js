@@ -8,11 +8,11 @@ const bookingSchema = new mongoose.Schema(
       required: true,
     },
 
-    listing: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Listing",
-      required: true,
-    },
+    // listing: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: "Listing",
+    //   required: true,
+    // },
     
     destination: {
       type: String,

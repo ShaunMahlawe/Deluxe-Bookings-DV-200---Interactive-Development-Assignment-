@@ -1,20 +1,26 @@
+
+
 import { useState } from "react";
+
 import { Button, Container, Form, ProgressBar } from "react-bootstrap";
+
 import {
   initialListingForm,
   ListingFormSection,
   listingFormSteps,
 } from "../../components/seller/ListingForm";
+
+import { createSellerListing } from "../../api/sellerApi";
+
 import {
-  createLocalSellerListing,
-  LISTING_DRAFT_KEY,
-  readStoredJson,
-  removeStoredValue,
-  writeStoredJson,
+  getListingDraft,
+  saveListingDraft,
+  clearListingDraft,
 } from "../../utils/listingStorage";
+
 import "../../css/Listing.css";
 
-const getSavedDraft = () => readStoredJson(LISTING_DRAFT_KEY, null);
+const getSavedDraft = () => getListingDraft();
 
 const buildListingPayload = (formData) => {
   const location = [
@@ -59,7 +65,7 @@ function CreateListing({ onNavigate }) {
   };
 
   const saveDraft = () => {
-    writeStoredJson(LISTING_DRAFT_KEY, { formData, currentStep });
+    saveListingDraft({ formData, currentStep });
   };
 
   const handleSaveAndExit = () => {
@@ -67,10 +73,24 @@ function CreateListing({ onNavigate }) {
     onNavigate("/seller/dashboard");
   };
 
-  const addListing = () => {
-    const listing = createLocalSellerListing(buildListingPayload(formData));
-    removeStoredValue(LISTING_DRAFT_KEY);
-    setSuccessListing(listing);
+  const addListing = async () => {
+    const token = localStorage.getItem("deluxe_token");
+
+    if (!token) {
+      onNavigate("/");
+      return;
+    }
+
+    try {
+      const listing = await createMySellerListing(
+        buildListingPayload(formData),
+        token,
+      );
+      clearListingDraft();
+      setSuccessListing(listing);
+    } catch (error) {
+      console.log("Error creating listing:", error);
+    }
   };
 
   const goNext = () => {
@@ -92,10 +112,15 @@ function CreateListing({ onNavigate }) {
             <p className="brand-label">Intake submitted</p>
             <h1>Thank you. Your listing is being reviewed.</h1>
             <p>
-              We saved {successListing.propertyName || "your property"} to your seller dashboard.
-              The Deluxe team will process and review the intake before it goes live.
+              We saved {successListing.propertyName || "your property"} to your
+              seller dashboard. The Deluxe team will process and review the
+              intake before it goes live.
             </p>
-            <Button className="continue-button" type="button" onClick={() => onNavigate("/seller/dashboard")}>
+            <Button
+              className="continue-button"
+              type="button"
+              onClick={() => onNavigate("/seller/dashboard")}
+            >
               Go to Dashboard
             </Button>
           </section>
@@ -111,8 +136,13 @@ function CreateListing({ onNavigate }) {
           <h1 className="intake-page-title">List Your Property</h1>
         </div>
 
-        <p className="step-text">Progress: {stepNumber}/{totalSteps}</p>
-        <ProgressBar className="progress-bar-outer" now={(stepNumber / totalSteps) * 100} />
+        <p className="step-text">
+          Progress: {stepNumber}/{totalSteps}
+        </p>
+        <ProgressBar
+          className="progress-bar-outer"
+          now={(stepNumber / totalSteps) * 100}
+        />
 
         <Form className="fields-grid intake-step-form">
           <ListingFormSection
@@ -122,19 +152,37 @@ function CreateListing({ onNavigate }) {
           />
 
           <div className="form-actions">
-            <Button type="button" className="save-exit-btn" onClick={goBack} disabled={currentStep === 0}>
+            <Button
+              type="button"
+              className="save-exit-btn"
+              onClick={goBack}
+              disabled={currentStep === 0}
+            >
               Back
             </Button>
+            
             <div className="action-group">
-              <Button type="button" className="back-button" onClick={handleSaveAndExit}>
+              <Button
+                type="button"
+                className="back-button"
+                onClick={handleSaveAndExit}
+              >
                 Save & Exit
               </Button>
               {currentStep < totalSteps - 1 ? (
-                <Button type="button" className="continue-button" onClick={goNext}>
+                <Button
+                  type="button"
+                  className="continue-button"
+                  onClick={goNext}
+                >
                   Continue
                 </Button>
               ) : (
-                <Button type="button" className="publish-button" onClick={addListing}>
+                <Button
+                  type="button"
+                  className="publish-button"
+                  onClick={addListing}
+                >
                   Add Listing
                 </Button>
               )}

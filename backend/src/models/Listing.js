@@ -7,7 +7,7 @@ const ListingSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-    
+
     // Public name shown on listings
     propertyName: {
       type: String,
@@ -103,30 +103,30 @@ const ListingSchema = new mongoose.Schema(
       type: String,
     },
 
-    area:{
-      type:Number
+    area: {
+      type: Number,
     },
 
-    checkInTime:{
-      type:String
+    checkInTime: {
+      type: String,
     },
 
-    checkOutTime:{
-      type:String
+    checkOutTime: {
+      type: String,
     },
 
-    additionalRules:{
-      type:String
+    additionalRules: {
+      type: String,
     },
 
-    services:{
-      type:[String],
-      default:[]
+    services: {
+      type: [String],
+      default: [],
     },
 
-    facilities:{
-      type:[String],
-      default:[]
+    facilities: {
+      type: [String],
+      default: [],
     },
 
     beachDistance: {
@@ -154,7 +154,14 @@ const ListingSchema = new mongoose.Schema(
 
     status: {
       type: String,
-      default: "published",
+      enum: [
+        "draft",
+        "submitted_for_review",
+        "approved_unpublished",
+        "published",
+        "removed_from_public",
+      ],
+      default: "submitted_for_review",
     },
 
     hostName: {
@@ -184,7 +191,7 @@ const ListingSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 module.exports = mongoose.model("Listing", ListingSchema);
