@@ -289,6 +289,7 @@ nav{
   padding: 0.5%;
   border: none;
   padding-left: 1%;
+  display: inline-flex;
 }
 .searchButton{
   width:3%;

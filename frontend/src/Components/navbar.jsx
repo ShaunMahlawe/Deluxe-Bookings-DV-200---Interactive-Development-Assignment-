@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 import Logo from "../Assets/images/Logo.png"
@@ -15,23 +16,40 @@ import Walleticon from '../Assets/icons/walletIcon.png'
 import Dropdown from 'react-bootstrap/Dropdown';
 
 function NavBar() {
-  // Checks if the user is logged in by looking for the token
-  const isLoggedIn = !!localStorage.getItem("token");
+  
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
+
+  useEffect(() => {
+  setIsLoggedIn(!!localStorage.getItem("token"));
+
+  const checkToken = () => {
+    setIsLoggedIn(!!localStorage.getItem("token"));
+  };
+
+  window.addEventListener("storage", checkToken);
+  
+  return () => {
+    window.removeEventListener("storage", checkToken);
+  };
+}, []);
 
   // logs out the user
   const handleSignOut = () => {
     localStorage.clear();
+    setIsLoggedIn(false); // 4. Update state so it changes instantly before redirect
     window.location.href = "/login";
   };
 
   return (
-  <nav>
+    <nav>
         <Link to="/product" className="pagelinks"><img src={BedIcon} alt="Bed Icon" className='iconStyling'/>Stays</Link>
         <Link to="/seller" className="pagelinks"><img src={StoreIcon} alt="Store Icon" className='iconStyling'/>List your property</Link>
         <Link to="/"><img src={Logo} alt="Deluxe Bookings logo" className='logoStyling'/></Link>
-        <container className="searchBox">
-        <input type="text" placeholder="Search.." className="searchBar"></input><img src={Searchbutton} alt="plus icon" className='searchButton'/>
-        </container>
+        
+        <div className="searchBox col-3">
+          <input type="text" placeholder="Search.." className="searchBar"></input>
+          <img src={Searchbutton} alt="plus icon" className='searchButton'/>
+        </div>
         
         {/* Conditional rendering */}
         {!isLoggedIn ? (
