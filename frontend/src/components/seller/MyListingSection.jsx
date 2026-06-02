@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Plus } from "lucide-react";
 import SellerListingCard from "../../components/seller/SellerListingCard";
 import IndividualListing from "../../pages/seller/individualListing";
@@ -31,8 +31,26 @@ function MyListingSection({
   onEdit,
   onStatusChange,
   onCreate,
+  onViewListingPage,
 }) {
   const [activeFilter, setActiveFilter] = useState("All");
+  const [useListingPage, setUseListingPage] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 834px)");
+
+    const updateUseListingPage = () => {
+      setUseListingPage(mediaQuery.matches);
+    };
+
+    updateUseListingPage();
+
+    mediaQuery.addEventListener("change", updateUseListingPage);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateUseListingPage);
+    };
+  }, []);
 
   const visibleListings = listings.filter(
     (listing) => listing.status !== "rejected",
@@ -61,6 +79,20 @@ function MyListingSection({
   const activeFilterLabel =
     filters.find((filter) => filter.value === activeFilter)?.label || "Filter";
 
+  const handleViewDetails = (listing, isSelected) => {
+    if (useListingPage) {
+      onViewListingPage?.(listing._id);
+      return;
+    }
+
+    if (isSelected) {
+      onCloseListing();
+      return;
+    }
+
+    onSelectListing(listing);
+  };
+
   return (
     <section className="my-listings-section">
       <div
@@ -69,7 +101,7 @@ function MyListingSection({
         <div className="my-listings-primary">
           <Row className="my-listings-toolbar align-items-center justify-content-end justify-content-md-between g-2">
             <Col xs="auto" md className="my-listings-filter-column">
-              <div className="my-listings-filters d-none d-md-flex">
+              <div className="my-listings-filters">
                 {filters.map((filter) => (
                   <button
                     key={filter.value}
@@ -84,7 +116,7 @@ function MyListingSection({
                 ))}
               </div>
 
-              <Dropdown className="my-listings-filter-dropdown d-md-none">
+              <Dropdown className="my-listings-filter-dropdown">
                 <Dropdown.Toggle
                   className="my-listings-filter-dropdown-toggle"
                   variant="light"
@@ -120,15 +152,24 @@ function MyListingSection({
           </Row>
 
           <div className="my-listings-list">
-            {filteredListings.map((listing) => (
-              <SellerListingCard
-                key={listing._id}
-                listing={listing}
-                onEdit={onEdit}
-                onStatusChange={onStatusChange}
-                onViewDetails={() => onSelectListing(listing)}
-              />
-            ))}
+            <div className="my-listings-card-panel">
+              <div className="my-listings-card-scroll">
+                {filteredListings.map((listing) => {
+                  const isSelected = selectedListing?._id === listing._id;
+
+                  return (
+                    <SellerListingCard
+                      key={listing._id}
+                      isSelected={isSelected}
+                      listing={listing}
+                      onEdit={onEdit}
+                      onStatusChange={onStatusChange}
+                      onViewDetails={() => handleViewDetails(listing, isSelected)}
+                    />
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -136,6 +177,8 @@ function MyListingSection({
           <IndividualListing
             listing={selectedListing}
             onClose={onCloseListing}
+            onEdit={onEdit}
+            onStatusChange={onStatusChange}
           />
         )}
       </div>

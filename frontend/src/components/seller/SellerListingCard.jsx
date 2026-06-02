@@ -21,6 +21,7 @@ function getStatusLabel(status = "") {
 }
 
 function SellerListingCard({
+  isSelected = false,
   listing,
   onEdit,
   onStatusChange,
@@ -86,13 +87,18 @@ function SellerListingCard({
   const visibilityAction = getVisibilityAction();
 
   return (
-    <article className="seller-listing-card">
+    <article
+      className={`seller-listing-card ${isSelected ? "is-selected" : ""}`}
+    >
       <div className="seller-listing-card-image-wrapper">
         <img
           src={image}
           alt={listing.propertyName || "Listing"}
           className="seller-listing-card-image"
         />
+        <span className="seller-listing-card-type">
+          {listing.propertyType}
+        </span>
       </div>
 
       <div className="seller-listing-card-main">
@@ -112,10 +118,6 @@ function SellerListingCard({
 
         <div className="seller-listing-card-content">
           <div className="seller-listing-card-header">
-            <span className="seller-listing-card-type">
-              {listing.propertyType}
-            </span>
-
             <h3>{listing.propertyName}</h3>
           </div>
 
@@ -154,7 +156,7 @@ function SellerListingCard({
             className="seller-listing-action-secondary"
             onClick={onViewDetails}
           >
-            View Details
+            {isSelected ? "Hide Details" : "View Details"}
           </button>
 
           <div className="seller-listing-desktop-actions">

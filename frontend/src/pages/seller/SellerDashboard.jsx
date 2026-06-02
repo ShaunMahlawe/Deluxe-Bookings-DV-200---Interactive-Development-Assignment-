@@ -215,10 +215,13 @@ function SellerDashboard({ onNavigate, previewMode = false }) {
         <Row className="seller-header align-items-end g-3 mb-3 py-3 py-lg-4 px-5">
           <Col lg={8}>
             <p className="seller-kicker">Host workspace</p>
-            <h1 className="seller-dashboard-title">My Listings</h1>
+            <h1 className="seller-dashboard-title">
+              <span>My</span>{" "}
+              <em>Listings</em>
+            </h1>
 
             <div className="seller-dashboard-meta">
-              <span style={{ colour: "#fff" }}>
+              <span>
                 Welcombe Back, User! You are currently managing {listings.length} luxury properties.
               </span>
             </div>
@@ -285,6 +288,7 @@ function SellerDashboard({ onNavigate, previewMode = false }) {
             onEdit={(id) => onNavigate(`/seller/edit-listing/${id}`)}
             onStatusChange={handleStatusChange}
             onCreate={() => onNavigate("/seller/create-listing")}
+            onViewListingPage={(id) => onNavigate(`/seller/listing/${id}`)}
           />
         ) : (
           <div className="seller-empty-state">

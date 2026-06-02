@@ -56,6 +56,18 @@ function App() {
     return <EditListing listingId={listingId} onNavigate={navigate} />;
   }
 
+  if (normalizedRoute.startsWith("/seller/listing/")) {
+    const listingId = normalizedRoute.split("/").filter(Boolean).at(-1);
+
+    return (
+      <IndividualListing
+        listingId={listingId}
+        fetchSellerListing
+        onNavigate={navigate}
+      />
+    );
+  }
+
   if (normalizedRoute.startsWith("/buyer/listing/")) {
     const listingId = normalizedRoute.split("/").filter(Boolean).at(-1);
 
