@@ -65,14 +65,13 @@
 .logInBox {
   display: flex ;
   justify-content: center;
-  background-color: #b3a6a3c3;
+  background-color: #EFEBEA;
   padding: 3%;
   border-radius: 15px;
   text-align: center;
   width:70%;
   filter: drop-shadow(8px 8px 10px);
   margin-bottom: 4%;
-  border-color: #ffffff;
 }
 
 .logInBack {
@@ -89,10 +88,6 @@
   margin-bottom:3%;
   border:#EFEBEA;
   border-width: 1px;
-}
-
-.LogInText{
-  color: #ffffff;
 }
 
 .logInButton{
@@ -117,7 +112,7 @@
 
 .logInButton{
   padding: 1%;
-  background-color: #ffffffc7;
+  background-color: #ffffff;
   border-color: #7B593F;
   border-width: 2px;
   border-radius: 15px;
@@ -127,58 +122,6 @@
 .logInButton:hover {
   background-color: #7B593F;
   color: white;
-}
-
-.logInSubmit{
-  padding: 1.5%;
-  background-color: #7B593F;
-  border-color: #ffffff;
-  border-width: 2px;
-  border-radius: 15px;
-  color: #ffffff;
-  margin-top: 2%;
-}
-
-.logInSubmit:hover {
-  background-color: #ffffff;
-  color: #7B593F;
-}
-
-/* inactive tab */
-#justify-tab-example .nav-link {
-    color: #ffffff;
-}
-
-#justify-tab-example .nav-link:hover {
-    color: #000; 
-}
-
-/* active tab */
-#justify-tab-example .nav-link.active {
-    color: #7B593F !important; 
-    font-weight: bold;
-}
-
-/* Inactive State */
-.custom-toggle-group .btn {
-    background-color: #ffffff !important;
-    color: #7B593F !important;
-    border-color: #ffffff !important;
-}
-
-/* Hover State */
-.custom-toggle-group .btn:hover {
-    background-color: #e2e6ea !important;
-    color: #212529 !important;
-    border-color: #e2e6ea !important;
-}
-
-/* Active / Selected State */
-.custom-toggle-group .btn-check:checked + .btn,
-.custom-toggle-group .btn.active {
-    background-color: #7B593F !important;
-    color: #ffffff !important;
-    border-color: #7B593F !important;
 }
 
 .heroImage{
@@ -289,7 +232,6 @@ nav{
   padding: 0.5%;
   border: none;
   padding-left: 1%;
-  display: inline-flex;
 }
 .searchButton{
   width:3%;
@@ -326,10 +268,6 @@ nav{
 
 .dropdown{
   padding-right: 6%;
-}
-
-.dropdown .dropdowntext {
-    color: #7B593F !important;
 }
 
 .dropdownIcons{
@@ -401,18 +339,15 @@ input{
 }
 
 .CheckoutBox {
+  background-color: #EFEBEA;
   padding: 3%;
+  border-radius: 15px;
   text-align: center;
-  width: 50%;
+  width: 90%;
   margin-top: 0;
   min-width: 340px;
   padding-left: 6%;
   padding-right: 6%;
-  background-color: #b3a6a3b7 !important;
-  border-radius: 15px;
-  filter: drop-shadow(8px 8px 10px);
-  margin-bottom: 4%;
-  border-color: #ffffff;
 }
 
 .CheckoutBack {
@@ -439,18 +374,14 @@ input{
   filter: drop-shadow(2px 2px 3px);
 }
 
-.progressBar .progress-bar {
-  background-color: #7B593F !important;
-}
-
 .checkoutHeading{
   padding-top: 5%;
-  color: #ffffff !important;
+  color: #3C2717;
 }
 
 .checkoutSubHeading{
   padding-top: 3%;
-  color: #ffffff !important;
+  color: #3C2717;
 }
 
 .checkBoxAlign{
@@ -459,13 +390,11 @@ input{
 }
 
 .checkBoxTextA{
-  padding-left: 10% !important;
-  color: #ffffff;
+  padding-left: 50%;
 }
 
 .checkBoxTextB{
-  padding-left: 10% !important;
-  color: #ffffff;
+  padding-left: 30%;
 }
 
 .checkContainer{
@@ -534,22 +463,4 @@ input{
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
-}
-
-.Accountpage{
-  background-image: url('Assets/images/Hero header.png');
-  
-}
-
-.Accountbox{
-  background-color: #b3a6a3c3;
-  padding: 3%;
-  border-radius: 15px;
-  text-align: center;
-  width:70%;
-  filter: drop-shadow(8px 8px 10px);
-  margin-bottom: 4%;
-  border-color: #ffffff;
-  max-width: 40%;
-  margin-left:30%;
 }
