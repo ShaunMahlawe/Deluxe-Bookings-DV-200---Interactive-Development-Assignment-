@@ -3,6 +3,7 @@ import './App.css';
 import ReviewForm from "./components/ReviewForm";
 import HotelCarousel from "./components/HotelCarousel";
 import AboutSection from "./components/AboutSection";
+import LuxurySection from "./components/LuxurySection";
 
 function App() {
   return (
@@ -18,8 +19,13 @@ function App() {
       <section className="about-section">
         <AboutSection />
       </section>
+
+      <section className="luxury-section">
+        <LuxurySection />
+      </section>
     </div>
   );
 }
+    
 
 export default App;
