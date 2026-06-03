@@ -165,6 +165,10 @@
   border-width: 2px;
   border-radius: 15px;
   padding-left: 0%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .primaryButton:hover {
@@ -180,8 +184,10 @@
 }
 
 .joinButton{
-  width:25%;
-  padding-left: 3%;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  stroke-width: 2.4;
 }
 
 .circularText{
@@ -206,9 +212,12 @@ nav{
 }
 
 .iconStyling{
-  width:2.5%;
-  padding-right: 0.5%;
-  min-width: 20px;
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+  flex-shrink: 0;
+  vertical-align: -4px;
+  stroke-width: 2.2;
 }
 
 .pagelinks{
@@ -234,8 +243,11 @@ nav{
   padding-left: 1%;
 }
 .searchButton{
-  width:3%;
-  padding-left: 0.3%;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: currentColor;
+  stroke-width: 2.4;
 }
 
 .searchBox{
@@ -258,6 +270,9 @@ nav{
   color: #7B593F;
   padding: 2%;
   padding-right: 9%;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .dropdowntext {
@@ -271,9 +286,10 @@ nav{
 }
 
 .dropdownIcons{
-  width:35%;
-  padding-right: 20%;
-  min-width: 20px;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  stroke-width: 2.2;
 }
 
 footer{

@@ -1,4 +1,4 @@
-import Joinbutton from '../../assets/images/buttoniconjoin.png'
+import { Plus } from 'lucide-react'
 import circularText from '../../assets/images/circularText.png'
 
 function HeroHeader() {
@@ -13,7 +13,7 @@ function HeroHeader() {
         <div className='herocard m-plus-rounded-1c-bold marginBody'>
             <p> Showcase your property to the world's most discerning travellers. We don't just list hotels; we curate experiences for a global audience that values quality over quantity.</p>
             <button className='primaryButton inter-regular buttontext col-4'>Apply to join 
-              <img src={Joinbutton} alt="plus icon" className='joinButton'/>
+              <Plus className='joinButton' aria-hidden="true" />
               </button>
             </div>
           </div>
