@@ -1,6 +1,6 @@
 import FooterImage from "../Assets/images/FooterImage.png"
 import Logo from "../Assets/images/Logo.png"
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { /* BrowserRouter, Routes, Route,*/ Link } from "react-router-dom";
 
 function Footer() {
   return (

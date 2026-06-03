@@ -159,19 +159,19 @@ textarea::placeholder {
   opacity: 0.25;
 }
 
-.btn:not(.pill):not(.badge):not(.step-badge):not(.seller-soft-badge),
+/* .btn:not(.pill):not(.badge):not(.step-badge):not(.seller-soft-badge),
 .button:not(.pill):not(.badge):not(.step-badge):not(.seller-soft-badge),
 [role="button"]:not(.pill):not(.badge):not(.step-badge):not(.seller-soft-badge) {
   min-height: var(--button-min-height) !important;
   display: inline-flex;
   align-items: center;
-  /* justify-content: center; */
+  justify-content: center;
   gap: var(--space-1);
   border-radius: var(--radius-control);
   font-family: var(--font-body);
   font-size: var(--button-font-size);
   font-weight: var(--button-font-weight);
-}
+} */
 
 .btn-primary {
   --bs-btn-color: var(--color-fill);
@@ -215,4 +215,3 @@ textarea::placeholder {
     --fs-base: 20px;
   }
 }
-} */
