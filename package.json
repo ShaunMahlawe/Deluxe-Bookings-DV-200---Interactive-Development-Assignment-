@@ -4,11 +4,11 @@
   "version": "1.0.0",
   "description": "Deluxe Bookings full-stack assignment workspace.",
   "scripts": {
-    "dev:frontend": "npm --prefix frontend run dev",
-    "dev:backend": "npm --prefix backend run dev",
-    "build": "npm --prefix frontend run build",
-    "lint": "npm --prefix frontend run lint",
-    "start": "concurrently \"npm --prefix backend run start\" \"npm --prefix frontend run start\""
+    "dev:frontend": "npm --prefix mern-frontend run dev",
+    "dev:backend": "npm --prefix mern-backend run dev",
+    "build": "npm --prefix mern-frontend run build",
+    "lint": "npm --prefix mern-frontend run lint",
+    "start": "concurrently \"npm --prefix mern-backend run start\" \"npm --prefix mern-frontend run start\""
   },
   "devDependencies": {
     "concurrently": "^10.0.0"
