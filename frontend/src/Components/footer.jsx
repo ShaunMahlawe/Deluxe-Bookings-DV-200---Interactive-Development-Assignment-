@@ -1,63 +1,78 @@
-import FooterImage from "../Assets/images/FooterImage.png"
-import Logo from "../Assets/images/Logo.png"
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import React from 'react';
+import './Footer.css';
+import appLogo from '../assets/img/logo.svg';
 
-function Footer() {
+const defaultFooterData = {
+  heading: 'Engage with Us in Conversation.',
+  description:
+    "In a global world based on communication, a premium hospitality brand must look beyond its borders, open up to new experiences, and dare to be different. Meeting the brightest minds of one's time is the most effective way to nurture creativity and trust.",
+  imageAlt: 'Luxury villa with a pool',
+  columns: [
+    {
+      title: 'About Us',
+      items: ['Our Story', 'Vetting Process', 'Sustainability', 'Careers', 'Contact'],
+    },
+    {
+      title: 'Customer Service',
+      items: ['Prices and Payments', 'Booking Policy', 'Return and Cancellation', 'Terms of Service', 'Privacy Policy'],
+    },
+    {
+      title: 'Social Media',
+      items: ['Instagram', 'Facebook', 'LinkedIn', 'X (Twitter)'],
+    },
+  ],
+};
+
+const Footer = ({ data }) => {
+  const content = data || defaultFooterData;
+
+  const handleLogoClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer>
-        <div className='row container-fluid'>
-
-        <div className='col-lg-7'>
-            <h1 className='inter-bold footerHeading'>Engage with Us in Conversation</h1>
-            <p className='inter-bold footerText'>In a global world based on communication, a premium hospitality brand must look beyond its borders, open up to new experiences, and dare to be different. Meeting the brightest minds of one's time is the most effective way to nurture creativity and trust.</p>
+    <footer className="footer">
+      <div className="footer-inner">
+        <div className="footer-top">
+          <div className="footer-text">
+            <h2>{content.heading || defaultFooterData.heading}</h2>
+            <p>{content.description || defaultFooterData.description}</p>
+          </div>
+          <div
+            className="footer-image"
+            role="img"
+            aria-label={content.imageAlt || defaultFooterData.imageAlt}
+          />
         </div>
 
-        <div className='col-lg-5'>
-            <img src={FooterImage} alt="House with swimming pool" className="footerimage"/>
+        <div className="footer-bottom">
+          <div className="footer-links">
+            {(content.columns || defaultFooterData.columns).map((column) => (
+              <div className="footer-column" key={column.title}>
+                <h4>{column.title}</h4>
+                <ul>
+                  {(column.items || []).map((item) => (
+                    <li key={`${column.title}-${item}`}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <div className="footer-logo">
+            <button
+              type="button"
+              className="footer-logo-button"
+              onClick={handleLogoClick}
+              aria-label="Go to top"
+            >
+              <img src={appLogo} alt="Deluxe Bookings" />
+            </button>
+          </div>
         </div>
-
-        </div>
-
-        <div className='row container-fluid'>
-
-            <div className='col-lg-3 marginFooter'>
-                <p className='inter-bold footerText'>About Us</p>
-
-                <p className="inter-regular footerPageLinks">Our Story</p>
-                <p className="inter-regular footerPageLinks">Vetting Process</p>
-                <p className="inter-regular footerPageLinks">Sustainability</p>
-                <p className="inter-regular footerPageLinks">Careers</p>
-                <p className="inter-regular footerPageLinks">Contact</p>
-            </div>
-
-            <div className='col-lg-3'>
-                <p className='inter-bold footerText'>Customer Service</p>
-
-                <p className="inter-regular footerPageLinks">Prices and Payments</p>
-                <p className="inter-regular footerPageLinks">Booking Policy</p>
-                <p className="inter-regular footerPageLinks">Return & Cancellation</p>
-                <p className="inter-regular footerPageLinks">Terms of Service</p>
-                <p className="inter-regular footerPageLinks">Privacy Policy </p>
-
-            </div>
-
-            <div className='col-lg-2'>
-                <p className='inter-bold footerText'>Social Media</p>
-
-                <p className="inter-regular footerPageLinks">Instagram</p>
-                <p className="inter-regular footerPageLinks">Facebook</p>
-                <p className="inter-regular footerPageLinks">LinkedIn</p>
-                <p className="inter-regular footerPageLinks">X (Twitter)</p>
-            </div>
-
-            <div className='col-lg-3'>
-                <Link to="/"><img src={Logo} alt="Deluxe Bookings logo" className="footerimage"/></Link>
-            </div>
-
-        </div>
-
+      </div>
     </footer>
-  )
-}
+  );
+};
 
 export default Footer;
