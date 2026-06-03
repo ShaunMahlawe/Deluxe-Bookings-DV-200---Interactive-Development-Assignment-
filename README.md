@@ -47,36 +47,36 @@ This acts like a lightweight personalized second factor that fits the hotel them
 
 ```bash
 npm install
-cd frontend && npm install
-cd ../backend && npm install
+cd mern-frontend && npm install
+cd ../mern-backend && npm install
 ```
 
 ### 2. Configure environment variables
 
 Create these files:
 
-- `frontend/.env`
-- `backend/.env`
+- `mern-frontend/.env`
+- `mern-backend/.env`
 
 Use the provided `.env.example` files as the starting point.
 
 ### 3. Start the backend
 
 ```bash
-cd backend
+cd mern-backend
 npm run dev
 ```
 
 ### 4. Start the frontend
 
 ```bash
-cd frontend
+cd mern-frontend
 npm run dev
 ```
 
 ### 5. Optional Atlas setup
 
-Set `MONGODB_URI` in `backend/.env` to your MongoDB Atlas connection string if you want a persistent database. If this is omitted, the backend starts an in-memory MongoDB instance so the UI and API can still be reviewed.
+Set `MONGODB_URI` in `mern-backend/.env` to your MongoDB Atlas connection string if you want a persistent database. If this is omitted, the backend starts an in-memory MongoDB instance so the UI and API can still be reviewed.
 
 ## Demo Credentials
 
@@ -100,11 +100,19 @@ Mobile mockup:
 
 ```text
 .
-├── backend
-│   ├── src
+├── mern-backend
+│   ├── config
+│   ├── controllers
+│   ├── middleware
+│   ├── models
+│   ├── routes
+│   ├── services
+│   ├── utils
+│   ├── app.js
+│   ├── server.js
 │   └── .env.example
 ├── docs
-├── frontend
+├── mern-frontend
 │   ├── src
 │   └── .env.example
 ├── .gitignore
