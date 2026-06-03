@@ -1,3 +1,8 @@
+//---------------------------------------------------------------------------------------
+// This File Sets Up the Express Application that Powers the Deluxe Bookings 
+// Backend API, Including Middleware, Routes, and API Documentation
+//---------------------------------------------------------------------------------------
+
 const express = require('express')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
@@ -8,13 +13,26 @@ const authRoutes = require('./routes/authRoutes')
 const bookingRoutes = require('./routes/bookingRoutes')
 const listingRoutes = require('./routes/listingRoutes')
 const sellerRoutes = require('./routes/sellerRoutes')
+const reviewRoutes = require('./routes/reviewRoutes')
+const pageRoutes = require('./routes/pageRoutes')
+const userRoutes = require('./routes/userRoutes')
 const catalogRoutes = require('./routes/catalogRoutes')
 const propertyRoutes = require('./routes/propertyRoutes')
 const thingsToDoRoutes = require('./routes/thingsToDoRoutes')
 const staysRoutes = require('./routes/staysRoutes')
 const { buildStaysOpenApi } = require('./docs/staysOpenApi')
 
-// const app = express()
+
+// const authRoutes = require("./routes/auth");
+// app.use("/auth", authRoutes);
+
+// const bookingRoutes = require('./routes/bookings');
+// app.use("/api", bookingRoutes);
+
+// app.use(
+//   "/api/reviews",
+//   require("./routes/reviewRoutes")
+// );
 
 const allowedOrigins = [
   process.env.FRONTEND_URL,
@@ -34,7 +52,7 @@ const configuredOrigins = String(process.env.FRONTEND_URL || '')
   .map((origin) => origin.trim())
   .filter(Boolean)
 
-const allowedOrigins = Array.from(new Set([...defaultAllowedOrigins, ...configuredOrigins]))
+allowedOrigins = Array.from(new Set([...defaultAllowedOrigins, ...configuredOrigins]))
 
 app.use(
   cors({
@@ -58,6 +76,11 @@ app.use(cookieParser())
 
 app.use('/api/auth', authRoutes)
 app.use('/api/bookings', bookingRoutes)
+app.use('/api/listings', listingRoutes)
+app.use('/api/sellers', sellerRoutes)
+app.use('/api/reviews', reviewRoutes)
+app.use('/api/pages', pageRoutes)
+app.use('/api/users', userRoutes)
 app.use('/api/catalog', catalogRoutes)
 app.use('/api/properties', propertyRoutes)
 app.use('/api/things-to-do', thingsToDoRoutes)

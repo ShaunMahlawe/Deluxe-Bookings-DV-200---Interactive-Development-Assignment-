@@ -1,7 +1,11 @@
+//---------------------------------------------------------------------------------------
+// This File Handles MongoDB Database Connection Logic for the Deluxe Bookings Backend
+//---------------------------------------------------------------------------------------
+
 const mongoose = require('mongoose')
 const { MongoMemoryServer } = require('mongodb-memory-server')
 
-let databaseConnected = false
+const databaseConnected = false
 let memoryServer = null
 
 async function connectDatabase() {
