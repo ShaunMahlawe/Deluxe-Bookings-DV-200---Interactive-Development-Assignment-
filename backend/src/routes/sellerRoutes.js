@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { /*protect*/ } = require('../middleware/authMiddleware')
+// const { protect } = require('../middleware/authMiddleware')
 // const { validateListing } = require("../middleware/validateListing");
 
 const {
@@ -16,7 +16,7 @@ const router = express.Router();
 
 router.post(
   "/listings",
-  protect,
+  // protect,
   // validateListing,
   createMyListing
 );
@@ -29,20 +29,20 @@ router.get(
 
 router.get(
   "/listings/:id",
-  protect,
+  // protect,
   getMyListing
 );
 
 router.put(
   "/listings/:id",
-  protect,
+  // protect,
   // validateListing,
   updateMyListing
 );
 
 router.delete(
   "/listings/:id",
-  protect,
+  // protect,
   deleteMyListing
 );
 
