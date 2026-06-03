@@ -8,6 +8,9 @@
     "dev:backend": "npm --prefix backend run dev",
     "build": "npm --prefix frontend run build",
     "lint": "npm --prefix frontend run lint",
-    "start": "npm --prefix backend run start"
+    "start": "concurrently \"npm --prefix backend run start\" \"npm --prefix frontend run start\""
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.0"
   }
 }
