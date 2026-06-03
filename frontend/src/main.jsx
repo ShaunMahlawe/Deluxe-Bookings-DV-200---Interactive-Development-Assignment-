@@ -5,6 +5,7 @@ import './index.css'
 import AppRouter from './AppRouter.jsx'
 import App from './App.jsx';
 
+
 import { AuthProvider } from './context/authContext' 
 
 createRoot(document.getElementById('root')).render(

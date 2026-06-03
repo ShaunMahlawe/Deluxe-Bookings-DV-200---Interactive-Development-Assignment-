@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import "./HomeSection.css";
 
 
 const statsData = [

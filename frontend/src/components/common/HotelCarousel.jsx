@@ -3,8 +3,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 
 import { motion } from "framer-motion";
-
+import "./HomeSection.css";
 import { FaHeart, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+
 
 import "swiper/css";
 import "swiper/css/navigation";
