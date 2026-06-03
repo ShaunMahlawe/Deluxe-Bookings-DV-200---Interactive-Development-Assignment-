@@ -1,4 +1,4 @@
-const Catalog = require('../models/Catalog')
+const Catalog = require('../models/catalogSchema')
 const { isDatabaseConnected } = require('../config/db')
 const southAfricaCatalogSeed = require('../utils/southAfricaCatalogSeed')
 

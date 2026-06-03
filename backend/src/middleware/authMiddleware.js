@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 
-const User = require('../models/User')
+const User = require('../models/userSchema')
 const { isDatabaseConnected } = require('../config/db')
 const { findUserById, safeUser } = require('../utils/mockStore')
 

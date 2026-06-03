@@ -1,4 +1,4 @@
-const Listing = require("../models/Listing");
+const Listing = require("../models/listingSchema");
 
 // ------------------------------------------------------------------------------------------------------------------------------
 // READ(GET) all listings
@@ -6,7 +6,7 @@ const Listing = require("../models/Listing");
 
 const getAllListings = async (req, res) => {
   try {
-    const listings = await Listing.find( /*status: "published"*/ );
+    const listings = await Listing.find({ status: "published" });
 
     res.status(200).json(listings);
   } catch (error) {
@@ -23,7 +23,7 @@ const getAllListings = async (req, res) => {
 
 const getSingleListing = async (req, res) => {
   try {
-    const listing = await Listing.findById(req.params.id, /*status: "published"*/);
+    const listing = await Listing.findOne({ _id: req.params.id, status: "published" });
 
     if (!listing) {
       return res.status(404).json({
@@ -34,6 +34,7 @@ const getSingleListing = async (req, res) => {
     res.status(200).json(listing);
   } catch (err) {
     res.status(500).json({
+      message: "Failed to fetch listing",
       error: err.message,
     });
   }

@@ -4,6 +4,7 @@
 //---------------------------------------------------------------------------------------
 
 const express = require('express')
+const app = express()
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const swaggerUi = require('swagger-ui-express')
@@ -34,11 +35,7 @@ const { buildStaysOpenApi } = require('./docs/staysOpenApi')
 //   require("./routes/reviewRoutes")
 // );
 
-const allowedOrigins = [
-  process.env.FRONTEND_URL,
-  'http://localhost:5173',
-  'http://127.0.0.1:5173',
-].filter(Boolean)
+// Build allowed origins from env + localhost defaults
 
 const defaultAllowedOrigins = [
   'http://localhost:5173',
@@ -52,7 +49,7 @@ const configuredOrigins = String(process.env.FRONTEND_URL || '')
   .map((origin) => origin.trim())
   .filter(Boolean)
 
-allowedOrigins = Array.from(new Set([...defaultAllowedOrigins, ...configuredOrigins]))
+const allowedOrigins = Array.from(new Set([...defaultAllowedOrigins, ...configuredOrigins]))
 
 app.use(
   cors({

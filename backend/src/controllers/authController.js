@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs')
 
 const { isDatabaseConnected } = require('../config/db')
-const User = require('../models/User')
+const User = require('../models/userSchema')
 const { createUser, findUserByEmail, safeUser } = require('../utils/mockStore')
 const { signToken } = require('../utils/token')
 
