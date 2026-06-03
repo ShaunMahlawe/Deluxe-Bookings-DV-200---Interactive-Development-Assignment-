@@ -34,7 +34,7 @@ function Checkout() {
   const handleDetailsSubmit = async (e) => {
     e.preventDefault(); 
     try {
-      const res = await axios.post("http://localhost:5000/api/bookings", {
+      const res = await axios.post("http://localhost:5001/api/bookings", {
         firstName,
         lastName,
         email,

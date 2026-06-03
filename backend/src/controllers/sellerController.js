@@ -28,7 +28,7 @@ const createMyListing = async (req, res) => {
 
 const getMyListings = async (req, res) => {
   try {
-    const listings = await Listing.find({ seller: req.user.id });
+    const listings = await Listing.find(/*{ seller: req.user.id }*/);
 
     res.status(200).json(listings);
   } catch (error) {

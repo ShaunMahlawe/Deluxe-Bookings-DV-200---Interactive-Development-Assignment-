@@ -5,7 +5,7 @@
 const mongoose = require('mongoose')
 const { MongoMemoryServer } = require('mongodb-memory-server')
 
-const databaseConnected = false
+let databaseConnected = false
 let memoryServer = null
 
 async function connectDatabase() {

@@ -42,7 +42,7 @@ router.get("/", async (req, res) => {
 
     const response =
         await axios.get(
-         "http://localhost:5000/api/reviews"
+         "http://localhost:5001/api/reviews"
         );
 
 setReviews(response.data);

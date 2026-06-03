@@ -20,7 +20,7 @@ function Account() {
   useEffect(() => {
     const syncProfile = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/auth/profile", {
+        const res = await axios.get("http://localhost:5001/auth/profile", {
           headers: { Authorization: `Bearer ${token}` }
         });
         // Makes sure the data is synced
@@ -58,7 +58,7 @@ function Account() {
     try {
       const finalRole = isAdmin ? 'A' : userRole;
 
-      const res = await axios.put("http://localhost:5000/auth/update", 
+      const res = await axios.put("http://localhost:5001/auth/update", 
         { name, email, userRole: finalRole },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -78,7 +78,7 @@ function Account() {
     
     if (confirmDelete) {
       try {
-        await axios.delete("http://localhost:5000/auth/delete", {
+        await axios.delete("http://localhost:5001/auth/delete", {
           headers: { Authorization: `Bearer ${token}` }
         });
         alert("Your account has been successfully deleted.");

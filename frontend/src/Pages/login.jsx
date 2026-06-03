@@ -18,7 +18,7 @@ function LogIn() {
   const [message, setMessage] = useState("");
 
   const register = async () => {
-    const res = await axios.post("http://localhost:5000/auth/register", {
+    const res = await axios.post("http://localhost:5001/auth/register", {
       email,
       password,
       name
@@ -28,7 +28,7 @@ function LogIn() {
   };
 
   const login = async () => {
-    const res = await axios.post("http://localhost:5000/auth/login", {
+    const res = await axios.post("http://localhost:5001/auth/login", {
       email,
       password,
       name

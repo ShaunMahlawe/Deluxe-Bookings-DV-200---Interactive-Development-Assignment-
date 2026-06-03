@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { protect } = require('../middleware/authMiddleware')
+const { /*protect*/ } = require('../middleware/authMiddleware')
 // const { validateListing } = require("../middleware/validateListing");
 
 const {
@@ -23,7 +23,7 @@ router.post(
 
 router.get(
   "/listings",
-  protect,
+  /*protect,*/
   getMyListings
 );
 
