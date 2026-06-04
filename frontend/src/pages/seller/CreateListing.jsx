@@ -74,7 +74,7 @@ function CreateListing({ onNavigate }) {
   };
 
   const addListing = async () => {
-    const token = localStorage.getItem("deluxe_token");
+    const token = localStorage.getItem("token");
 
     if (!token) {
       onNavigate("/");
@@ -82,7 +82,7 @@ function CreateListing({ onNavigate }) {
     }
 
     try {
-      const listing = await createMySellerListing(
+      const listing = await createSellerListing(
         buildListingPayload(formData),
         token,
       );

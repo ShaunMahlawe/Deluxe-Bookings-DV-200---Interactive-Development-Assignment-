@@ -1,3 +1,6 @@
+// FLAGGED DEAD CODE: this duplicate page imports the old capitalized
+// ../Components directory. The active route uses pages/public/home.jsx with
+// lowercase components/public imports.
 import HeroHeader from "../Components/heroheader";
 import Footer from "../Components/footer";
 import HotelCarousel from "../Components/HotelCarousel";

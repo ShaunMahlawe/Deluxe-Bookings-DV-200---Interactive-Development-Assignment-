@@ -1,5 +1,6 @@
 .api-guide-page {
   min-height: 100vh;
+  padding-top: 128px;
   background: radial-gradient(circle at 15% 20%, #ddf8f0 0%, #f7fbfa 42%, #f0f7f8 100%);
 }
 
@@ -47,7 +48,7 @@
 }
 
 .api-guide-path {
-  font-family: 'SFMono-Regular', Menlo, Consolas, monospace;
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: 'SFMono-Regular', Menlo, Consolas, monospace; */
   font-size: 0.92rem;
 }
 

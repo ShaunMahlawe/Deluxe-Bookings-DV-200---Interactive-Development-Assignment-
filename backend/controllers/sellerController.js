@@ -1,4 +1,4 @@
-const Listing = require("../models/listingSchema");
+const { Listing } = require("../models");
 
 // ------------------------------------------------------------------------------------------------------------------------------
 // CREATE(POST) listing

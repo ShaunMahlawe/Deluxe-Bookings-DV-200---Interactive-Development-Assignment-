@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import API_BASE_URL from "../../api/config";
 
 import { FaStar } from "react-icons/fa";
 
@@ -39,7 +40,7 @@ function ReviewForm() {
 
       try {
         await axios.post(
-          "http://localhost:5001/api/reviews",
+          `${API_BASE_URL}/reviews`,
           formData
         );
 
@@ -54,6 +55,7 @@ function ReviewForm() {
           comment: "",
         });
       } catch (error) {
+        console.error("Review submission failed:", error);
         toast.error(
           "Failed To Submit Review"
         );

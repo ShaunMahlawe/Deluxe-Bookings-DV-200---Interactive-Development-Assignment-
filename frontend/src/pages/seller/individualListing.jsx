@@ -132,7 +132,7 @@ function IndividualListing({
     if (!fetchSellerListing || !listingId) return;
 
     const fetchListing = async () => {
-      const token = localStorage.getItem("deluxe_token");
+      const token = localStorage.getItem("token");
 
       setLoadingListing(true);
       setListingError("");

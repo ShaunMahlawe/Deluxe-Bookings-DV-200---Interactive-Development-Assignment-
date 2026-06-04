@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Review = require("../models/reviewSchema");
+const { Review } = require("../models");
 
 router.post("/", async (req, res) => {
 
@@ -40,12 +40,10 @@ router.get("/", async (req, res) => {
 
     res.json(reviews);
 
-    const response =
-        await axios.get(
-         "http://localhost:5001/api/reviews"
-        );
-
-setReviews(response.data);
+    // SOFT REMOVE: frontend-only review fetching belonged in React, not this
+    // Express route.
+    // const response = await axios.get("http://localhost:5001/api/reviews");
+    // setReviews(response.data);
 
   } catch (error) {
 

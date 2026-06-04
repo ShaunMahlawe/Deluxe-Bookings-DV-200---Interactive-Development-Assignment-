@@ -1,13 +1,238 @@
+/* SOFT REMOVE: duplicate global design system moved back to index.css. */
+/* @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap'); */
+
+@media not all {
+:root {
+  --color-brand: #332a23;
+  --color-text-strong: #7b593f;
+  --color-text-weak: #8c8578;
+  --color-stroke-strong: #a48a56;
+  --color-stroke-weak: #e3dfde;
+  --color-fill: #ffffff;
+  --color-background: #efebea;
+  --shadow-raised: 0 4px 8px rgba(51, 42, 35, 0.1);
+  --shadow-overlay: 0 6px 8px 3px rgba(51, 42, 35, 0.1);
+  --font-h1: 'Playfair Display', Georgia, serif;
+  --font-heading: 'Marcellus', Georgia, serif;
+  --font-body: 'Lato', Arial, sans-serif;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+  --space-8: 64px;
+  --fs-sm: 13px;
+  --fs-base: 16px;
+  --fs-h6: 20px;
+  --fs-h5: 25px;
+  --fs-h4: 31px;
+  --fs-h3: 39px;
+  --fs-h2: 49px;
+  --fs-h1: 61px;
+  --radius-control: 12px;
+  --radius-card: 34px;
+  --radius-card-lg: 42px;
+  --button-font-size: var(--fs-base);
+  --button-min-height: 44px;
+  --button-font-weight: 500;
+  --button-hover-opacity: 0.92;
+  --icon-size: 24px;
+  --icon-stroke-width: 2.4;
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--color-text-strong);
+  background: var(--color-background);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--color-background);
+}
+
+body::before {
+  content: none;
+}
+
+a {
+  color: var(--color-brand);
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  color: var(--color-text-strong);
+  line-height: 1.15;
+  font-weight: 400;
+}
+
+h1 {
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-h1); */
+  font-size: clamp(39px, 6vw, 61px);
+}
+
+h2 {
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-heading); */
+  font-size: clamp(31px, 4vw, 49px);
+}
+
+h3 {
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-heading); */
+  font-size: 39px;
+}
+
+h4 {
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-heading); */
+  font-size: 31px;
+}
+
+h5 {
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-heading); */
+  font-size: 25px;
+}
+
+h6 {
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-heading); */
+  font-size: 20px;
+}
+
+p,
+li,
+input,
+textarea,
+button {
+  font-size: var(--fs-base);
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+code {
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace; */
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-text-strong);
+  opacity: 0.25;
+}
+
+.form-control::placeholder {
+  color: var(--color-text-strong);
+  opacity: 0.25;
+}
+
+.btn:not(.pill):not(.badge):not(.step-badge):not(.seller-soft-badge),
+.button:not(.pill):not(.badge):not(.step-badge):not(.seller-soft-badge),
+[role="button"]:not(.pill):not(.badge):not(.step-badge):not(.seller-soft-badge) {
+  min-height: var(--button-min-height) !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  border-radius: var(--radius-control);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+} 
+
+.btn-primary {
+  --bs-btn-color: var(--color-fill);
+  --bs-btn-bg: var(--color-brand);
+  --bs-btn-border-color: var(--color-brand);
+  --bs-btn-hover-color: var(--color-fill);
+  --bs-btn-hover-bg: var(--color-brand);
+  --bs-btn-hover-border-color: var(--color-brand);
+  --bs-btn-focus-shadow-rgb: 51, 42, 35;
+  --bs-btn-active-color: var(--color-fill);
+  --bs-btn-active-bg: var(--color-brand);
+  --bs-btn-active-border-color: var(--color-brand);
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(51, 42, 35, 0.12);
+  --bs-btn-disabled-color: var(--color-fill);
+  --bs-btn-disabled-bg: var(--color-stroke-weak);
+  --bs-btn-disabled-border-color: var(--color-stroke-weak);
+}
+
+.btn:not(:disabled):hover,
+.button:not(:disabled):hover,
+[role="button"]:not(:disabled):hover {
+  opacity: var(--button-hover-opacity);
+}
+
+.btn svg,
+.button svg,
+[role="button"] svg {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  flex: 0 0 auto;
+  stroke-width: var(--icon-stroke-width);
+}
+
+.card {
+  border-radius: var(--radius-card);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --fs-sm: 16px;
+    --fs-base: 20px;
+  }
+}
+}
+
+
 .seller-onboarding-page {
   --seller-dark: #332a23;
   --seller-taupe: #8f674f;
   --seller-muted: #8c8578;
   --seller-cream: #f3e3bc;
   --seller-soft: #efebea;
-  --seller-card-radius: var(--radius-card);
+  --seller-card-radius: var(--radius-dual-card);
   background: #fff;
   color: var(--color-text-strong);
-  font-family: var(--font-body);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
 }
 
 .seller-nav {
@@ -37,7 +262,7 @@
 
 .seller-logo {
   color: var(--seller-dark);
-  font-family: var(--font-heading);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-heading); */
   font-size: var(--fs-h6);
 }
 
@@ -85,8 +310,9 @@
 }
 
 .seller-hero {
-  height: calc(100svh - 72px - 176px);
+  height: calc(100svh - 176px);
   min-height: 520px;
+  padding-top: 96px;
   display: flex;
   align-items: center;
   background:
@@ -98,7 +324,7 @@
 .seller-eyebrow {
   margin-bottom: var(--space-2);
   color: #fff;
-  font-family: var(--font-body);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-size: var(--fs-sm);
   font-weight: 500;
   letter-spacing: 0.22em;
@@ -109,7 +335,7 @@
   max-width: 880px;
   margin: 0 auto;
   color: #fff;
-  font-family: var(--font-body);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-size: clamp(56px, 9vw, 92px);
   font-weight: 500;
   line-height: 120%;
@@ -117,14 +343,14 @@
 
 .seller-hero h1 span {
   display: inline-block;
-  font-family: var(--font-h1);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-h1); */
   font-style: italic;
   font-weight: 500;
 }
 
 .seller-hero h1 em {
   color: var(--seller-cream);
-  font-family: var(--font-h1);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-h1); */
   font-style: italic;
   font-weight: 500;
 }
@@ -155,7 +381,7 @@
   justify-content: center;
   gap: var(--space-1);
   border-radius: var(--radius-control) !important;
-  font-family: var(--font-body);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-size: var(--fs-base);
   font-weight: var(--button-font-weight) !important;
   padding: 12px var(--space-4) !important;
@@ -210,6 +436,7 @@
 .stats-strip h3 {
   margin-bottom: var(--space-1);
   color: #fff;
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-heading); */
   font-family: var(--font-heading);
   font-size: var(--fs-h4);
 }
@@ -244,7 +471,7 @@
 .seller-final-cta h2,
 .faq-section h2 {
   color: var(--seller-taupe);
-  font-family: var(--font-body);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-size: clamp(var(--fs-h5), 4vw, var(--fs-h2));
   font-weight: 500;
   line-height: 1.08;
@@ -255,7 +482,7 @@
 .testimonial-section h2 em,
 .steps-section h2 em {
   color: var(--seller-dark);
-  font-family: var(--font-h1);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-h1); */
   font-style: italic;
   font-weight: 500;
 }
@@ -398,7 +625,7 @@
 
 .earnings-summary strong {
   color: #fff;
-  font-family: var(--font-heading);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-heading); */
   font-size: var(--fs-h5);
   font-weight: 400;
 }
@@ -463,7 +690,7 @@
 .benefit-card h3 {
   margin-bottom: var(--space-2);
   color: var(--seller-taupe);
-  font-family: var(--font-heading);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-heading); */
   font-size: var(--fs-h6);
 }
 
@@ -522,14 +749,14 @@
   background: var(--seller-dark);
   border-radius: 12px;
   color: #fff;
-  font-family: var(--font-heading);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-heading); */
   font-size: var(--fs-h6);
 }
 
 .step-card h3 {
   margin-bottom: 4px;
   color: var(--seller-taupe);
-  font-family: var(--font-heading);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-heading); */
   font-size: var(--fs-h6);
 }
 
@@ -656,7 +883,7 @@
   left: 36px;
   z-index: 1;
   color: rgba(0, 0, 0, 0.3);
-  font-family: var(--font-h1);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-h1); */
   font-size: var(--quote-size);
   font-style: normal;
   font-weight: 500;
@@ -697,14 +924,14 @@
 
 .faq-section h2 {
   color: var(--seller-taupe);
-  font-family: var(--font-body);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-size: clamp(var(--fs-h5), 4vw, var(--fs-h2));
   font-weight: 500;
 }
 
 .faq-section h2 em {
   color: var(--seller-dark);
-  font-family: var(--font-h1);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-h1); */
   font-style: italic;
   font-weight: 500;
 }
@@ -725,7 +952,7 @@
 .seller-faq .accordion-button {
   background: #fff;
   color: var(--seller-taupe);
-  font-family: var(--font-body);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-size: var(--fs-base);
   font-weight: 500;
   padding: var(--space-3);
@@ -753,14 +980,14 @@
 
 .seller-final-cta h2 {
   color: #fff;
-  font-family: var(--font-body);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-size: clamp(var(--fs-h5), 4vw, var(--fs-h2));
   font-weight: 500;
 }
 
 .seller-final-cta h2 em {
   color: var(--seller-cream);
-  font-family: var(--font-h1);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-h1); */
   font-style: italic;
   font-weight: 500;
 }
@@ -859,7 +1086,7 @@
   .earnings-controls label,
   .step-card {
     grid-template-columns: 1fr;
-    text-align: center;
+    text-align: left;
   }
 
   .earnings-controls strong {
@@ -876,6 +1103,6 @@
 
   .quote-card {
     padding: var(--space-4);
-    border-radius: 28px !important;
+    border-radius: 0 var(--seller-card-radius) 0 var(--seller-card-radius) !important;
   }
 }

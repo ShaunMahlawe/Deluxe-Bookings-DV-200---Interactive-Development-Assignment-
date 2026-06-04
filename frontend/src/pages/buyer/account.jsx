@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import API_BASE_URL from '../../api/config';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
-import Footer from '../../components/common/footer';
+import Footer from '../../components/public/footer';
 import { useAuth } from '../../context/authContext';
 
 function Account() {
@@ -20,7 +21,7 @@ function Account() {
   useEffect(() => {
     const syncProfile = async () => {
       try {
-        const res = await axios.get("http://localhost:5001/auth/profile", {
+        const res = await axios.get(`${API_BASE_URL}/auth/profile`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         // Makes sure the data is synced
@@ -58,7 +59,7 @@ function Account() {
     try {
       const finalRole = isAdmin ? 'A' : userRole;
 
-      const res = await axios.put("http://localhost:5001/auth/update", 
+      const res = await axios.put(`${API_BASE_URL}/auth/update`, 
         { name, email, userRole: finalRole },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -78,7 +79,7 @@ function Account() {
     
     if (confirmDelete) {
       try {
-        await axios.delete("http://localhost:5001/auth/delete", {
+        await axios.delete(`${API_BASE_URL}/auth/delete`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         alert("Your account has been successfully deleted.");
@@ -192,7 +193,7 @@ function Account() {
             {(isSeller || isAdmin) && (
               <button 
                 className="primaryButton buttontext inter-regular" 
-                onClick={() => navigate("/sellerLoggedIn")}
+                onClick={() => navigate("/seller/dashboard")}
               >
                 Seller Dashboard
               </button>

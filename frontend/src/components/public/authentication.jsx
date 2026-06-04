@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // 1. Imported useNavigate
 import { useAuth } from "../../context/authContext"; // 2. Imported useAuth global context
+import API_BASE_URL from "../../api/config";
 
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
@@ -96,7 +97,7 @@ const register = async () => {
     const finalPassword = `${password11}${password12}${password13}`;
     
     try {
-      const res = await axios.post("http://localhost:5001/auth/register", {
+      const res = await axios.post(`${API_BASE_URL}/auth/register`, {
         name,
         email,
         password: finalPassword,
@@ -115,7 +116,7 @@ const login = async () => {
     const finalPassword = `${password1}${password2}${password3}`;
 
     try {
-      const res = await axios.post("http://localhost:5001/auth/login", {
+      const res = await axios.post(`${API_BASE_URL}/auth/login`, {
         email,
         password: finalPassword,
         name
@@ -132,7 +133,7 @@ const login = async () => {
         if (user?.userRole === 'A') {
           navigate("/"); 
         } else if (user?.userRole === 'S') {
-          navigate("/sellerLoggedIn"); 
+          navigate("/seller/dashboard"); 
         } else {
           navigate("/"); 
         }
@@ -152,9 +153,12 @@ const login = async () => {
     >
       {/* Sign up tab left */}
       <Tab eventKey="home" title="Sign up">
-        <div>
-          <h1 className="m-plus-rounded-1c-bold LogInText">Welcome to Deluxe Bookings</h1>
-          <h3 className="LogInSubHeading inter-regular LogInText">Make an account to gain access to our exclusive platform</h3>
+        <div className="auth-panel">
+          {/* SOFT REMOVE: heading level reduced to keep auth pages at h2 max. */}
+          {/* <h1 className="m-plus-rounded-1c-bold LogInText">Welcome to Deluxe Bookings</h1> */}
+          <h2 className="LogInText">Welcome to Deluxe Bookings</h2>
+          {/* <h3 className="LogInSubHeading inter-regular LogInText">Make an account to gain access to our exclusive platform</h3> */}
+          <p className="LogInSubHeading LogInText">Make an account to gain access to our exclusive platform</p>
 
           <input
             placeholder="Username"
@@ -182,19 +186,19 @@ const login = async () => {
           <br /><br />
 
           <div>
-            <h2 className="inter-bold passwordText LogInText">Create a custom password:</h2>          
-            <h4 className="inter-regular LogInText">Choose your favourite colour</h4>
+            <h2 className="passwordText LogInText">Create a custom password:</h2>          
+            <p className="LogInText">Choose your favourite colour</p>
 
-            <div type="row">
-              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword11(1); passSelect11(); }}>
+            <div className="auth-choice-grid" type="row">
+              <button variant="outline-dark" className={`logInButton ${password11 === 1 ? "is-selected" : ""}`} onClick={() => { setPassword11(1); passSelect11(); }}>
                 <img src={ruby} alt="ruby red" className="logInButtonImg"/>
                 <p>Ruby Red</p>
               </button>
-              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword11(2); passSelect11(); }}>
+              <button variant="outline-dark" className={`logInButton ${password11 === 2 ? "is-selected" : ""}`} onClick={() => { setPassword11(2); passSelect11(); }}>
                 <img src={copper} alt="copper brown" className="logInButtonImg"/>
                 <p>Copper Brown</p>
               </button>
-              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword11(3); passSelect11(); }}>
+              <button variant="outline-dark" className={`logInButton ${password11 === 3 ? "is-selected" : ""}`} onClick={() => { setPassword11(3); passSelect11(); }}>
                 <img src={emerald} alt="emerald green" className="logInButtonImg"/>
                 <p>Emerald Green</p>
               </button>
@@ -205,18 +209,18 @@ const login = async () => {
           <br />
 
           <div>
-            <h4 className="inter-regular LogInText">Choose the best place to relax</h4>
+            <p className="LogInText">Choose the best place to relax</p>
 
-            <div type="row">
-              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword12(1); passSelect12(); }}>
+            <div className="auth-choice-grid" type="row">
+              <button variant="outline-dark" className={`logInButton ${password12 === 1 ? "is-selected" : ""}`} onClick={() => { setPassword12(1); passSelect12(); }}>
                 <img src={golf} alt="golf course" className="logInButtonImg"/>
                 <p>The golf course</p>
               </button>
-              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword12(2); passSelect12(); }}>
+              <button variant="outline-dark" className={`logInButton ${password12 === 2 ? "is-selected" : ""}`} onClick={() => { setPassword12(2); passSelect12(); }}>
                 <img src={bar} alt="a bar" className="logInButtonImg"/>
                 <p>The bar</p>
               </button>
-              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword12(3); passSelect12(); }}>
+              <button variant="outline-dark" className={`logInButton ${password12 === 3 ? "is-selected" : ""}`} onClick={() => { setPassword12(3); passSelect12(); }}>
                 <img src={marina} alt="a marina" className="logInButtonImg"/>
                 <p>The marina</p>
               </button>
@@ -227,18 +231,18 @@ const login = async () => {
           <br />
           
           <div>
-            <h4 className="inter-regular LogInText">Choose your favourite drink</h4>
+            <p className="LogInText">Choose your favourite drink</p>
 
-            <div type="row">
-              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword13(1); passSelect13(); }}>
+            <div className="auth-choice-grid" type="row">
+              <button variant="outline-dark" className={`logInButton ${password13 === 1 ? "is-selected" : ""}`} onClick={() => { setPassword13(1); passSelect13(); }}>
                 <img src={wine} alt="wine glasses" className="logInButtonImg"/>
                 <p>Wine</p>
               </button>
-              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword13(2); passSelect13(); }}>
+              <button variant="outline-dark" className={`logInButton ${password13 === 2 ? "is-selected" : ""}`} onClick={() => { setPassword13(2); passSelect13(); }}>
                 <img src={whiskey} alt="whiskey in a glass" className="logInButtonImg"/>
                 <p>Whiskey</p>
               </button>
-              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword13(3); passSelect13(); }}>
+              <button variant="outline-dark" className={`logInButton ${password13 === 3 ? "is-selected" : ""}`} onClick={() => { setPassword13(3); passSelect13(); }}>
                 <img src={drinks} alt="cocktails" className="logInButtonImg"/>
                 <p>Cocktails</p>
               </button>
@@ -257,9 +261,12 @@ const login = async () => {
 
       {/* Log In tab right */}
       <Tab eventKey="profile" title="Log in">
-        <div>
-          <h1 className="m-plus-rounded-1c-bold LogInText">Welcome back</h1>
-          <h2 className="LogInSubHeading inter-regular LogInText">Fill in your details to access your account</h2>
+        <div className="auth-panel">
+          {/* SOFT REMOVE: heading level reduced to keep auth pages at h2 max. */}
+          {/* <h1 className="m-plus-rounded-1c-bold LogInText">Welcome back</h1> */}
+          <h2 className="LogInText">Welcome back</h2>
+          {/* <h2 className="LogInSubHeading inter-regular LogInText">Fill in your details to access your account</h2> */}
+          <p className="LogInSubHeading LogInText">Fill in your details to access your account</p>
 
           <input
             placeholder="Username"
@@ -276,19 +283,19 @@ const login = async () => {
           <br /><br />
 
           <div>
-            <h2 className="inter-bold passwordText LogInText">Create a custom password:</h2>            
-            <h3 className="inter-regular LogInText">Choose your favourite colour</h3>
+            <h2 className="passwordText LogInText">Create a custom password:</h2>            
+            <p className="LogInText">Choose your favourite colour</p>
 
-            <div type="row">
-              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword1(1); passSelect(); }}>
+            <div className="auth-choice-grid" type="row">
+              <button variant="outline-dark" className={`logInButton ${password1 === 1 ? "is-selected" : ""}`} onClick={() => { setPassword1(1); passSelect(); }}>
                 <img src={ruby} alt="ruby red" className="logInButtonImg"/>
                 <p>Ruby Red</p>
               </button>
-              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword1(2); passSelect(); }}>
+              <button variant="outline-dark" className={`logInButton ${password1 === 2 ? "is-selected" : ""}`} onClick={() => { setPassword1(2); passSelect(); }}>
                 <img src={copper} alt="copper brown" className="logInButtonImg"/>
                 <p>Copper Brown</p>
               </button>
-              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword1(3); passSelect(); }}>
+              <button variant="outline-dark" className={`logInButton ${password1 === 3 ? "is-selected" : ""}`} onClick={() => { setPassword1(3); passSelect(); }}>
                 <img src={emerald} alt="emerald green" className="logInButtonImg"/>
                 <p>Emerald Green</p>
               </button>
@@ -299,18 +306,18 @@ const login = async () => {
           <br />
 
           <div>
-            <h4 className="inter-regular LogInText">Choose the best place to relax</h4>
+            <p className="LogInText">Choose the best place to relax</p>
 
-            <div type="row">
-              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword2(1); passSelect2(); }}>
+            <div className="auth-choice-grid" type="row">
+              <button variant="outline-dark" className={`logInButton ${password2 === 1 ? "is-selected" : ""}`} onClick={() => { setPassword2(1); passSelect2(); }}>
                 <img src={golf} alt="golf course" className="logInButtonImg"/>
                 <p>The golf course</p>
               </button>
-              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword2(2); passSelect2(); }}>
+              <button variant="outline-dark" className={`logInButton ${password2 === 2 ? "is-selected" : ""}`} onClick={() => { setPassword2(2); passSelect2(); }}>
                 <img src={bar} alt="a bar" className="logInButtonImg"/>
                 <p>The bar</p>
               </button>
-              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword2(3); passSelect2(); }}>
+              <button variant="outline-dark" className={`logInButton ${password2 === 3 ? "is-selected" : ""}`} onClick={() => { setPassword2(3); passSelect2(); }}>
                 <img src={marina} alt="a marina" className="logInButtonImg"/>
                 <p>The marina</p>
               </button>
@@ -321,18 +328,18 @@ const login = async () => {
           <br />
           
           <div>
-            <h4 className="inter-regular LogInText">Choose your favourite drink</h4>
+            <p className="LogInText">Choose your favourite drink</p>
 
-            <div type="row">
-              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword3(1); passSelect3(); }}>
+            <div className="auth-choice-grid" type="row">
+              <button variant="outline-dark" className={`logInButton ${password3 === 1 ? "is-selected" : ""}`} onClick={() => { setPassword3(1); passSelect3(); }}>
                 <img src={wine} alt="wine glasses" className="logInButtonImg"/>
                 <p>Wine</p>
               </button>
-              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword3(2); passSelect3(); }}>
+              <button variant="outline-dark" className={`logInButton ${password3 === 2 ? "is-selected" : ""}`} onClick={() => { setPassword3(2); passSelect3(); }}>
                 <img src={whiskey} alt="whiskey in a glass" className="logInButtonImg"/>
                 <p>Whiskey</p>
               </button>
-              <button variant="outline-dark" className="logInButton" onClick={() => { setPassword3(3); passSelect3(); }}>
+              <button variant="outline-dark" className={`logInButton ${password3 === 3 ? "is-selected" : ""}`} onClick={() => { setPassword3(3); passSelect3(); }}>
                 <img src={drinks} alt="cocktails" className="logInButtonImg"/>
                 <p>Cocktails</p>
               </button>

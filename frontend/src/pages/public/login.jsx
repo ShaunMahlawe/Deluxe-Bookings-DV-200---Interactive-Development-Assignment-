@@ -1,14 +1,15 @@
 import { useState } from "react";
 import axios from "axios";
+import API_BASE_URL from "../../api/config";
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import Footer from '../../components/common/footer';
+import Footer from '../../components/public/footer';
 
-import Authentication from "../../components/common/authentication";
+import Authentication from "../../components/public/authentication";
 
 
 function LogIn() {
@@ -18,7 +19,7 @@ function LogIn() {
   const [message, setMessage] = useState("");
 
   const register = async () => {
-    const res = await axios.post("http://localhost:5001/auth/register", {
+    const res = await axios.post(`${API_BASE_URL}/auth/register`, {
       email,
       password,
       name
@@ -28,7 +29,7 @@ function LogIn() {
   };
 
   const login = async () => {
-    const res = await axios.post("http://localhost:5001/auth/login", {
+    const res = await axios.post(`${API_BASE_URL}/auth/login`, {
       email,
       password,
       name
@@ -40,7 +41,9 @@ function LogIn() {
   return (
     <div>
     <div className="logInBack">
-        <div className="logInBox" style={{backgroundColor: "#b3a6a3c3"}}>
+        {/* SOFT REMOVE: inline translucent panel color moved to the design-system CSS. */}
+        {/* <div className="logInBox" style={{backgroundColor: "#b3a6a3c3"}}> */}
+        <div className="logInBox">
           <div type="col">
 
           <Authentication/>

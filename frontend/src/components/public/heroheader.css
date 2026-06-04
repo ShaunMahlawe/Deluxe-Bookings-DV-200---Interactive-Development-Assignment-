@@ -34,7 +34,7 @@
 }
 
 .hero-title {
-  font-family: 'Fredoka', 'Poppins', sans-serif;
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: 'Fredoka', 'Poppins', sans-serif; */
   line-height: 1.32em;
   font-size: clamp(32px, 6vw, 64px);
   color: #fff;

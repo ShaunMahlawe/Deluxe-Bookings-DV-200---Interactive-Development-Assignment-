@@ -79,7 +79,7 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  text-align: center;
+  text-align: left;
   margin-top: -2px;
 }
 
@@ -109,7 +109,7 @@
 }
 
 .navbar-logo {
-  font-family: 'Great Vibes', 'Allura', 'Dancing Script', cursive;
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: 'Great Vibes', 'Allura', 'Dancing Script', cursive; */
   font-size: 82px;
   line-height: 0.9;
   letter-spacing: 0.4px;
@@ -122,7 +122,7 @@
   font-size: 17px;
   margin-top: 2px;
   letter-spacing: 3.6px;
-  font-family: 'Poppins', 'Trebuchet MS', sans-serif;
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: 'Poppins', 'Trebuchet MS', sans-serif; */
   color: rgba(255, 255, 255, 0.95);
   font-weight: 500;
 }
@@ -455,7 +455,7 @@
 
 .navbar-guest-count {
   min-width: 22px;
-  text-align: center;
+  text-align: left;
   color: #7e5a3d;
   font-size: 15px;
   font-weight: 700;

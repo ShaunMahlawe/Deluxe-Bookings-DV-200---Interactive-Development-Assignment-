@@ -1,5 +1,5 @@
-function SellerLoggedIn() {
-  return <h2>Seller logged in Page</h2>;
-}
+// SOFT REMOVE: sellerLoggedIn was a placeholder. The canonical logged-in seller
+// page is SellerDashboard.
+import SellerDashboard from "./SellerDashboard";
 
-export default SellerLoggedIn;
+export default SellerDashboard;

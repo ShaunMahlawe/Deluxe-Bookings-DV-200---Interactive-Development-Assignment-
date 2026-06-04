@@ -5,7 +5,7 @@
   border: 1px solid #3e3938;
   border-radius: 20px;
   color: #6c4a2f;
-  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: 'Poppins', 'Segoe UI', sans-serif; */
   overflow: hidden;
 }
 
@@ -415,7 +415,7 @@
 
 .stepper-control span {
   min-width: 14px;
-  text-align: center;
+  text-align: left;
   font-size: 15px;
   font-weight: 600;
   color: #5f4a3b;

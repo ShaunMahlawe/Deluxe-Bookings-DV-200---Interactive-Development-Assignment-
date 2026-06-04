@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700;900&family=Marcellus&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap');
-/* @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap');
 
 :root {
   --color-brand: #332a23;
@@ -9,11 +8,15 @@
   --color-stroke-weak: #e3dfde;
   --color-fill: #ffffff;
   --color-background: #efebea;
+  --color-surface: #ffffff;
   --shadow-raised: 0 4px 8px rgba(51, 42, 35, 0.1);
   --shadow-overlay: 0 6px 8px 3px rgba(51, 42, 35, 0.1);
+
   --font-h1: 'Playfair Display', Georgia, serif;
   --font-heading: 'Marcellus', Georgia, serif;
   --font-body: 'Lato', Arial, sans-serif;
+  --font-mono: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+
   --space-1: 8px;
   --space-2: 16px;
   --space-3: 24px;
@@ -21,6 +24,7 @@
   --space-5: 40px;
   --space-6: 48px;
   --space-8: 64px;
+
   --fs-sm: 13px;
   --fs-base: 16px;
   --fs-h6: 20px;
@@ -29,15 +33,20 @@
   --fs-h3: 39px;
   --fs-h2: 49px;
   --fs-h1: 61px;
+
   --radius-control: 12px;
-  --radius-card: 34px;
-  --radius-card-lg: 42px;
+  --radius-card: 8px;
+  --radius-card-lg: 8px;
+  --radius-dual-card: 40px;
+
   --button-font-size: var(--fs-base);
   --button-min-height: 44px;
   --button-font-weight: 500;
   --button-hover-opacity: 0.92;
+  --button-active-opacity: 0.86;
   --icon-size: 24px;
   --icon-stroke-width: 2.4;
+
   font-family: var(--font-body);
   line-height: 1.5;
   font-weight: 400;
@@ -45,18 +54,6 @@
   background: var(--color-background);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 html {
@@ -65,22 +62,19 @@ html {
 
 body {
   margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--color-text-strong);
   background: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-body::before {
-  content: none;
+* {
+  box-sizing: border-box;
 }
 
 a {
   color: var(--color-brand);
-}
-
-#root {
-  width: 100%;
-  min-height: 100vh;
 }
 
 h1,
@@ -96,33 +90,37 @@ h6 {
 }
 
 h1 {
-  font-family: var(--font-h1);
-  font-size: clamp(39px, 6vw, 61px);
+  font-family: var(--font-body);
+  font-size: var(--fs-h1);
 }
 
 h2 {
-  font-family: var(--font-heading);
-  font-size: clamp(31px, 4vw, 49px);
+  font-family: var(--font-body);
+  font-size: var(--fs-h2);
 }
 
 h3 {
-  font-family: var(--font-heading);
-  font-size: 39px;
+  font-family: var(--font-body);
+  font-size: var(--fs-h3);
 }
 
 h4 {
-  font-family: var(--font-heading);
-  font-size: 31px;
+  font-family: var(--font-body);
+  font-size: var(--fs-h4);
 }
 
 h5 {
-  font-family: var(--font-heading);
-  font-size: 25px;
+  font-family: var(--font-body);
+  font-size: var(--fs-h5);
 }
 
 h6 {
-  font-family: var(--font-heading);
-  font-size: 20px;
+  font-family: var(--font-body);
+  font-size: var(--fs-h6);
+}
+
+em {
+  font-family: var(--font-h1);
 }
 
 p,
@@ -137,41 +135,19 @@ button,
 input,
 textarea {
   font: inherit;
-#root {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: clip;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+code,
+pre {
+  font-family: var(--font-mono);
 }
 
 input::placeholder,
-textarea::placeholder {
-  color: var(--color-text-strong);
-  opacity: 0.25;
-}
-
+textarea::placeholder,
 .form-control::placeholder {
   color: var(--color-text-strong);
   opacity: 0.25;
 }
-
-/* .btn:not(.pill):not(.badge):not(.step-badge):not(.seller-soft-badge),
-.button:not(.pill):not(.badge):not(.step-badge):not(.seller-soft-badge),
-[role="button"]:not(.pill):not(.badge):not(.step-badge):not(.seller-soft-badge) {
-  min-height: var(--button-min-height) !important;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-1);
-  border-radius: var(--radius-control);
-  font-family: var(--font-body);
-  font-size: var(--button-font-size);
-  font-weight: var(--button-font-weight);
-} */
 
 .btn-primary {
   --bs-btn-color: var(--color-fill);
@@ -196,6 +172,12 @@ textarea::placeholder {
   opacity: var(--button-hover-opacity);
 }
 
+.btn:not(:disabled):active,
+.button:not(:disabled):active,
+[role="button"]:not(:disabled):active {
+  opacity: var(--button-active-opacity);
+}
+
 .btn svg,
 .button svg,
 [role="button"] svg {
@@ -203,15 +185,4 @@ textarea::placeholder {
   height: var(--icon-size);
   flex: 0 0 auto;
   stroke-width: var(--icon-stroke-width);
-}
-
-.card {
-  border-radius: var(--radius-card);
-}
-
-@media (min-width: 768px) {
-  :root {
-    --fs-sm: 16px;
-    --fs-base: 20px;
-  }
 }

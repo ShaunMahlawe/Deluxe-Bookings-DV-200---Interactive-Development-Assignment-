@@ -2,7 +2,7 @@
   min-height: 100vh;
   background: var(--color-background);
   color: var(--color-text-strong);
-  font-family: var(--font-body);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
 }
 
 .seller-header {
@@ -21,14 +21,14 @@
 .seller-dashboard-title {
   margin: 0;
   color: var(--color-fill);
-  font-family: var(--font-body);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-size: clamp(var(--fs-h4), 4vw, var(--fs-h2));
   font-weight: 500;
 }
 
 .seller-dashboard-title em {
   color: var(--color-fill);
-  font-family: var(--font-h1);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-h1); */
   font-style: italic;
   font-weight: 600;
 }
@@ -67,7 +67,7 @@
   border-radius: var(--radius-control);
   background: var(--color-brand) !important;
   color: var(--color-fill) !important;
-  font-family: var(--font-body);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-size: var(--fs-base);
   font-weight: var(--button-font-weight);
 }
@@ -87,7 +87,7 @@
   border-radius: var(--radius-control);
   background: var(--color-background) !important;
   color: var(--color-text-strong) !important;
-  font-family: var(--font-body);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-size: var(--fs-base);
   font-weight: var(--button-font-weight);
 }
@@ -119,7 +119,7 @@
   display: grid;
   place-items: center;
   gap: var(--space-2);
-  text-align: center;
+  text-align: left;
 }
 
 .seller-empty-state {
@@ -133,7 +133,7 @@
 .seller-empty-state h2 {
   margin: 0;
   color: var(--color-text-strong);
-  font-family: var(--font-body);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-weight: 500;
 }
 
@@ -149,7 +149,7 @@
 
   /* .seller-primary-action {
     width: 100%;
-  } */
+  }
 
   .seller-alert-actions {
     width: 100%;

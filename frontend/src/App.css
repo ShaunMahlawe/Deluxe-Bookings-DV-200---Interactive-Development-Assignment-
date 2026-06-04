@@ -1,58 +1,67 @@
 .App {
-  text-align: center;
+  text-align: left;
 }
 
 .m-plus-rounded-1c-thin {
-  font-family: "M PLUS Rounded 1c", sans-serif;
+  /* SOFT REMOVE: previous font-family: "M PLUS Rounded 1c", sans-serif; */
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-weight: 100;
   font-style: normal;
 }
 
 .m-plus-rounded-1c-light {
-  font-family: "M PLUS Rounded 1c", sans-serif;
+  /* SOFT REMOVE: previous font-family: "M PLUS Rounded 1c", sans-serif; */
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-weight: 300;
   font-style: normal;
 }
 
 .m-plus-rounded-1c-regular {
-  font-family: "M PLUS Rounded 1c", sans-serif;
+  /* SOFT REMOVE: previous font-family: "M PLUS Rounded 1c", sans-serif; */
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-weight: 400;
   font-style: normal;
 }
 
 .m-plus-rounded-1c-medium {
-  font-family: "M PLUS Rounded 1c", sans-serif;
+  /* SOFT REMOVE: previous font-family: "M PLUS Rounded 1c", sans-serif; */
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-weight: 500;
   font-style: normal;
 }
 
 .m-plus-rounded-1c-bold {
-  font-family: "M PLUS Rounded 1c", sans-serif;
+  /* SOFT REMOVE: previous font-family: "M PLUS Rounded 1c", sans-serif; */
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-heading); */
   font-weight: 700;
   font-style: normal;
 }
 
 .m-plus-rounded-1c-extrabold {
-  font-family: "M PLUS Rounded 1c", sans-serif;
+  /* SOFT REMOVE: previous font-family: "M PLUS Rounded 1c", sans-serif; */
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-heading); */
   font-weight: 800;
   font-style: normal;
 }
 
 .m-plus-rounded-1c-black {
-  font-family: "M PLUS Rounded 1c", sans-serif;
+  /* SOFT REMOVE: previous font-family: "M PLUS Rounded 1c", sans-serif; */
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-heading); */
   font-weight: 900;
   font-style: normal;
 }
 
 .inter-bold {
-  font-family: "Inter", sans-serif;
+  /* SOFT REMOVE: previous font-family: "Inter", sans-serif; */
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
 }
 
 .inter-regular {
-  font-family: "Inter", sans-serif;
+  /* SOFT REMOVE: previous font-family: "Inter", sans-serif; */
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
@@ -65,10 +74,10 @@
 .logInBox {
   display: flex ;
   justify-content: center;
-  background-color: #b3a6a3c3;
+  background-color: rgba(51, 42, 35, 0.78);
   padding: 3%;
   border-radius: 15px;
-  text-align: center;
+  text-align: left;
   width:70%;
   filter: drop-shadow(8px 8px 10px);
   margin-bottom: 4%;
@@ -79,6 +88,8 @@
   display: flex ;
   background-image: url('Assets/images/Hero header.png');
   justify-content: center;
+  min-height: 100vh;
+  padding-top: 128px;
 
 }
 
@@ -105,7 +116,7 @@
 }
 
 .logInButton:hover {
-  background-color: #7B593F;
+  background-color: var(--color-brand);
   color: white;
 }
 
@@ -125,13 +136,13 @@
 }
 
 .logInButton:hover {
-  background-color: #7B593F;
+  background-color: var(--color-brand);
   color: white;
 }
 
 .logInSubmit{
   padding: 1.5%;
-  background-color: #7B593F;
+  background-color: var(--color-brand);
   border-color: #ffffff;
   border-width: 2px;
   border-radius: 15px;
@@ -183,8 +194,12 @@
 
 .heroImage{
   background-image: url('Assets/images/Hero header.png');
-  max-height: 90%;
+  min-height: 100vh;
+  max-height: none;
   max-width: 100%;
+  padding-top: 128px;
+  background-size: cover;
+  background-position: center;
 }
 
 .herotext{
@@ -196,18 +211,19 @@
 .herocard{
   font-size: 18px;
   color: white;
-  background-color: #716a65de;
+  background-color: var(--color-brand);
   border-color: white;
   border-style:solid;
-  border-radius: 17px;
+  border-radius: 0 var(--radius-dual-card) 0 var(--radius-dual-card);
   border-width: 1px;
   padding:2%;
   width: 80%;
 }
 
 .herocard:hover{
-  filter: drop-shadow(3px 3px #3C2717);
-  background-color: #716a65de;
+  filter: none;
+  background-color: var(--color-brand);
+  opacity: var(--button-hover-opacity);
 }
 
 .marginBody{
@@ -215,22 +231,23 @@
 }
 
 .primaryButton{
-  margin: 1%;
-  padding: 1.2%;
+  margin: var(--space-1);
+  padding: var(--space-2) var(--space-3);
   background-color: #ffffff;
-  border-color: #7B593F;
-  border-width: 2px;
-  border-radius: 15px;
-  padding-left: 0%;
+  border: 2px solid var(--color-brand);
+  border-radius: var(--radius-control);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: var(--space-1);
+  min-height: var(--button-min-height);
+  transition: opacity 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
 .primaryButton:hover {
-  background-color: #7B593F;
+  background-color: var(--color-brand);
   color: white;
+  opacity: var(--button-hover-opacity);
 }
 
 .buttontext {
@@ -255,13 +272,57 @@
 }
 
 nav{
-  padding: 1.5%;
-  padding-left: 8%;
-   background-image: url('Assets/images/Nav image.png');
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  width: 100%;
+  padding: var(--space-3) clamp(var(--space-3), 5vw, var(--space-8)) 0;
+  /* SOFT REMOVE: nav should be transparent, not image-backed. */
+  /* background-image: url('Assets/images/Nav image.png'); */
+  background: transparent;
+  background-image: none;
+}
+
+.global-nav{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: var(--space-3);
+}
+
+.global-nav-left,
+.global-nav-right{
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.global-nav-left{
+  justify-self: start;
+}
+
+.global-nav-logo{
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+}
+
+.global-nav-right{
+  justify-self: end;
+  width: fit-content;
+  gap: var(--space-2);
+}
+
+.global-nav-account{
+  width: max-content;
+  white-space: nowrap;
 }
 
 .logoStyling{
-  width: 13%;
+  width: clamp(140px, 12vw, 220px);
+  max-width: 100%;
 }
 
 .logoStyling:hover{
@@ -278,10 +339,13 @@ nav{
 }
 
 .pagelinks{
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
   text-decoration: none;
   color: white;
-  padding: 2%;
-  padding-right: 9%;
+  padding: 0;
+  white-space: nowrap;
 }
 
 .pagelinks:hover{
@@ -294,11 +358,19 @@ nav{
 }
 
 .searchBar{
-  margin-left: 0.5%;
-  padding: 0.5%;
+  width: 100%;
+  min-width: 0;
+  margin-left: 0;
+  padding: 0;
   border: none;
-  padding-left: 1%;
+  outline: none;
   display: inline-flex;
+}
+
+.searchBar:focus,
+.searchBar:focus-visible{
+  outline: none;
+  box-shadow: none;
 }
 .searchButton{
   width: 18px;
@@ -309,18 +381,29 @@ nav{
 }
 
 .searchBox{
-  padding: 1%;
-  padding-left: 0.5%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(320px, 24vw);
+  padding: var(--space-1) var(--space-2);
   background-color: white;
-  border-color: #7B593F;
-  border-width: 2px;
-  border-radius: 15px;
-  margin-left: 5%;
-  margin-right: 2%;
+  border: 2px solid var(--color-brand);
+  border-radius: var(--radius-control);
+  margin: 0;
+  min-height: var(--button-min-height);
+  transition: opacity 0.2s ease, box-shadow 0.2s ease;
 }
 
 .searchBox:hover{
-  filter: drop-shadow(3px 3px #7B593F);
+  filter: none;
+  box-shadow: var(--shadow-raised);
+  opacity: var(--button-hover-opacity);
+}
+
+.global-nav .searchBox,
+.global-nav .primaryButton{
+  min-height: 56px;
+  padding: var(--space-2) var(--space-3);
 }
 
 .dropdownlinks{
@@ -355,8 +438,8 @@ nav{
 }
 
 footer{
-  background-color: #7B593F;
-  border-radius: 17% 17% 0% 0%;
+  background-color: var(--color-brand);
+  border-radius: 0;
 }
 
 .footerHeading{
@@ -397,6 +480,198 @@ footer{
   margin-bottom: 1%;
 }
 
+@media (max-width: 900px) {
+  .global-nav{
+    grid-template-columns: 1fr;
+    row-gap: var(--space-2);
+  }
+
+  .global-nav-logo{
+    grid-row: 1;
+    justify-self: start;
+  }
+
+  .global-nav-left,
+  .global-nav-right{
+    width: 100%;
+    justify-self: stretch;
+    flex-wrap: wrap;
+  }
+
+  .searchBox{
+    width: 100%;
+  }
+}
+
+/* Current auth and hero alignment overrides */
+.logInBack{
+  align-items: flex-start;
+  padding: 144px var(--space-3) var(--space-8);
+  background-size: cover;
+  background-position: center;
+}
+
+.logInBox{
+  width: min(100%, 1168px);
+  margin: 0 auto;
+  padding: var(--space-5);
+  border: 1px solid var(--color-stroke-weak);
+  border-radius: var(--radius-card);
+  background: var(--color-background);
+  color: var(--color-text-strong);
+  filter: none;
+  box-shadow: none;
+}
+
+.logInBox .nav-tabs{
+  border-bottom: 1px solid var(--color-stroke-weak);
+}
+
+.logInBox .nav-link{
+  color: var(--color-text-strong);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.logInBox .nav-link.active{
+  color: var(--color-brand) !important;
+  background: var(--color-fill);
+  border: 1px solid var(--color-stroke-weak);
+  border-bottom-color: var(--color-fill);
+  font-weight: 400;
+}
+
+.auth-panel{
+  display: grid;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+}
+
+.auth-panel h2,
+.auth-panel .passwordText{
+  margin: 0;
+  color: var(--color-text-strong);
+  font-size: var(--fs-h2);
+  font-weight: 500;
+}
+
+.auth-panel p,
+.auth-panel .LogInSubHeading{
+  margin: 0;
+  color: var(--color-text-weak);
+  font-size: var(--fs-base);
+  font-weight: 400;
+}
+
+.auth-panel input{
+  width: min(100%, 420px);
+  min-height: var(--button-min-height);
+  padding: 12px var(--space-3);
+  border: 1px solid var(--color-stroke-weak);
+  border-radius: var(--radius-control);
+  background: var(--color-fill);
+  color: var(--color-text-strong);
+  filter: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.auth-panel input:focus,
+.auth-panel input:focus-visible{
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 4px rgba(51, 42, 35, 0.1);
+  outline: none;
+}
+
+.auth-choice-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(184px, 1fr));
+  gap: var(--space-3);
+}
+
+.logInButton{
+  display: grid;
+  gap: var(--space-2);
+  width: 100%;
+  margin: 0;
+  padding: var(--space-3);
+  border: 1px solid var(--color-stroke-weak);
+  border-radius: var(--radius-control);
+  background: var(--color-fill);
+  color: var(--color-text-strong);
+  filter: none;
+  box-shadow: none;
+}
+
+.logInButton:hover{
+  background: var(--color-fill);
+  color: var(--color-text-strong);
+  opacity: var(--button-hover-opacity);
+}
+
+.logInButton.is-selected{
+  border: 2px solid var(--color-brand);
+}
+
+.logInButtonImg{
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: var(--radius-control);
+}
+
+.logInSubmit{
+  width: fit-content;
+  min-height: var(--button-min-height);
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-brand);
+  border-radius: var(--radius-control);
+  background: var(--color-brand);
+  color: var(--color-fill);
+  filter: none;
+  box-shadow: none;
+}
+
+.heroImage{
+  display: flex;
+  align-items: flex-end;
+  padding: 128px clamp(var(--space-3), 7vw, var(--space-9)) var(--space-8);
+}
+
+.heroImage > .row{
+  width: 100%;
+  align-items: end;
+}
+
+.herotext,
+.herocard,
+.circularText{
+  margin-left: 0;
+}
+
+.herotext{
+  padding-top: 0;
+  margin-bottom: var(--space-3);
+}
+
+.herocard{
+  background-color: rgba(113, 106, 101, 0.87);
+  border-color: #ffffff;
+}
+
+.herocard:hover{
+  background-color: rgba(113, 106, 101, 0.87);
+}
+
+.circularText{
+  display: block;
+  width: min(260px, 32vw);
+  padding: 0;
+  margin-left: auto;
+  margin-bottom: var(--space-4);
+}
+
 input{
   border-color: #7B593F;
   border-width: 2px;
@@ -418,13 +693,13 @@ input{
 
 .CheckoutBox {
   padding: 3%;
-  text-align: center;
+  text-align: left;
   width: 50%;
   margin-top: 0;
   min-width: 340px;
   padding-left: 6%;
   padding-right: 6%;
-  background-color: #b3a6a3b7 !important;
+  background-color: rgba(51, 42, 35, 0.72) !important;
   border-radius: 15px;
   filter: drop-shadow(8px 8px 10px);
   margin-bottom: 4%;
@@ -524,7 +799,7 @@ input{
 
 /* When the checkbox is checked, add a blue background */
 .checkContainer input:checked ~ .checkmark {
-  background-color: #7B593F;
+  background-color: var(--color-brand);
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -558,10 +833,10 @@ input{
 }
 
 .Accountbox{
-  background-color: #b3a6a3c3;
+  background-color: rgba(51, 42, 35, 0.78);
   padding: 3%;
   border-radius: 15px;
-  text-align: center;
+  text-align: left;
   width:70%;
   filter: drop-shadow(8px 8px 10px);
   margin-bottom: 4%;
@@ -601,7 +876,7 @@ input{
 }
 
 .review-form h2 {
-  text-align: center;
+  text-align: left;
   color: #2D1A03;
   margin-bottom: 25px;
 }
@@ -647,7 +922,7 @@ input{
 }
 
 .rating-text {
-  text-align: center;
+  text-align: left;
   color: #2D1A03;
   font-weight: 600;
   margin-bottom: 20px;
@@ -692,7 +967,7 @@ input{
 /* HERO TEXT */
 
 .hero-content {
-  text-align: center;
+  text-align: left;
   margin-bottom: 70px;
 }
 
@@ -924,7 +1199,7 @@ input{
 
 .prev-btn-hero:hover,
 .next-btn-hero:hover {
-  background: #73554d;
+  background: var(--color-brand);
   transform: translateY(-5px);
 }
 
@@ -1005,7 +1280,7 @@ input{
 
   color: #3b1f05;
 
-  font-family: "Playfair Display", serif;
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: "Playfair Display", serif; */
 
   margin-bottom: 30px;
 }
@@ -1123,7 +1398,7 @@ input{
 
   font-size: 28px;
 
-  font-family: "Playfair Display", serif;
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: "Playfair Display", serif; */
 }
 
 .card-text p {
@@ -1159,7 +1434,7 @@ input{
 }
 
 .card-btn:hover {
-  background: #73554d;
+  background: var(--color-brand);
 }
 
 .dark-card .card-btn {
@@ -1291,7 +1566,7 @@ input{
   color: #7e5a3d;
   font-size: 16px;
   font-weight: 600;
-  text-align: center;
+  text-align: left;
 }
 
 .app-admin-actions {
@@ -1330,7 +1605,7 @@ input{
 
   line-height: 1.1;
 
-  font-family: "Playfair Display", serif;
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: "Playfair Display", serif; */
 }
 
 /* RIGHT SIDE */
@@ -1344,15 +1619,11 @@ input{
 /* BROWN CARD */
 
 .brown-card {
-  background: linear-gradient(
-    135deg,
-    #3b1f05,
-    #73554d
-  );
+  background: var(--color-brand);
 
   padding: 40px;
 
-  border-radius: 35px;
+  border-radius: 0 var(--radius-dual-card) 0 var(--radius-dual-card);
 
   color: white;
 
@@ -1363,7 +1634,7 @@ input{
   justify-content: center;
 
   box-shadow:
-    0 20px 50px rgba(59,31,5,.25);
+    var(--shadow-overlay);
 }
 
 .brown-card button {
@@ -1371,7 +1642,7 @@ input{
 
   padding: 10px 24px;
 
-  border-radius: 50px;
+  border-radius: var(--radius-control);
 
   border: none;
 
@@ -1395,7 +1666,7 @@ input{
 
   line-height: 1.2;
 
-  font-family: "Playfair Display", serif;
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: "Playfair Display", serif; */
 }
 
 /* IMAGE CARD */
@@ -1405,7 +1676,7 @@ input{
 
   overflow: hidden;
 
-  border-radius: 35px;
+  border-radius: 0 var(--radius-dual-card) 0 var(--radius-dual-card);
 }
 
 .image-card img {
@@ -1415,7 +1686,7 @@ input{
 
   object-fit: cover;
 
-  border-radius: 35px;
+  border-radius: 0 var(--radius-dual-card) 0 var(--radius-dual-card);
 
   transition: .6s;
 }
@@ -1469,7 +1740,7 @@ input{
 
   max-width: 350px;
 
-  font-family: "Playfair Display", serif;
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: "Playfair Display", serif; */
 }
 
 /* ARROW BUTTON */
@@ -1523,7 +1794,7 @@ input{
 
   border-radius: 30px;
 
-  text-align: center;
+  text-align: left;
 
   background: rgba(255,255,255,.8);
 
@@ -1546,7 +1817,7 @@ input{
 
   color: #3b1f05;
 
-  font-family: "Playfair Display", serif;
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: "Playfair Display", serif; */
 
   margin-bottom: 12px;
 }
@@ -1584,7 +1855,7 @@ input{
   align-items: center;
 
   padding: 50px;
-  font-family: Arial, sans-serif;
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: Arial, sans-serif; */
 }
 
 /* DARK OVERLAY */
@@ -1595,7 +1866,7 @@ input{
   inset: 0;
 
   background: rgba(0, 0, 0, 0.45);
-} */
+}
 
 /* CONTENT WRAPPER */
 .offers-container {
@@ -1784,7 +2055,7 @@ input{
 }
 
 .left-content {
-  text-align: center;
+  text-align: left;
   max-width: 900px;
   margin: auto auto 70px;
 }
@@ -1814,7 +2085,7 @@ input{
 
   margin-bottom: 25px;
 
-  font-family: "Playfair Display", serif;
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: "Playfair Display", serif; */
 }
 
 .left-content p {
@@ -1937,7 +2208,7 @@ input{
 
   margin-bottom: 15px;
 
-  font-family: "Playfair Display", serif;
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: "Playfair Display", serif; */
 }
 
 /* DESCRIPTION */
@@ -2007,7 +2278,7 @@ input{
 
   color: #3b1f05;
 
-  font-family: "Playfair Display", serif;
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: "Playfair Display", serif; */
 }
 
 .bottom-right {

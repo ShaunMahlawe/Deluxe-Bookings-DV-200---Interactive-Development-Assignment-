@@ -10,6 +10,7 @@ const users = [
     email: 'demo@deluxebookings.com',
     passwordHash: bcrypt.hashSync('Password123!', 10),
     signatureWordHash: bcrypt.hashSync('Aurora', 10),
+    userRole: 'B',
   },
 ]
 
@@ -43,6 +44,7 @@ function safeUser(user) {
     id: user.id,
     name: user.name,
     email: user.email,
+    userRole: user.userRole || 'B',
   }
 }
 
@@ -54,13 +56,14 @@ function findUserById(id) {
   return users.find((user) => user.id === String(id))
 }
 
-function createUser({ name, email, passwordHash, signatureWordHash }) {
+function createUser({ name, email, passwordHash, signatureWordHash, userRole = 'B' }) {
   const user = {
     id: String(userCounter),
     name,
     email: email.toLowerCase(),
     passwordHash,
     signatureWordHash,
+    userRole,
   }
 
   userCounter += 1

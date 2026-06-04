@@ -3,7 +3,7 @@
   padding: var(--space-5) var(--space-3) var(--space-8);
   background: var(--color-background);
   color: var(--color-text-strong);
-  font-family: var(--font-body);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
 }
 
 .create-listing-shell {
@@ -17,7 +17,7 @@
 .create-listing-page .intake-page-title {
   margin: 0;
   color: var(--color-text-strong);
-  font-family: var(--font-body);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-size: var(--fs-h3);
   font-weight: 700;
 }
@@ -83,12 +83,12 @@
   border-radius: var(--radius-card);
   background: var(--color-fill);
   box-shadow: var(--shadow-raised);
-  text-align: center;
+  text-align: left;
 }
 
 .create-listing-page .listing-success-card h1 {
   color: var(--color-text-strong);
-  font-family: var(--font-body);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-size: var(--fs-h3);
   font-weight: 700;
 }
@@ -107,15 +107,13 @@
   padding: 0;
 }
 
-/* .create-listing-page .form-header {
-  margin-bottom: var(--space-4);
-} */
+/* SOFT REMOVE: previous .create-listing-page .form-header margin-bottom rule. */
 
 .create-listing-page .form-header h2,
 .create-listing-page .form-header h4 {
   margin: 0 0 var(--space-2);
   color: var(--color-text-strong);
-  font-family: var(--font-body);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-size: var(--fs-h5);
   font-weight: 700;
 }
@@ -127,7 +125,7 @@
 .create-listing-page .pricing-help-card h4 {
   margin: 0 0 var(--space-2);
   color: var(--color-text-strong);
-  font-family: var(--font-body);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-size: var(--fs-h5);
   font-weight: 500;
 }
@@ -210,7 +208,7 @@
   flex-direction: column;
   gap: var(--space-1);
   color: var(--color-text-strong);
-  font-family: var(--font-body);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-size: var(--fs-base);
   font-weight: 500;
 }
@@ -260,7 +258,7 @@
   border-radius: var(--radius-control);
   background: var(--color-fill);
   color: var(--color-text-strong);
-  font-family: var(--font-body);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-size: var(--fs-base);
   outline: none;
 }
@@ -301,10 +299,10 @@
 .create-listing-page .pill {
   min-height: 56px;
   padding: var(--space-1) var(--space-3);
-  font-family: var(--font-body);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-size: var(--fs-base);
   font-weight: 500;
-  text-align: center;
+  text-align: left;
 }
 
 .create-listing-page .type-card {
@@ -316,7 +314,7 @@
   gap: var(--space-2);
   border: 1px solid var(--color-stroke-weak) !important;
   border-radius: var(--radius-control) !important;
-  text-align: center;
+  text-align: left;
 }
 
 .create-listing-page .type-card-media {
@@ -372,7 +370,7 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-1);
-  text-align: center;
+  text-align: left;
 }
 
 .create-listing-page .type-card-title {
@@ -443,7 +441,7 @@
   border-radius: var(--radius-control) !important;
   background: var(--color-brand) !important;
   color: var(--color-fill) !important;
-  font-family: var(--font-body);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-size: var(--fs-base);
   font-weight: 500;
 }
@@ -473,7 +471,7 @@
   border-radius: var(--radius-control);
   background: var(--color-fill);
   color: var(--color-text-strong);
-  text-align: center;
+  text-align: left;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -745,7 +743,7 @@
   color: var(--color-text-strong);
   font-size: var(--fs-base);
   font-weight: 500;
-  text-align: center;
+  text-align: left;
 }
 
 .create-listing-page .currency-field .form-control {
@@ -861,7 +859,7 @@
 .create-listing-page .pricing-total-card span {
   margin: 0;
   color: var(--color-text-strong);
-  font-family: var(--font-body);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-size: var(--fs-base);
   font-weight: 500;
 }
@@ -949,7 +947,7 @@
   min-height: var(--button-min-height);
   padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-control) !important;
-  font-family: var(--font-body);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: var(--font-body); */
   font-size: var(--fs-base);
   font-weight: var(--button-font-weight);
 }

@@ -43,12 +43,16 @@ function NavBar() {
   };
 
   return (
-    <nav>
-        <Link to="/product" className="pagelinks"><BedDouble className='iconStyling' aria-hidden="true" />Stays</Link>
-        <Link to="/seller" className="pagelinks"><Store className='iconStyling' aria-hidden="true" />List your property</Link>
-        <Link to="/"><img src={Logo} alt="Deluxe Bookings logo" className='logoStyling'/></Link>
-        
-        <div className="searchBox col-3">
+    <nav className="global-nav">
+        <div className="global-nav-left">
+          <Link to="/stays" className="pagelinks"><BedDouble className='iconStyling' aria-hidden="true" />Stays</Link>
+          <Link to="/seller" className="pagelinks"><Store className='iconStyling' aria-hidden="true" />List your property</Link>
+        </div>
+
+        <Link to="/" className="global-nav-logo"><img src={Logo} alt="Deluxe Bookings logo" className='logoStyling'/></Link>
+
+        <div className="global-nav-right">
+        <div className="searchBox">
           <input type="text" placeholder="Search.." className="searchBar"></input>
           <Search className='searchButton' aria-hidden="true" />
         </div>
@@ -56,7 +60,7 @@ function NavBar() {
         {/* Conditional rendering */}
         {!isLoggedIn ? (
           // Shows if user isn't logged in
-          <Link to="/login" className='primaryButton inter-regular buttontext col-4'>
+          <Link to="/login" className='primaryButton inter-regular buttontext global-nav-account'>
             Create account <ArrowUpRight className='searchButton' aria-hidden="true" />
           </Link>
         ) : (
@@ -104,6 +108,7 @@ function NavBar() {
             </Dropdown.Menu>
           </Dropdown>
         )}
+        </div>
       </nav>
   )
 }

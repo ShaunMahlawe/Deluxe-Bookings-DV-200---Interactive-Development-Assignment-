@@ -1,7 +1,8 @@
 .results-page {
   width: 100%;
   max-width: 100%;
-  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  padding-top: var(--space-5);
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: 'Poppins', 'Segoe UI', sans-serif; */
   color: #3f2d20;
   overflow-x: clip;
 }
@@ -10,7 +11,7 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 16px;
-  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: 'Poppins', 'Segoe UI', sans-serif; */
   color: #3f2d20;
 }
 
@@ -271,11 +272,12 @@
   min-width: 0;
   border-radius: 24px;
   overflow: hidden;
-  background: #7e5b3f;
+  background: #ffffff;
+  border: 1px solid rgba(51, 42, 35, 0.14);
   display: flex;
   flex-direction: column;
   height: 100%;
-  box-shadow: 0 10px 18px rgba(40, 22, 10, 0.2), 0 3px 8px rgba(22, 12, 6, 0.14);
+  box-shadow: 0 10px 18px rgba(40, 22, 10, 0.1), 0 3px 8px rgba(22, 12, 6, 0.08);
   transition: transform 0.22s ease, box-shadow 0.22s ease;
 }
 
@@ -321,10 +323,19 @@
 
 .property-body {
   padding: 14px;
-  color: #fff;
+  color: #7e5b3f;
   display: flex;
   flex-direction: column;
   flex: 1;
+}
+
+.property-body h2,
+.unit-type,
+.value-text,
+.location-row,
+.distance-row,
+.price-footer {
+  color: #7e5b3f;
 }
 
 .property-body h2 {
@@ -338,14 +349,15 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  color: #7e5b3f;
 }
 
 .card-tag {
   display: inline-block;
   margin-top: 8px;
   font-size: 14px;
-  color: #4f3b28;
-  background: #f5f2ef;
+  color: #ffffff;
+  background: #7e5b3f;
   border-radius: 5px;
   padding: 4px 7px;
 }
@@ -360,9 +372,9 @@
 
 .review-jump-button {
   margin-left: auto;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  background: rgba(255, 255, 255, 0.14);
-  color: #fff;
+  border: 1px solid rgba(126, 91, 63, 0.35);
+  background: rgba(126, 91, 63, 0.08);
+  color: #7e5b3f;
   border-radius: 999px;
   padding: 4px 8px;
   font-size: 12px;
@@ -371,7 +383,7 @@
 }
 
 .review-jump-button:hover {
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(126, 91, 63, 0.14);
 }
 
 .review-jump-button:focus-visible {
@@ -380,8 +392,8 @@
 }
 
 .score-pill {
-  background: #fff;
-  color: #3f2d20;
+  background: #7e5b3f;
+  color: #fff;
   border-radius: 4px;
   padding: 4px 6px;
   font-weight: 700;
@@ -406,7 +418,7 @@
   width: 100%;
   min-height: 36px;
   margin: 4px 0 8px;
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(126, 91, 63, 0.3);
   border-radius: 8px;
   background: #ffffff;
   color: #5e3f27;
@@ -445,7 +457,7 @@
 .rule-line {
   margin: 10px 0;
   height: 1px;
-  background: rgba(255, 255, 255, 0.45);
+  background: rgba(126, 91, 63, 0.22);
 }
 
 .unit-type {
@@ -465,8 +477,8 @@
   margin: 8px 0 10px;
   padding: 8px;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(126, 91, 63, 0.22);
+  background: rgba(126, 91, 63, 0.06);
 }
 
 .card-reviews-section h3 {
@@ -486,7 +498,7 @@
   align-items: center;
   gap: 5px;
   font-size: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(126, 91, 63, 0.35);
   border-radius: 999px;
   padding: 3px 8px;
 }
@@ -502,7 +514,7 @@
 .old-price {
   text-decoration: line-through;
   font-size: 12px;
-  opacity: 0.85;
+  color: rgba(126, 91, 63, 0.72);
 }
 
 .new-price {

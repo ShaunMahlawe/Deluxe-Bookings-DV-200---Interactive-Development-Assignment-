@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs')
 
 const { isDatabaseConnected } = require('../config/db')
-const User = require('../models/userSchema')
+const { User } = require('../models')
 const { createUser, findUserByEmail, safeUser } = require('../utils/mockStore')
 const { signToken } = require('../utils/token')
 
@@ -15,6 +15,7 @@ function buildAuthResponse(userRecord) {
       id: userRecord._id.toString(),
       name: userRecord.name,
       email: userRecord.email,
+      userRole: userRecord.userRole,
     }
   }
 
@@ -30,10 +31,14 @@ function setAuthCookie(res, token) {
   })
 }
 
-async function register(req, res) {
-  const { name, email, password, signatureWord } = req.body
+function normalizePublicRole(userRole) {
+  return ['B', 'S'].includes(userRole) ? userRole : 'B'
+}
 
-  if (!name || !email || !password || !signatureWord) {
+async function register(req, res) {
+  const { name, email, password, signatureWord, userRole } = req.body
+
+  if (!name || !email || !password) {
     return res.status(400).json({ message: 'All registration fields are required.' })
   }
 
@@ -48,7 +53,7 @@ async function register(req, res) {
   }
 
   const passwordHash = await bcrypt.hash(password, 10)
-  const signatureWordHash = await bcrypt.hash(signatureWord, 10)
+  const signatureWordHash = signatureWord ? await bcrypt.hash(signatureWord, 10) : undefined
 
   const user = isDatabaseConnected()
     ? await User.create({
@@ -56,12 +61,14 @@ async function register(req, res) {
         email: normalizedEmail,
         passwordHash,
         signatureWordHash,
+        userRole: normalizePublicRole(userRole),
       })
     : createUser({
         name: name.trim(),
         email: normalizedEmail,
         passwordHash,
         signatureWordHash,
+        userRole: normalizePublicRole(userRole),
       })
 
   const token = signToken(user._id ? user._id.toString() : user.id)
@@ -76,8 +83,8 @@ async function register(req, res) {
 async function login(req, res) {
   const { email, password, signatureWord } = req.body
 
-  if (!email || !password || !signatureWord) {
-    return res.status(400).json({ message: 'Email, password, and signature word are required.' })
+  if (!email || !password) {
+    return res.status(400).json({ message: 'Email and password are required.' })
   }
 
   const normalizedEmail = normalizeEmail(email)
@@ -94,7 +101,9 @@ async function login(req, res) {
   const signatureWordHash = user.signatureWordHash
 
   const passwordMatch = await bcrypt.compare(password, passwordHash)
-  const signatureWordMatch = await bcrypt.compare(signatureWord, signatureWordHash)
+  const signatureWordMatch = signatureWordHash && signatureWord
+    ? await bcrypt.compare(signatureWord, signatureWordHash)
+    : true
 
   if (!passwordMatch || !signatureWordMatch) {
     return res.status(401).json({ message: 'Invalid login credentials.' })
@@ -113,6 +122,47 @@ function me(req, res) {
   return res.json({ user: req.user })
 }
 
+function profile(req, res) {
+  return res.json(req.user)
+}
+
+async function updateProfile(req, res) {
+  const { name, email, userRole } = req.body
+  const canSetRole = req.user.userRole === 'A'
+    ? ['B', 'S', 'A'].includes(userRole)
+    : ['B', 'S'].includes(userRole)
+
+  if (isDatabaseConnected()) {
+    const user = await User.findByIdAndUpdate(
+      req.user.id,
+      {
+        ...(name ? { name: name.trim() } : {}),
+        ...(email ? { email: normalizeEmail(email) } : {}),
+        ...(canSetRole ? { userRole } : {}),
+      },
+      { new: true, runValidators: true },
+    )
+
+    if (!user) {
+      return res.status(404).json({ message: 'User account not found.' })
+    }
+
+    return res.json({ user: buildAuthResponse(user) })
+  }
+
+  return res.status(501).json({ message: 'Profile updates require MongoDB mode.' })
+}
+
+async function deleteAccount(req, res) {
+  if (isDatabaseConnected()) {
+    await User.findByIdAndDelete(req.user.id)
+    res.clearCookie('token')
+    return res.json({ message: 'Account deleted.' })
+  }
+
+  return res.status(501).json({ message: 'Account deletion requires MongoDB mode.' })
+}
+
 function logout(req, res) {
   res.clearCookie('token')
   return res.json({ message: 'Signed out.' })
@@ -122,5 +172,8 @@ module.exports = {
   login,
   logout,
   me,
+  profile,
   register,
+  updateProfile,
+  deleteAccount,
 }

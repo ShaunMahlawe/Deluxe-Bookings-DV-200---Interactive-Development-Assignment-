@@ -14,14 +14,25 @@ const UserSchema = new mongoose.Schema(
       lowercase: true,
       trim: true,
     },
-    password: {
+    // SOFT REMOVE: previous auth code used `password`; authController stores
+    // hashes instead, so keep the old shape visible while moving to hashes.
+    // password: {
+    //   type: String,
+    //   required: true,
+    // },
+    passwordHash: {
       type: String,
       required: true,
+    },
+    signatureWordHash: {
+      type: String,
+      required: false,
     },
     userRole: {
       type: String,
       required: true,
-      default: "guest", 
+      enum: ["B", "S", "A"],
+      default: "B",
     },
   },
   {

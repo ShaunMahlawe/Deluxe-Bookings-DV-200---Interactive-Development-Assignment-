@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Container, Spinner } from "react-bootstrap";
+import { Alert, Container, Spinner } from "react-bootstrap";
 import { getMySellerListing, updateMySellerListing } from "../../api/sellerApi";
 
 import ListingForm, {
@@ -18,7 +18,7 @@ function EditListing({ listingId, onNavigate }) {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    const token = localStorage.getItem("deluxe_token");
+    const token = localStorage.getItem("token");
 
     // if (listingId?.startsWith("local-")) {
     //   const listing = getLocalSellerListings().find(
@@ -74,7 +74,7 @@ function EditListing({ listingId, onNavigate }) {
   //   }
 
   const handleUpdate = async () => {
-    const token = localStorage.getItem("deluxe_token");
+    const token = localStorage.getItem("token");
 
     if (!token) {
       setErrorMessage("You need to be logged in to update this listing.");
@@ -91,13 +91,6 @@ function EditListing({ listingId, onNavigate }) {
 
       setErrorMessage("Could not update this listing.");
     }
-    updateMySellerListing(listingId, formData, token)
-      .then(() => {
-        onNavigate("/seller/dashboard");
-      })
-      .catch((error) => {
-        console.log("Error updating listing:", error);
-      });
   };
 
   if (loading) {

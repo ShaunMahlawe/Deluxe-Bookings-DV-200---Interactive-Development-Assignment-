@@ -1,17 +1,4 @@
-const requireAdmin = (req, res, next) => {
-  if (!req.user) {
-    return res.status(401).json({
-      message: 'Authentication required.',
-    });
-  }
-
-  if (req.user.userRole !== 'A') {
-    return res.status(403).json({
-      message: 'Access denied. Admin privileges required.',
-    });
-  }
-
-  next();
-};
+// SOFT REMOVE: legacy single-purpose middleware kept as a compatibility wrapper.
+const { requireAdmin } = require('./authMiddleware');
 
 module.exports = requireAdmin;

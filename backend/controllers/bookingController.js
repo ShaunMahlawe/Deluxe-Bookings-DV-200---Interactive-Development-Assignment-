@@ -1,4 +1,4 @@
-const Booking = require('../models/bookingSchema')
+const { Booking } = require('../models')
 const { isDatabaseConnected } = require('../config/db')
 const { createBooking, listBookingsForUser } = require('../utils/mockStore')
 

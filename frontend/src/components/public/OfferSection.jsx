@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "../assets/Rectangle 82.png";
+import Image from "../../assets/Rectangle 82.png";
 
 
 const OffersSection = () => {

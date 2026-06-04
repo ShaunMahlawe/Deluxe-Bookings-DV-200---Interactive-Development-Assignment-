@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 
-const User = require('../models/userSchema')
+const { User } = require('../models')
 const { isDatabaseConnected } = require('../config/db')
 const { findUserById, safeUser } = require('../utils/mockStore')
 
@@ -29,6 +29,7 @@ async function protect(req, res, next) {
         id: user._id.toString(),
         name: user.name,
         email: user.email,
+        userRole: user.userRole,
       }
 
       return next()
@@ -47,6 +48,25 @@ async function protect(req, res, next) {
   }
 }
 
+function requireRole(allowedRoles, label) {
+  return (req, res, next) => {
+    if (!req.user) {
+      return res.status(401).json({ message: 'Authentication required.' })
+    }
+
+    if (allowedRoles.includes(req.user.userRole)) {
+      return next()
+    }
+
+    return res.status(403).json({ message: `Access denied. ${label} privileges required.` })
+  }
+}
+
+const requireSeller = requireRole(['S', 'A'], 'Seller or Admin')
+const requireAdmin = requireRole(['A'], 'Admin')
+
 module.exports = {
   protect,
+  requireAdmin,
+  requireSeller,
 }

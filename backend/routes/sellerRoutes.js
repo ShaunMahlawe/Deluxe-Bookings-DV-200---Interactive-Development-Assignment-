@@ -1,7 +1,7 @@
 const express = require("express");
 
-// const { protect } = require('../middleware/authMiddleware')
-// const { validateListing } = require("../middleware/validateListing");
+const { protect, requireSeller } = require("../middleware/authMiddleware");
+const { validateListing } = require("../middleware/validateListing");
 
 const {
   createMyListing,
@@ -16,33 +16,38 @@ const router = express.Router();
 
 router.post(
   "/listings",
-  // protect,
-  // validateListing,
+  protect,
+  requireSeller,
+  validateListing,
   createMyListing
 );
 
 router.get(
   "/listings",
-  /*protect,*/
+  protect,
+  requireSeller,
   getMyListings
 );
 
 router.get(
   "/listings/:id",
-  // protect,
+  protect,
+  requireSeller,
   getMyListing
 );
 
 router.put(
   "/listings/:id",
-  // protect,
-  // validateListing,
+  protect,
+  requireSeller,
+  validateListing,
   updateMyListing
 );
 
 router.delete(
   "/listings/:id",
-  // protect,
+  protect,
+  requireSeller,
   deleteMyListing
 );
 

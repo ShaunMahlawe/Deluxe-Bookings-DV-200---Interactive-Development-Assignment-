@@ -1,7 +1,7 @@
 import './App.css';
 import { useEffect, useMemo, useState } from 'react';
-import SearchResultsPage from './components/common/searchResults.jsx';
-import HeroHeader from './components/common/heroheader.jsx';
+import SearchResultsPage from './components/public/searchResults.jsx';
+import HeroHeader from './components/public/heroheader.jsx';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5001';
 const ELITE_MIN_REVIEW_SCORE = 8;

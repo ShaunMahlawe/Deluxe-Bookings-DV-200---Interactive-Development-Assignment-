@@ -1,12 +1,12 @@
 import { Nav } from "react-bootstrap";
-import HeroHeader from "../../components/common/heroheader";
-import Footer from "../../components/common/footer";
-import NavBar from "../../components/common/navbar";
-import HotelCarousel from "../../components/common/HotelCarousel";
-import AboutSection from "../../components/common/AboutSection";
-import LuxurySection from "../../components/common/LuxurySection";
-import LuxuryCarousel from "../../components/common/LuxuryCarousel";
-import OffersSection from "../../components/common/OfferSection";
+import HeroHeader from "../../components/public/heroheader";
+import Footer from "../../components/public/footer";
+import NavBar from "../../components/public/navbar";
+import HotelCarousel from "../../components/public/HotelCarousel";
+import AboutSection from "../../components/public/AboutSection";
+import LuxurySection from "../../components/public/LuxurySection";
+import LuxuryCarousel from "../../components/public/LuxuryCarousel";
+import OffersSection from "../../components/public/OfferSection";
 
 function Home() {
   return (

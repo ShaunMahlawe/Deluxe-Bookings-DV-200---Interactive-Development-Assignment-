@@ -16,6 +16,8 @@ import "../../css/seller/SellerListingCard.css";
 import { getMySellerListings } from "../../api/sellerApi";
 import { clearListingDraft, getListingDraft } from "../../utils/listingStorage";
 
+const demoListings = [];
+
 function SellerDashboard({ onNavigate, previewMode = false }) {
   const [listings, setListings] = useState(previewMode ? demoListings : []);
 
@@ -33,7 +35,7 @@ function SellerDashboard({ onNavigate, previewMode = false }) {
     }
 
     const fetchListings = async () => {
-      const token = localStorage.getItem("deluxe_token");
+      const token = localStorage.getItem("token");
 
       setLoading(true);
 

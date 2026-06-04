@@ -1,11 +1,9 @@
-const User = require("../models/userSchema");
-const Listing = require("../models/listingSchema");
-const Booking = require("../models/bookingSchema");
+const { Booking, Listing, User } = require("../models");
 
 // Admin views all users
 const getAllUsers = async (req, res) => {
   try {
-    const users = await User.find().select("-password");
+    const users = await User.find().select("-passwordHash -signatureWordHash");
 
     res.status(200).json(users);
   } catch (error) {

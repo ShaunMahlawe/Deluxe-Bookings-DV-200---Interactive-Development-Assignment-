@@ -16,6 +16,7 @@ const listingRoutes = require('./routes/listingRoutes')
 const sellerRoutes = require('./routes/sellerRoutes')
 const reviewRoutes = require('./routes/reviewRoutes')
 const pageRoutes = require('./routes/pageRoutes')
+const adminRoutes = require('./routes/adminRoutes')
 const userRoutes = require('./routes/userRoutes')
 const catalogRoutes = require('./routes/catalogRoutes')
 const propertyRoutes = require('./routes/propertyRoutes')
@@ -67,14 +68,15 @@ app.use(
 app.use(express.json())
 app.use(cookieParser())
 
-// app.get('/api/health', (_req, res) => {
-//   res.json({ status: 'ok', mode: isDatabaseConnected() ? 'mongo' : 'demo' })
-// })
+app.get('/api/health', (_req, res) => {
+  res.json({ status: 'ok', mode: isDatabaseConnected() ? 'mongo' : 'demo' })
+})
 
 app.use('/api/auth', authRoutes)
 app.use('/api/bookings', bookingRoutes)
 app.use('/api/listings', listingRoutes)
 app.use('/api/sellers', sellerRoutes)
+app.use('/api/admin', adminRoutes)
 app.use('/api/reviews', reviewRoutes)
 app.use('/api/pages', pageRoutes)
 app.use('/api/users', userRoutes)

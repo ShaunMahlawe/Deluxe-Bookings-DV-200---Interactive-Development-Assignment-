@@ -1,8 +1,8 @@
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { useState } from "react";
 import axios from "axios";
-import DatesPicker from '../../components/common/datePicker';
-import Footer from '../../components/common/footer';
+import DatesPicker from '../../components/public/datePicker';
+import Footer from '../../components/public/footer';
 
 function Checkout() {
   const [checkoutPage, setCheckoutPage] = useState(1);

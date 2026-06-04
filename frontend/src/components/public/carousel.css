@@ -1,7 +1,7 @@
 .area-carousel {
   margin: 40px 0 0 0;
   text-align: left;
-  font-family: 'Poppins', sans-serif;
+  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: 'Poppins', sans-serif; */
   color: #3f2d20;
 }
 

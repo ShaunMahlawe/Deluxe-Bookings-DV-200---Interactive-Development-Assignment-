@@ -1,4 +1,3 @@
-import PageNav from '../../components/common/pageNav.jsx';
 import './ApiGuidePage.css';
 
 const endpoints = [
@@ -12,7 +11,6 @@ const endpoints = [
 function ApiGuidePage() {
   return (
     <div className="api-guide-page">
-      <PageNav />
       <main className="api-guide-content">
         <h1>Deluxe Stays API Guide</h1>
         <p>

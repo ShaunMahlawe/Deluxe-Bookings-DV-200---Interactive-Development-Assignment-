@@ -11,7 +11,7 @@ const parseResponse = async (response) => {
 };
 
 export const createSellerListing = async (listingData, token) => {
-  const response = await fetch(`${API_BASE_URL}/seller/listings`, {
+  const response = await fetch(`${API_BASE_URL}/sellers/listings`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -24,7 +24,7 @@ export const createSellerListing = async (listingData, token) => {
 };
 
 export const getMySellerListings = async (token) => {
-  const response = await fetch(`${API_BASE_URL}/seller/listings`, {
+  const response = await fetch(`${API_BASE_URL}/sellers/listings`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -34,7 +34,7 @@ export const getMySellerListings = async (token) => {
 };
 
 export const getMySellerListing = async (id, token) => {
-  const response = await fetch(`${API_BASE_URL}/seller/listings/${id}`, {
+  const response = await fetch(`${API_BASE_URL}/sellers/listings/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -44,7 +44,7 @@ export const getMySellerListing = async (id, token) => {
 };
 
 export const updateMySellerListing = async (id, listingData, token) => {
-  const response = await fetch(`${API_BASE_URL}/seller/listings/${id}`, {
+  const response = await fetch(`${API_BASE_URL}/sellers/listings/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -57,7 +57,7 @@ export const updateMySellerListing = async (id, listingData, token) => {
 };
 
 export const removeMySellerListing = async (id, token) => {
-  const response = await fetch(`${API_BASE_URL}/seller/listings/${id}`, {
+  const response = await fetch(`${API_BASE_URL}/sellers/listings/${id}`, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -68,7 +68,7 @@ export const removeMySellerListing = async (id, token) => {
 };
 
 // export const getSellerBookings = async (token) => {
-//   const response = await fetch(`${API_BASE_URL}/seller/bookings`, {
+//   const response = await fetch(`${API_BASE_URL}/sellers/bookings`, {
 //     headers: {
 //       Authorization: `Bearer ${token}`,
 //     },
