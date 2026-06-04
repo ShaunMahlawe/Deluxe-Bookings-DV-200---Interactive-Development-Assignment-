@@ -2,6 +2,8 @@
 
 Deluxe Bookings is a full-stack accommodation booking prototype built for the DV200 Interactive Development Assignment. The project combines a React frontend, an Express API, MongoDB-ready persistence, and JWT authentication enhanced with a second creative credential called a Signature Stay Word.
 
+You can view our link here: https://drive.google.com/file/d/1RH4Rmd4MvkuiPIoTQLoiq562sfHIojD8/view?usp=sharing
+
 ## Project Description
 
 The app presents a premium booking dashboard where users can:
