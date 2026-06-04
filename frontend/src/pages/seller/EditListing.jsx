@@ -12,6 +12,29 @@ import ListingForm, {
 
 import "../../css/seller/Listing.css";
 
+const getImageSource = (image) => {
+  if (!image) return "";
+  if (typeof image === "string") return image;
+  return image.preview || image.url || "";
+};
+
+const buildListingPayload = (formData) => {
+  const images = Array.isArray(formData.images)
+    ? formData.images.map(getImageSource).filter(Boolean)
+    : [];
+
+  return {
+    ...formData,
+    images,
+    image: images[0] || getImageSource(formData.image),
+    bedrooms: formData.bedrooms ? Number(formData.bedrooms) : "",
+    bathrooms: formData.bathrooms ? Number(formData.bathrooms) : "",
+    guestCapacity: formData.guestCapacity ? Number(formData.guestCapacity) : "",
+    pricePerNight: formData.pricePerNight ? Number(formData.pricePerNight) : "",
+    isFullyBooked: Boolean(formData.isFullyBooked),
+  };
+};
+
 function EditListing({ listingId, onNavigate }) {
   const [formData, setFormData] = useState(initialListingForm);
   const [loading, setLoading] = useState(true);
@@ -83,7 +106,7 @@ function EditListing({ listingId, onNavigate }) {
     }
 
     try {
-      await updateMySellerListing(listingId, formData, token);
+      await updateMySellerListing(listingId, buildListingPayload(formData), token);
 
       onNavigate("/seller/dashboard");
     } catch (error) {

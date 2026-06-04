@@ -42,6 +42,6 @@ export const formatListingPayload = (formData) => {
     tags: formData.tags,
 
     isFullyBooked: Boolean(formData.isFullyBooked),
-    status: formData.status || "In Review",
+    status: formData.status || "submitted_for_review",
   };
 };

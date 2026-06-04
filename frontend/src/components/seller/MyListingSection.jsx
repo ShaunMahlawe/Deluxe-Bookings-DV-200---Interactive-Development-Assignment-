@@ -17,7 +17,7 @@ const filters = [
   {
     label: "Unpublished",
     value: "unpublished_group",
-    statuses: ["approved_unpublished", "removed_from_public", "unpublished"],
+    statuses: ["approved_unpublished", "removed_from_public", "draft", "unpublished"],
   },
 ];
 
