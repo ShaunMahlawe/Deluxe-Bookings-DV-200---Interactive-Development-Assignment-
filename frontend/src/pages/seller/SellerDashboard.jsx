@@ -8,20 +8,55 @@ import {
 } from "react-bootstrap";
 
 import MyListingSection from "../../components/seller/MyListingSection";
+import EditListing from "./EditListing";
 
 import "../../css/seller/SellerDashboard.css";
 import "../../css/seller/MyListingSection.css";
 import "../../css/seller/SellerListingCard.css";
 
-import { getMySellerListings } from "../../api/sellerApi";
+import { getMySellerListings, updateMySellerListing } from "../../api/sellerApi";
 import { clearListingDraft, getListingDraft } from "../../utils/listingStorage";
 
 const demoListings = [];
+
+const getImageSource = (image) => {
+  if (!image) return "";
+  if (typeof image === "string") return image;
+  return image.preview || image.url || "";
+};
+
+const getNextStatus = (currentStatus) => {
+  if (currentStatus === "published") return "approved_unpublished";
+  if (currentStatus === "approved_unpublished") return "published";
+  if (currentStatus === "removed_from_public") return "submitted_for_review";
+  if (currentStatus === "unpublished") return "submitted_for_review";
+  if (currentStatus === "submitted_for_review" || currentStatus === "in_review") {
+    return "draft";
+  }
+
+  return currentStatus;
+};
+
+const buildListingUpdatePayload = (listing, nextStatus) => {
+  const images = Array.isArray(listing.images)
+    ? listing.images.map(getImageSource).filter(Boolean)
+    : [];
+  const fallbackImage = getImageSource(listing.image);
+  const normalizedImages = images.length ? images : [fallbackImage].filter(Boolean);
+
+  return {
+    ...listing,
+    status: nextStatus,
+    images: normalizedImages,
+    image: normalizedImages[0] || "",
+  };
+};
 
 function SellerDashboard({ onNavigate, previewMode = false }) {
   const [listings, setListings] = useState(previewMode ? demoListings : []);
 
   const [selectedListing, setSelectedListing] = useState(null);
+  const [editingListingId, setEditingListingId] = useState(null);
 
   const [draft, setDraft] = useState(() => getListingDraft());
 
@@ -70,45 +105,75 @@ function SellerDashboard({ onNavigate, previewMode = false }) {
   }, [previewMode]);
 
   const handleStatusChange = async (listingId, currentStatus) => {
+    const nextStatus = getNextStatus(currentStatus);
+
+    if (nextStatus === currentStatus) {
+      return;
+    }
+
     if (previewMode) {
       setListings((prev) =>
         prev.map((listing) => {
           if (listing._id !== listingId) return listing;
 
-          if (currentStatus === "published") {
-            return { ...listing, status: "unpublished" };
-          }
-
-          if (currentStatus === "approved_unpublished") {
-            return { ...listing, status: "published" };
-          }
-
-          if (currentStatus === "unpublished") {
-            return { ...listing, status: "submitted_for_review" };
-          }
-
-          if (currentStatus === "submitted_for_review") {
-            return { ...listing, status: "unpublished" };
-          }
-
-          return listing;
+          return { ...listing, status: nextStatus };
         }),
       );
 
       return;
     }
 
-    console.log("Status change will connect to backend later:", {
-      listingId,
+    const listing = listings.find((item) => item._id === listingId);
+    const token = localStorage.getItem("token");
 
-      currentStatus,
-    });
+    if (!listing || !token) {
+      setLoadError("Could not update this listing status.");
+      return;
+    }
+
+    try {
+      const updatedListing = await updateMySellerListing(
+        listingId,
+        buildListingUpdatePayload(listing, nextStatus),
+        token,
+      );
+
+      setListings((prev) =>
+        prev.map((item) => (item._id === listingId ? updatedListing : item)),
+      );
+
+      setSelectedListing((current) =>
+        current?._id === listingId ? updatedListing : current,
+      );
+      setLoadError("");
+    } catch (error) {
+      console.log("Error updating listing status:", error);
+      setLoadError("Could not update this listing status.");
+    }
   };
 
   const handleCancelDraft = () => {
     clearListingDraft();
     setDraft(null);
   };
+
+  const handleEditNavigate = (path) => {
+    if (path === "/seller/dashboard") {
+      setEditingListingId(null);
+      return;
+    }
+
+    onNavigate(path);
+  };
+
+  if (editingListingId) {
+    return (
+      <EditListing
+        listingId={editingListingId}
+        onNavigate={handleEditNavigate}
+      />
+    );
+  }
 
   return (
     <main className="seller-dashboard-page">
@@ -186,10 +251,12 @@ function SellerDashboard({ onNavigate, previewMode = false }) {
             selectedListing={selectedListing}
             onSelectListing={setSelectedListing}
             onCloseListing={() => setSelectedListing(null)}
-            onEdit={(id) => onNavigate(`/seller/edit-listing/${id}`)}
+            onEdit={setEditingListingId}
             onStatusChange={handleStatusChange}
             onCreate={() => onNavigate("/seller/create-listing")}
-            onViewListingPage={(id) => onNavigate(`/seller/listing/${id}`)}
+            onViewListingPage={(id) =>
+              setSelectedListing(listings.find((listing) => listing._id === id))
+            }
           />
         ) : (
           <div className="seller-empty-state">

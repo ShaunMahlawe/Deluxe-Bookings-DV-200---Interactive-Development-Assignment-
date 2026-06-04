@@ -64,7 +64,7 @@ function getStatusAction(status = "") {
     };
   }
 
-  if (status === "unpublished") {
+  if (status === "draft" || status === "unpublished") {
     return {
       label: "Resubmit",
       variant: "primary",
@@ -175,7 +175,7 @@ function IndividualListing({
       return;
     }
 
-    onNavigate?.(`/seller/edit-listing/${listing._id}`);
+    onNavigate?.("/seller/dashboard");
   };
 
   if (loadingListing) {

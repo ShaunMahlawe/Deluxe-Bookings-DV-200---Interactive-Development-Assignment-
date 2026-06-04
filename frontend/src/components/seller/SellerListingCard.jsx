@@ -64,7 +64,7 @@ function SellerListingCard({
       };
     }
 
-    if (listing.status === "unpublished") {
+    if (listing.status === "draft" || listing.status === "unpublished") {
       return {
         label: "Resubmit",
         variant: "primary",

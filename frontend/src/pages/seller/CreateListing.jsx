@@ -22,6 +22,12 @@ import "../../css/seller/Listing.css";
 
 const getSavedDraft = () => getListingDraft();
 
+const getImageSource = (image) => {
+  if (!image) return "";
+  if (typeof image === "string") return image;
+  return image.preview || image.url || "";
+};
+
 const buildListingPayload = (formData) => {
   const location = [
     formData.streetAddress,
@@ -33,11 +39,15 @@ const buildListingPayload = (formData) => {
   ]
     .filter(Boolean)
     .join(", ");
+  const images = Array.isArray(formData.images)
+    ? formData.images.map(getImageSource).filter(Boolean)
+    : [];
 
   return {
     ...formData,
     location: location || formData.location,
-    image: formData.images?.[0]?.preview || formData.images?.[0] || "",
+    images,
+    image: images[0] || getImageSource(formData.image),
     bedrooms: formData.bedrooms ? Number(formData.bedrooms) : "",
     bathrooms: formData.bathrooms ? Number(formData.bathrooms) : "",
     guestCapacity: formData.guestCapacity ? Number(formData.guestCapacity) : "",

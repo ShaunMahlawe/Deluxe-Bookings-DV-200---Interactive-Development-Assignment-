@@ -148,10 +148,7 @@ textarea {
   overflow-x: clip;
 }
 
-code {
-  /* SOFT REMOVE: font-family now inherits from index.css. Previous: font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace; */
-}
+/* SOFT REMOVE: code font-family now inherits from index.css. Previous selector: code. */
 
 input::placeholder,
 textarea::placeholder {
@@ -220,8 +217,8 @@ textarea::placeholder {
     --fs-base: 20px;
   }
 }
-}
 
+}
 
 .seller-onboarding-page {
   --seller-dark: #332a23;
